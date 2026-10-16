@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS ESTÚDIO v6",
-  "short_name": "TAKI VS v6",
-  "description": "Repertorio vinculado - Cifra + VS + BPM + Gravacao",
+  "name": "TAKI VS ESTÚDIO v7 - Profissional Limpo",
+  "short_name": "TAKI VS v7",
+  "description": "Tela cheia dominio total + Menu limpo + Instalar direto + Compartilhar",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",
