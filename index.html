@@ -2,32 +2,36 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAKI VS v10.3 TRANSPOSE BOTÕES</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>TAKI VS v10.4 COMPLETO</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-512.png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<meta name="theme-color" content="#0a0a0a">
 <style>
 :root{--gold:#c9a86a;--bg:#080808;--card:#121212;--card2:#1a1a1a;--text:#e8dcc0;--muted:#888;--line:#222;--cifra:#c9a86a;--letra:#ffffff;--header-bg:#0a0a0a;--paper:#fdf6e3;--paper-line:#e8dcc8;--red-line:#e8a0a0}
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Inter,system-ui}
 body{background:var(--bg);color:var(--text);padding-bottom:95px;transition:all 0.2s}
 .header{border-bottom:1px solid var(--line);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;background:var(--header-bg);position:sticky;top:0;z-index:50}
-.header h1{color:var(--gold);font-size:14px;font-weight:800;letter-spacing:1px}
+.header h1{color:var(--gold);font-size:13px;font-weight:800;letter-spacing:1px}
 .hamburger{width:40px;height:40px;border:1px solid var(--line);background:var(--card2);color:var(--gold);border-radius:8px;font-size:18px;cursor:pointer}
 .btn{border:1px solid var(--line);background:var(--card2);color:var(--gold);padding:9px 12px;border-radius:18px;font-weight:700;cursor:pointer;font-size:10px}
 .btn.gold{background:var(--gold);color:#000;border-color:var(--gold)}
+.btn.big{padding:14px 16px;font-size:12px;font-weight:800;border-radius:12px;width:100%;margin:6px 0}
 .install-bar{position:fixed;bottom:0;left:0;right:0;background:var(--header-bg);border-top:1px solid var(--line);padding:10px 12px;display:flex;gap:8px;z-index:100}
 .install-bar button{flex:1;padding:12px;border-radius:20px;font-weight:800;font-size:11px;cursor:pointer;border:none}
 #installBtn{background:var(--gold);color:#000}
 #shareBtn{background:var(--card2);color:var(--gold);border:1px solid var(--line)}
 .main{padding:12px}
 .card{border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0;background:var(--card)}
+.card.new{border:2px dashed var(--gold);background:linear-gradient(135deg,var(--card),var(--card2));text-align:center}
 .file-label{border:2px dashed var(--gold);padding:16px;border-radius:18px;display:block;text-align:center;cursor:pointer;background:var(--card2);color:var(--gold);font-weight:800;font-size:13px}
 input[type=text]{width:100%;background:var(--card2);color:var(--text);border:1px solid var(--line);padding:11px;border-radius:9px;font-size:13px}
 .preview-wrapper{display:flex;flex-direction:column;max-height:60vh;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
 .preview-controls{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:8px 10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .preview-content{flex:1;overflow-y:auto;padding:14px 12px;max-height:50vh}
 .song-block{margin:18px 0;padding:0;line-height:1.15}
-.song-block.cifra-line{color:var(--cifra);font-weight:800;font-size:14px;display:block;margin-bottom:6px}
+.song-block.cifra-line{color:var(--cifra);font-weight:800;font-size:14px;display:block;margin-bottom:6px;letter-spacing:0.5px}
 .song-block.letra-line{color:var(--letra);font-size:17px;font-weight:700;text-transform:uppercase;line-height:1.35;display:block}
 .song-block.section-label{background:var(--card2);color:var(--gold);padding:5px 12px;border-radius:15px;font-weight:800;font-size:11px;display:inline-block;margin:18px 0 6px 0;border:1px solid var(--gold)}
 .small{border:1px solid var(--line);background:var(--card2);color:var(--gold);padding:6px 10px;border-radius:16px;font-size:10px;cursor:pointer;font-weight:600}
@@ -36,22 +40,27 @@ input[type=text]{width:100%;background:var(--card2);color:var(--text);border:1px
 .repertorio-item{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px;margin:7px 0;display:flex;justify-content:space-between;align-items:center;gap:8px}
 .folder{border:1px solid var(--line);border-radius:12px;margin:10px 0;background:var(--card);overflow:hidden}
 .folder-header{padding:12px 14px;background:var(--card2);display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-bottom:1px solid var(--line)}
+.folder-title{color:var(--gold);font-weight:800;font-size:13px}
+.folder-count{color:var(--muted);font-size:10px;background:var(--card);padding:3px 8px;border-radius:10px;border:1px solid var(--line)}
+.folder-body{display:none;padding:6px}.folder-body.open{display:block}
 #telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:9999;overflow:hidden;flex-direction:column}
 .tela-header{position:sticky;top:0;background:var(--header-bg);border-bottom:1px solid var(--line);padding:10px 12px;display:flex;justify-content:space-between;align-items:center;z-index:20;flex-shrink:0}
-.tela-controls{position:sticky;top:52px;background:var(--header-bg);border-bottom:1px solid var(--line);padding:10px 12px;display:flex;gap:8px;flex-wrap:wrap;z-index:15;flex-shrink:0}
-.tela-content{flex:1;overflow-y:auto;padding:16px 16px 120px 16px}
+.tela-controls{position:sticky;top:52px;background:var(--header-bg);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;z-index:15;flex-shrink:0}
+.tela-content{flex:1;overflow-y:auto;padding:16px 16px 120px 16px;scroll-behavior:smooth}
 .tela-block{margin:22px 0}
 .tela-block.tela-cifra{color:var(--cifra)!important;font-weight:800;font-size:20px;display:block;margin-bottom:6px}
 .tela-block.tela-letra{color:var(--letra)!important;font-size:28px;font-weight:800;text-transform:uppercase;line-height:1.25}
+.tela-block.tela-section{background:var(--card2);color:var(--gold);padding:6px 14px;border-radius:18px;font-weight:800;font-size:13px;display:inline-block;margin:22px 0 6px 0;border:1px solid var(--gold)}
 #telaEditar{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--paper);z-index:9998;overflow:hidden;flex-direction:column}
-.tela-editar-header{padding:12px 14px;background:#0a0a0a;border-bottom:2px solid var(--gold);display:flex;justify-content:space-between;align-items:center}
+.tela-editar-header{padding:12px 14px;background:#0a0a0a;border-bottom:2px solid var(--gold);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
 .caderno-wrap{flex:1;display:flex;flex-direction:column;background:var(--paper);overflow:hidden}
-.caderno-top{background:var(--paper);border-bottom:2px solid #e8dcc8;padding:10px 16px 10px 60px;display:flex;justify-content:space-between;align-items:center}
+.caderno-top{background:var(--paper);border-bottom:2px solid #e8dcc8;padding:10px 16px 10px 60px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.caderno-top b{color:#5a4a2a;font-size:12px;letter-spacing:1px}
 .caderno-lines{flex:1;position:relative;background:repeating-linear-gradient(transparent, transparent 27px, var(--paper-line) 27px, var(--paper-line) 28px);padding:0 0 0 50px;overflow-y:auto}
 .caderno-lines::before{content:'';position:absolute;left:50px;top:0;bottom:0;width:2px;background:var(--red-line)}
-.caderno-textarea{width:100%;height:100%;min-height:100%;background:transparent;color:#2a2418;border:none;padding:8px 12px 80px 14px;font-family:'Courier New',monospace;font-size:17px;line-height:28px;resize:none;outline:none;white-space:pre-wrap}
+.caderno-textarea{width:100%;height:100%;min-height:100%;background:transparent;color:#2a2418;border:none;padding:8px 12px 80px 14px;font-family:'Courier New',Courier,monospace;font-size:17px;line-height:28px;resize:none;outline:none;white-space:pre-wrap}
 #menuOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:80}
-#menuPanel{background:var(--bg);border-right:2px solid var(--line);width:88%;max-width:360px;height:100%;padding:16px;overflow-y:auto}
+#menuPanel{background:var(--bg);border-right:2px solid var(--line);width:88%;max-width:360px;height:100%;padding:16px;overflow-y:auto;box-shadow:5px 0 25px rgba(0,0,0,0.3)}
 .menu-title{color:var(--muted);font-weight:700;font-size:10px;letter-spacing:1.5px;margin:18px 0 8px 0;text-transform:uppercase}
 .menu-item{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid var(--line);color:var(--text);padding:12px 14px;border-radius:10px;margin:5px 0;font-weight:600;font-size:12.5px;cursor:pointer}
 .menu-item.gold{background:var(--gold);color:#000;border-color:var(--gold)}
@@ -65,54 +74,77 @@ input[type=text]{width:100%;background:var(--card2);color:var(--text);border:1px
 input[type=range]{flex:1;accent-color:var(--gold)}
 .drum-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
 .drum-pad{border:2px solid var(--line);background:var(--card2);border-radius:16px;padding:14px 8px;text-align:center;cursor:pointer}
+.drum-pad:active{transform:scale(0.94);border-color:var(--gold);background:var(--gold)}
+.drum-icon{font-size:30px;display:block;margin-bottom:4px}
+.drum-name{color:var(--gold);font-weight:800;font-size:11px}
+.drum-type{color:var(--muted);font-size:8px;margin-top:2px}
 body.theme-ouro-negro{--bg:#080808;--card:#121212;--card2:#1a1a1a;--text:#e8dcc0;--muted:#888;--line:#222;--gold:#c9a86a;--cifra:#c9a86a;--letra:#ffffff;--header-bg:#0a0a0a}
-body.theme-papel-branco{--bg:#ffffff;--card:#ffffff;--card2:#f2f2f2;--text:#000000;--muted:#444;--line:#cccccc;--gold:#cc0000;--cifra:#cc0000;--letra:#000000;--header-bg:#ffffff}
-body.theme-palco-verde{--bg:#102510;--card:#143214;--card2:#1e4a1e;--text:#ffffff;--muted:#a0d0a0;--line:#2a5a2a;--gold:#ffeb3b;--cifra:#ffeb3b;--letra:#ffffff;--header-bg:#102510}
-body.theme-sepia-caderno{--bg:#fff8e1;--card:#fff3c4;--card2:#ffec99;--text:#3e2723;--muted:#5d4037;--line:#bca67a;--gold:#b71c1c;--cifra:#b71c1c;--letra:#212121;--header-bg:#fff3c4}
+body.theme-papel-branco{--bg:#ffffff;--card:#ffffff;--card2:#f8f8f8;--text:#1a1a1a;--muted:#666;--line:#dddddd;--gold:#cc0000;--cifra:#cc0000;--letra:#222222;--header-bg:#ffffff}
+body.theme-palco-verde{--bg:#122612;--card:#1a321a;--card2:#234423;--text:#eaffea;--muted:#88bb88;--line:#2a5a2a;--gold:#ffeb3b;--cifra:#ffeb3b;--letra:#ffffff;--header-bg:#122612}
+body.theme-sepia-caderno{--bg:#fff8e1;--card:#fff3c4;--card2:#ffec99;--text:#3e2723;--muted:#6d4c41;--line:#d7c49a;--gold:#b71c1c;--cifra:#b71c1c;--letra:#2a1a10;--header-bg:#fff3c4}
 body.theme-azul-noite{--bg:#0a1628;--card:#0f2340;--card2:#162e52;--text:#e0f0ff;--muted:#8ab4d0;--line:#1e3a5f;--gold:#00e5ff;--cifra:#00e5ff;--letra:#ffffff;--header-bg:#0a1628}
 body.theme-alto-contraste{--bg:#000000;--card:#0a0a0a;--card2:#1a1a1a;--text:#ffffff;--muted:#cccccc;--line:#444444;--gold:#ffff00;--cifra:#ffff00;--letra:#ffffff;--header-bg:#000000}
 body.theme-neon-stage{--bg:#0a0a0a;--card:#141414;--card2:#222;--text:#ffffff;--muted:#aaaaaa;--line:#333;--gold:#ff00ff;--cifra:#ff00ff;--letra:#ffffff;--header-bg:#0a0a0a}
+body.theme-papel-branco.theme-btn.active,
+body.theme-sepia-caderno.theme-btn.active{color:#ffffff!important;text-shadow:0 1px 3px rgba(0,0,0,0.6)}
+body.theme-papel-branco.small.gold,
+body.theme-sepia-caderno.small.gold,
+body.theme-papel-branco.menu-item.gold,
+body.theme-sepia-caderno.menu-item.gold,
+body.theme-papel-branco.btn.gold,
+body.theme-sepia-caderno.btn.gold{color:#ffffff!important;text-shadow:0 1px 2px rgba(0,0,0,0.4)}
 .theme-btn{display:flex;align-items:center;gap:8px;width:100%;text-align:left;background:var(--card2);border:2px solid var(--line);color:var(--text);padding:12px 14px;border-radius:10px;margin:5px 0;font-weight:700;font-size:11.5px;cursor:pointer}
-.theme-btn.active{border-color:var(--gold);background:var(--gold);color:#000}
+.theme-btn.active{border-color:var(--gold);background:var(--gold);color:#000;box-shadow:0 0 10px var(--gold)}
 .theme-dot{width:16px;height:16px;border-radius:50%;flex-shrink:0;border:2px solid var(--line)}
 </style>
 </head>
 <body class="theme-ouro-negro">
 <div class="header">
-<div style="display:flex;gap:10px;align-items:center"><button class="hamburger" onclick="toggleMenu()">☰</button><h1>TAKI VS v10.3 TRANSPOSE</h1></div>
+<div style="display:flex;gap:10px;align-items:center"><button class="hamburger" onclick="toggleMenu()">☰</button><h1>TAKI VS v10.4</h1></div>
 <button class="btn gold" onclick="toggleTela()">⛶ TELA CHEIA</button>
 </div>
 <div id="menuOverlay" onclick="if(event.target.id==='menuOverlay') toggleMenu()">
 <div id="menuPanel">
-<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold)">TAKI VS v10.3</b><button class="btn" onclick="toggleMenu()">✕</button></div>
-<div class="menu-title">🎨 7 APARÊNCIAS</div>
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold)">TAKI VS v10.4</b><button class="btn" onclick="toggleMenu()">✕</button></div>
+<div class="menu-title">🎨 7 APARÊNCIAS - FIX VERMELHO</div>
 <button class="theme-btn active" id="th-ouro-negro" onclick="setTheme('ouro-negro')"><span class="theme-dot" style="background:#080808"></span>1. OURO NEGRO</button>
-<button class="theme-btn" id="th-papel-branco" onclick="setTheme('papel-branco')"><span class="theme-dot" style="background:#fff"></span>2. PAPEL BRANCO</button>
-<button class="theme-btn" id="th-palco-verde" onclick="setTheme('palco-verde')"><span class="theme-dot" style="background:#102510"></span>3. PALCO VERDE</button>
-<button class="theme-btn" id="th-sepia-caderno" onclick="setTheme('sepia-caderno')"><span class="theme-dot" style="background:#fff8e1"></span>4. SÉPIA CADERNO</button>
+<button class="theme-btn" id="th-papel-branco" onclick="setTheme('papel-branco')"><span class="theme-dot" style="background:#fff"></span>2. PAPEL BRANCO - FIX BRANCO</button>
+<button class="theme-btn" id="th-palco-verde" onclick="setTheme('palco-verde')"><span class="theme-dot" style="background:#122612"></span>3. PALCO VERDE</button>
+<button class="theme-btn" id="th-sepia-caderno" onclick="setTheme('sepia-caderno')"><span class="theme-dot" style="background:#fff8e1"></span>4. SÉPIA CADERNO - FIX BRANCO</button>
 <button class="theme-btn" id="th-azul-noite" onclick="setTheme('azul-noite')"><span class="theme-dot" style="background:#0a1628"></span>5. AZUL NOITE</button>
 <button class="theme-btn" id="th-alto-contraste" onclick="setTheme('alto-contraste')"><span class="theme-dot" style="background:#000"></span>6. ALTO CONTRASTE</button>
 <button class="theme-btn" id="th-neon-stage" onclick="setTheme('neon-stage')"><span class="theme-dot" style="background:#0a0a0a"></span>7. NEON STAGE</button>
 <div class="menu-title">Repertório</div>
 <button class="menu-item" onclick="showView('home')">🏠 INICIO</button>
-<button class="menu-item" onclick="showView('cifras')">📄 MINHAS CIFRAS</button>
-<button class="menu-item" onclick="showView('vslist')">🎵 CIFRAS + VS</button>
+<button class="menu-item" onclick="showView('cifras')">📄 MINHAS CIFRAS (SEM VS)</button>
+<button class="menu-item" onclick="showView('vslist')">🎵 CIFRAS + VS SALVOS</button>
 <button class="menu-item" onclick="showView('pastas')">📁 PASTAS POR ARTISTA</button>
 <div class="menu-title">Edição</div>
-<button class="menu-item gold" onclick="openEditarTelaCheia()">📝 EDITAR CIFRA TELA CHEIA</button>
-<button class="menu-item" onclick="showView('bateria')">🥁 BATERIA</button>
+<button class="menu-item gold" onclick="novaCifra()">➕ ADICIONAR NOVA CIFRA</button>
+<button class="menu-item gold" onclick="openEditarTelaCheia()">📝 EDITAR CIFRA - TELA CHEIA CADERNO</button>
+<button class="menu-item" onclick="showView('bateria')">🥁 BATERIA REALISTA</button>
 <div class="menu-title">Backup</div>
-<button class="menu-item" onclick="exportarBackup()">💾 EXPORTAR BKP</button>
+<button class="menu-item" onclick="exportarBackup()">💾 EXPORTAR BKP (JSON)</button>
 <button class="menu-item" onclick="document.getElementById('importFile').click()">📥 IMPORTAR BKP</button>
 <input type="file" id="importFile" accept=".json" style="display:none" onchange="importarBackup(this)">
 <div class="menu-title">App</div>
-<button class="menu-item" id="menuInstallBtn" onclick="doInstall()">📲 INSTALAR DIRETO</button>
+<button class="menu-item" id="menuInstallBtn" onclick="doInstall()">📲 INSTALAR DIRETO - 1 CLIQUE</button>
 <button class="menu-item" onclick="doShare()">📤 COMPARTILHAR</button>
+<small style="color:var(--muted);display:block;margin-top:18px;font-size:9px">v10.4 COMPLETO - Nova Cifra + Fix Vermelho Letra Branca + Transpose Botões</small>
 </div>
 </div>
 <div class="main">
 <div id="view-home" class="view active">
-<div class="card"><b style="color:var(--gold);font-size:11px">📁 PUXAR VS / PLAYBACK MP3</b><label class="file-label" for="fileVS" style="margin-top:8px">CLIQUE AQUI PARA PUXAR VS DE BATERIA / PLAYBACK MP3</label><input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)"><div id="vsInfo" style="margin-top:8px;font-size:11px;color:var(--muted)">Nenhum arquivo</div><audio id="audioVS" controls style="width:100%;margin-top:8px"></audio><div class="fader"><small>VOL VS</small><input type="range" id="volVS" min="0" max="100" value="80"><span id="volVSVal">80%</span></div><div id="rateInfo" style="font-size:9px;color:var(--muted);margin-top:4px">Rate 1.00x</div></div>
+
+<div class="card new">
+<b style="color:var(--gold);font-size:12px">➕ ADICIONAR NOVA CIFRA</b>
+<p style="color:var(--muted);font-size:10px;margin:6px 0 10px 0">Começar do zero com cifra em branco</p>
+<button class="btn big gold" onclick="novaCifra()">➕ NOVA CIFRA EM BRANCO</button>
+<button class="btn big" onclick="openEditarTelaCheia()">📝 EDITAR ATUAL - TELA CHEIA</button>
+</div>
+
+<div class="card"><b style="color:var(--gold);font-size:11px">📁 PUXAR VS DE BATERIA / PLAYBACK MP3</b><label class="file-label" for="fileVS" style="margin-top:8px">CLIQUE AQUI PARA PUXAR VS DE BATERIA / PLAYBACK MP3</label><input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)"><div id="vsInfo" style="margin-top:8px;font-size:11px;color:var(--muted)">Nenhum arquivo</div><audio id="audioVS" controls style="width:100%;margin-top:8px"></audio><div class="fader"><small>VOL VS</small><input type="range" id="volVS" min="0" max="100" value="80"><span id="volVSVal">80%</span></div><div id="rateInfo" style="font-size:9px;color:var(--muted);margin-top:4px">Rate 1.00x</div></div>
+
 <div class="card"><b style="font-size:11px;color:var(--gold)">🎹 TRANSPOSE - TOM DA CIFRA (BOTÕES -7 ATÉ +7)</b>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
 <div style="background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px"><small style="color:var(--muted);font-size:9px">TOM ATUAL</small><div class="transpose-display" id="transposeDisplay">0</div><small style="color:var(--muted);font-size:9px;display:block;text-align:center" id="transposeNote">Tom Original</small><div style="display:flex;gap:5px;margin-top:6px"><button class="small" onclick="changeTranspose(-1)">-1 TOM</button><button class="small gold" onclick="changeTranspose(0,true)">0 RESET</button><button class="small" onclick="changeTranspose(1)">+1 TOM</button></div></div>
@@ -137,15 +169,18 @@ body.theme-neon-stage{--bg:#0a0a0a;--card:#141414;--card2:#222;--text:#ffffff;--
 </div>
 <div style="margin-top:8px;display:flex;gap:6px"><small style="color:var(--muted);font-size:9px">Tom:</small><span id="transposeChromatic" style="font-size:9px;color:var(--gold)">C C# D D# E F F# G G# A A# B</span></div>
 </div>
-<div class="card"><b style="font-size:11px;color:var(--gold)">🎛️ BPM & PITCH</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px"><div style="background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px"><small style="color:var(--muted);font-size:9px">BPM</small><div class="bpm-display" id="bpmDisplay">100</div><input type="range" id="bpmRange" min="40" max="240" value="100" style="width:100%"><div style="display:flex;gap:5px;margin-top:6px"><button class="small" onclick="changeBPM(-5)">-5</button><button class="small" onclick="tapBPM()">TAP</button><button class="small" onclick="changeBPM(5)">+5</button></div></div><div style="background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px"><small style="color:var(--muted);font-size:9px">PITCH VS</small><div class="pitch-display" id="pitchDisplay">0</div><input type="range" id="pitchRange" min="-12" max="12" value="0" style="width:100%"><div style="display:flex;gap:5px;margin-top:6px"><button class="small" onclick="changePitch(-1)">-1</button><button class="small" onclick="changePitch(0,true)">0</button><button class="small" onclick="changePitch(1)">+1</button></div></div></div></div>
+
+<div class="card"><b style="font-size:11px;color:var(--gold)">🎛️ BPM & PITCH VS</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px"><div style="background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px"><small style="color:var(--muted);font-size:9px">BPM</small><div class="bpm-display" id="bpmDisplay">100</div><input type="range" id="bpmRange" min="40" max="240" value="100" style="width:100%"><div style="display:flex;gap:5px;margin-top:6px"><button class="small" onclick="changeBPM(-5)">-5</button><button class="small" onclick="tapBPM()">TAP</button><button class="small" onclick="changeBPM(5)">+5</button></div></div><div style="background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px"><small style="color:var(--muted);font-size:9px">PITCH VS</small><div class="pitch-display" id="pitchDisplay">0</div><input type="range" id="pitchRange" min="-12" max="12" value="0" style="width:100%"><div style="display:flex;gap:5px;margin-top:6px"><button class="small" onclick="changePitch(-1)">-1</button><button class="small" onclick="changePitch(0,true)">0</button><button class="small" onclick="changePitch(1)">+1</button></div></div></div></div>
+
 <div class="card save"><b style="font-size:11px">💾 SALVAR MUSICA NA PASTA</b><div style="display:grid;grid-template-columns:1.2fr 1fr;gap:8px;margin-top:8px"><input type="text" id="nomeMusica" placeholder="Nome da música"><input type="text" id="artistaMusica" placeholder="Artista"></div><button class="small gold" style="width:100%;padding:11px;margin-top:8px;font-weight:800;font-size:11px" onclick="salvarRepertorio()">💾 SALVAR (COM TOM + TRANSPOSE)</button><div id="saveStatus" style="margin-top:6px;font-size:10px;color:var(--gold)"></div></div>
+
 <div class="card" style="padding:0;overflow:hidden">
 <div class="preview-wrapper">
 <div class="preview-controls">
 <b style="font-size:10px;color:var(--gold)">PREVIEW - CIFRA TRANSPOSTA</b>
 <div style="display:flex;gap:4px;align-items:center;margin-left:auto">
-<small style="font-size:8px;color:var(--muted)">LETRA</small><button class="small" onclick="changeLetraSize(-1)">A-</button><button class="small" onclick="changeLetraSize(1)">A+</button>
-<small style="font-size:8px;color:var(--muted);margin-left:6px">CIFRA</small><button class="small" onclick="changeCifraSize(-1)">C-</button><button class="small" onclick="changeCifraSize(1)">C+</button>
+<small style="font-size:8px;color:var(--muted)">LETRA</small><button class="small" onclick="changeLetraSize(-1)">A-</button><button class="small" onclick="changeLetraSize(1)">A+</button><span id="letraSizeInfo" style="font-size:8px;color:var(--muted)">17px</span>
+<small style="font-size:8px;color:var(--muted);margin-left:6px">CIFRA</small><button class="small" onclick="changeCifraSize(-1)">C-</button><button class="small" onclick="changeCifraSize(1)">C+</button><span id="cifraSizeInfo" style="font-size:8px;color:var(--muted)">14px</span>
 </div>
 <div style="display:flex;gap:4px;width:100%;margin-top:6px">
 <button class="btn gold" style="flex:1" onclick="toggleTela()">⛶ TELA CHEIA</button>
@@ -157,70 +192,142 @@ body.theme-neon-stage{--bg:#0a0a0a;--card:#141414;--card2:#222;--text:#ffffff;--
 </div>
 </div>
 </div>
-<div id="view-cifras" class="view"><div class="card"><b>📄 MINHAS CIFRAS</b><div id="listaCifras" style="margin-top:10px"></div></div></div>
-<div id="view-vslist" class="view"><div class="card"><b>🎵 CIFRAS + VS</b><div id="listaVS" style="margin-top:10px"></div></div></div>
-<div id="view-pastas" class="view"><div class="card"><b>📁 PASTAS POR ARTISTA</b><div id="listaPastas" style="margin-top:10px"></div></div></div>
-<div id="view-bateria" class="view"><div class="card"><b>🥁 BATERIA REALISTA</b><div class="drum-grid"><div class="drum-pad" onclick="playDrum('kick')"><div class="drum-name">BOMBO</div></div><div class="drum-pad" onclick="playDrum('snare')"><div class="drum-name">CAIXA</div></div><div class="drum-pad" onclick="playDrum('hihat')"><div class="drum-name">CHIMBAL</div></div><div class="drum-pad" onclick="playDrum('crash')"><div class="drum-name">PRATO</div></div></div><audio id="audioVS2" controls style="width:100%;margin-top:12px"></audio></div></div>
+
+<div id="view-cifras" class="view">
+<div class="card new"><button class="btn big gold" onclick="novaCifra()">➕ ADICIONAR NOVA CIFRA EM BRANCO</button></div>
+<div class="card"><b style="font-size:11px">📄 MINHAS CIFRAS (SEM VS)</b><div id="listaCifras" style="margin-top:10px"></div></div></div>
+<div id="view-vslist" class="view"><div class="card"><b style="font-size:11px">🎵 CIFRAS + VS SALVOS</b><div id="listaVS" style="margin-top:10px"></div></div></div>
+<div id="view-pastas" class="view"><div class="card"><b style="font-size:11px">📁 PASTAS POR ARTISTA</b><div id="listaPastas" style="margin-top:10px"></div></div></div>
+<div id="view-bateria" class="view">
+<div class="card"><b style="font-size:11px">🥁 BATERIA REALISTA</b>
+<div class="drum-grid">
+<div class="drum-pad" onclick="playDrum('kick')"><span class="drum-icon">🥁</span><div class="drum-name">BOMBO</div><div class="drum-type">Kick grave</div></div>
+<div class="drum-pad" onclick="playDrum('snare')"><span class="drum-icon">🥁</span><div class="drum-name">CAIXA</div><div class="drum-type">Snare</div></div>
+<div class="drum-pad" onclick="playDrum('hihat')"><span class="drum-icon">🎩</span><div class="drum-name">CHIMBAL</div><div class="drum-type">Fechado</div></div>
+<div class="drum-pad" onclick="playDrum('hihat_open')"><span class="drum-icon">🎩</span><div class="drum-name">CHIMBAL ABERTO</div><div class="drum-type">Aberto</div></div>
+<div class="drum-pad" onclick="playDrum('crash')"><span class="drum-icon">🔔</span><div class="drum-name">PRATO ATAQUE</div><div class="drum-type">Crash</div></div>
+<div class="drum-pad" onclick="playDrum('ride')"><span class="drum-icon">⭕</span><div class="drum-name">CONDUÇÃO</div><div class="drum-type">Ride</div></div>
+<div class="drum-pad" onclick="playDrum('tom1')"><span class="drum-icon">🪘</span><div class="drum-name">TOM 1</div><div class="drum-type">Agudo</div></div>
+<div class="drum-pad" onclick="playDrum('tom2')"><span class="drum-icon">🪘</span><div class="drum-name">SURDO</div><div class="drum-type">Floor</div></div>
 </div>
-<div id="telaGrande"><div class="tela-header"><button class="btn" onclick="toggleTela()">✕ FECHAR</button><div style="text-align:center"><small style="color:var(--gold);font-size:10px">TELA CHEIA - TRANSPOSTA</small><br><small id="telaSyncInfo" style="color:var(--muted);font-size:9px"></small></div><button class="btn gold" onclick="toggleScroll()">▶ SCROLL</button></div><div class="tela-controls"><div style="flex:1;min-width:100px"><small style="color:var(--muted);font-size:9px">TRANSPOSE: <span id="telaTransposeSize" style="color:var(--gold)">0</span></small><div class="transpose-grid" style="margin-top:6px"><button class="small" onclick="changeTranspose(-1)">-1</button><button class="small gold" onclick="changeTranspose(0,true)">0</button><button class="small" onclick="changeTranspose(1)">+1</button></div></div><div style="flex:1;min-width:100px"><small style="color:var(--muted);font-size:9px">LETRA: <span id="telaLetraSize">30px</span></small><input type="range" id="telaLetraRange" min="16" max="80" value="30" style="width:100%;margin-top:6px"></div><div style="flex:1;min-width:100px"><small style="color:var(--muted);font-size:9px">CIFRA: <span id="telaCifraSize">22px</span></small><input type="range" id="telaCifraRange" min="12" max="60" value="22" style="width:100%;margin-top:6px"></div></div><div class="tela-content" id="telaGrandeContent"></div></div>
-<div id="telaEditar"><div class="tela-editar-header"><button class="btn" onclick="closeEditarTelaCheia()">✕ FECHAR</button><b style="color:var(--gold);font-size:12px">EDITAR CIFRA</b><button class="btn gold" onclick="renderCifra();closeEditarTelaCheia()">✨ RENDERIZAR</button></div><div class="caderno-wrap"><div class="caderno-top"><b>FOLHA DE CIFRA - TELA CHEIA</b><button class="small gold" onclick="renderCifra();closeEditarTelaCheia()">✨ VOLTAR</button></div><div class="caderno-lines"><textarea id="inputCifraFull" class="caderno-textarea" placeholder="Digite aqui..."></textarea></div></div></div>
+<div class="fader"><small>VOL BATERIA</small><input type="range" id="volBateria" min="0" max="100" value="85"><span id="volBateriaVal">85%</span></div>
+<div style="margin-top:12px"><audio id="audioVS2" controls style="width:100%"></audio></div>
+</div>
+</div>
+
+</div>
+
+<div id="telaGrande">
+<div class="tela-header"><button class="btn" onclick="toggleTela()">✕ FECHAR</button><div style="text-align:center"><small style="color:var(--gold);font-size:10px">TELA CHEIA - TRANSPOSTA</small><br><small id="telaSyncInfo" style="color:var(--muted);font-size:9px"></small></div><button class="btn gold" onclick="toggleScroll()">▶ SCROLL</button></div>
+<div class="tela-controls"><div style="flex:1;min-width:100px"><small style="color:var(--muted);font-size:9px">TRANSPOSE: <span id="telaTransposeSize" style="color:var(--gold)">0</span></small><div style="display:flex;gap:4px;margin-top:4px"><button class="small" onclick="changeTranspose(-1)">-1</button><button class="small gold" onclick="changeTranspose(0,true)">0</button><button class="small" onclick="changeTranspose(1)">+1</button></div></div><div style="flex:1;min-width:100px"><small style="color:var(--muted);font-size:9px">LETRA: <span id="telaLetraSize">30px</span></small><input type="range" id="telaLetraRange" min="16" max="80" value="30" style="width:100%;margin-top:6px"></div><div style="flex:1;min-width:100px"><small style="color:var(--muted);font-size:9px">CIFRA: <span id="telaCifraSize">22px</span></small><input type="range" id="telaCifraRange" min="12" max="60" value="22" style="width:100%;margin-top:6px"></div></div>
+<div class="tela-content" id="telaGrandeContent"></div>
+</div>
+
+<div id="telaEditar">
+<div class="tela-editar-header"><button class="btn" onclick="closeEditarTelaCheia()">✕ FECHAR</button><b style="color:var(--gold);font-size:12px">EDITAR CIFRA - TELA CHEIA CADERNO</b><button class="btn gold" onclick="renderCifra();closeEditarTelaCheia()">✨ RENDERIZAR</button></div>
+<div class="caderno-wrap">
+<div class="caderno-top"><b>FOLHA DE CIFRA - TELA CHEIA</b><button class="small gold" onclick="renderCifra();closeEditarTelaCheia()">✨ RENDERIZAR E VOLTAR</button></div>
+<div class="caderno-lines"><textarea id="inputCifraFull" class="caderno-textarea" placeholder="Cole aqui sua nova cifra...
+
+Ex:
+C G Am F
+Minha letra aqui...
+
+[C]
+Minha primeira linha
+[G]
+Segunda linha"></textarea></div>
+</div>
+</div>
+
 <textarea id="inputCifra" style="display:none"></textarea>
+
 <div class="install-bar"><button id="installBtn" onclick="doInstall()">📲 INSTALAR DIRETO</button><button id="shareBtn" onclick="doShare()">📤 COMPARTILHAR</button></div>
+
 <script>
-let letraSize=17,cifraSize=14,vel=1.0,scrolling=false,scrollInt=null,audioCtx=null,deferredPrompt=null,bpm=100,pitch=0,tapTimes=[],currentAudioBlob=null,currentAudioName='',transpose=0,simplify=false;
+let letraSize=17,cifraSize=14,vel=1.0,scrolling=false,scrollInt=null,audioCtx=null,deferredPrompt=null,bpm=100,pitch=0,tapTimes=[],currentAudioBlob=null,currentAudioName='',transpose=0,simplify=false,db=null;
 const NOTES_SHARP=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 const NOTES_FLAT={'Db':'C#','Eb':'D#','Gb':'F#','Ab':'G#','Bb':'A#','Cb':'B','Fb':'E'};
 function normalizeNote(n){return NOTES_FLAT[n]||n;}
 function transposeNote(note,semi){let n=normalizeNote(note);let idx=NOTES_SHARP.indexOf(n);if(idx===-1) return note;let newIdx=(idx+semi)%12;if(newIdx<0) newIdx+=12;return NOTES_SHARP[newIdx];}
-function transposeChord(chord,semi){if(semi===0) return chord;let m=chord.match(/^([A-G][#b]?)(.*)$/);if(!m) return chord;let root=m[1];let rest=m[2];if(rest.includes('/')){let parts=rest.split('/');let bass=parts[1];let bassMatch=bass.match(/^([A-G][#b]?)/);if(bassMatch){let newBass=transposeNote(bassMatch[1],semi);rest=parts[0]+'/'+newBass+bass.slice(bassMatch[1].length);}}return transposeNote(root,semi)+rest;}
+function transposeChord(chord,semi){if(semi===0) return chord;let m=chord.match(/^([A-G][#b]?)(.*)$/);if(!m) return chord;let root=m[1];let rest=m[2];if(rest.includes('/')){let parts=rest.split('/');let bass=parts[1];let bm=bass.match(/^([A-G][#b]?)/);if(bm){rest=parts[0]+'/'+transposeNote(bm[1],semi)+bass.slice(bm[1].length);}}return transposeNote(root,semi)+rest;}
 function transposeLine(line,semi){if(semi===0) return line;return line.split(/(\s+)/).map(tok=>{if(/^\s+$/.test(tok)) return tok;if(/^[A-G][#b]?/.test(tok)){return transposeChord(tok,semi);}return tok;}).join('');}
-function simplifyChord(chord){let m=chord.match(/^([A-G][#b]?)(.*)$/);if(!m) return chord;let root=m[1];let rest=m[2].toLowerCase();let simple='';if(rest.includes('m')&&!rest.includes('maj')) simple+='m';if(rest.includes('7')) simple+='7';if(rest.includes('dim')) simple='dim';if(rest.includes('aug')) simple='aug';if(rest.includes('sus')) simple= rest.includes('sus2')?'sus2':'sus4';return root+simple;}
+function simplifyChord(chord){let m=chord.match(/^([A-G][#b]?)(.*)$/);if(!m) return chord;let root=m[1];let rest=m[2].toLowerCase();let simple='';if(rest.includes('m')&&!rest.includes('maj')) simple+='m';if(rest.includes('7')) simple+='7';if(rest.includes('dim')) simple='dim';if(rest.includes('aug')) simple='aug';if(rest.includes('sus')) simple=rest.includes('sus2')?'sus2':'sus4';return root+simple;}
 function simplifyLine(line){return line.split(/(\s+)/).map(tok=>{if(/^\s+$/.test(tok)) return tok;if(/^[A-G][#b]?/.test(tok)){return simplifyChord(tok);}return tok;}).join('');}
 function toggleMenu(){let m=document.getElementById('menuOverlay');m.style.display=m.style.display==='block'?'none':'block';}
 function showView(v){document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));let t=document.getElementById('view-'+v);if(t)t.classList.add('active');toggleMenu();window.scrollTo({top:0,behavior:'smooth'});if(v==='home')renderCifra();}
+function novaCifra(){
+ let atual=document.getElementById('inputCifra').value.trim() || document.getElementById('inputCifraFull').value.trim();
+ if(atual){
+   if(!confirm('Tem cifra na tela! Deseja começar nova cifra em branco? Vai apagar a atual!')) return;
+ }
+ document.getElementById('inputCifra').value='';
+ document.getElementById('inputCifraFull').value='';
+ document.getElementById('nomeMusica').value='';
+ document.getElementById('artistaMusica').value='';
+ document.getElementById('vsInfo').innerText='Nenhum arquivo';
+ document.getElementById('audioVS').src='';
+ let a2=document.getElementById('audioVS2'); if(a2) a2.src='';
+ currentAudioBlob=null; currentAudioName=''; transpose=0; simplify=false; bpm=100; pitch=0;
+ syncBPM(); syncPitch(); updateTransposeUI(); renderCifra();
+ showView('home');
+ openEditarTelaCheia();
+ document.getElementById('saveStatus').innerText='🆕 Nova cifra em branco! Cole sua cifra!';
+ setTimeout(()=>{document.getElementById('saveStatus').innerText='';},3000);
+}
+function initDB(){let req=indexedDB.open('taki-vs-v10-4',1);req.onupgradeneeded=e=>{db=e.target.result;if(!db.objectStoreNames.contains('musicas')){db.createObjectStore('musicas',{keyPath:'id',autoIncrement:true});}};req.onsuccess=e=>{db=e.target.result;carregarRepertorio();};req.onerror=e=>{carregarRepertorioLocal();}}initDB();
 function initAudio(){if(!audioCtx){audioCtx=new(window.AudioContext||window.webkitAudioContext)();}}
-function playDrum(type){initAudio();const now=audioCtx.currentTime;let o=audioCtx.createOscillator();o.frequency.setValueAtTime(type==='kick'?120:800,now);let g=audioCtx.createGain();g.gain.setValueAtTime(0.8,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.3);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.3);}
+function playDrum(type){initAudio();const now=audioCtx.currentTime;let vol=(document.getElementById('volBateria')?.value||85)/100;vol=Math.max(0,Math.min(1,vol));let o=audioCtx.createOscillator();o.frequency.setValueAtTime(type==='kick'?110:type==='snare'?180:type==='hihat'?7000:800,now);let g=audioCtx.createGain();g.gain.setValueAtTime(0.9*vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+(type==='hihat'?0.1:0.4));o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.5);}
 function isChordLine(line){let t=line.trim();if(!t) return false;if(/[áéíóúàãõçâêô]{3,}/i.test(t)) return false;if(t.length>45) return false;if(/^[A-G][#b]?[0-9mM()\/\s#\/\-]+$/.test(t) && /[A-G]/.test(t)) return true;return false;}
 function isSection(line){let u=line.trim().toUpperCase();if(u.length>28) return false;return ['PRIMEIRA','SEGUNDA','REFRÃO','REFRAO','PONTE','INTRO','VERSO','CHORUS','SOLO','FINAL'].some(k=>u.includes(k));}
 function parseBlocks(){let a=document.getElementById('inputCifra').value.trim();let b=document.getElementById('inputCifraFull').value.trim();let raw=b.length>a.length?b:a;document.getElementById('inputCifra').value=raw;document.getElementById('inputCifraFull').value=raw;let lines=raw.split('\n');let blocks=[];for(let i=0;i<lines.length;i++){let l=lines[i];if(!l.trim()){blocks.push({type:'space'});continue;}if(isSection(l)){blocks.push({type:'section',text:l.trim()});continue;}if(isChordLine(l)){let next=lines[i+1]||'';if(next.trim() &&!isChordLine(next) &&!isSection(next)){blocks.push({type:'pair',cifra:l.trim(),letra:next.trim()});i++;continue;}else{blocks.push({type:'cifra',text:l.trim()});continue;}}blocks.push({type:'letra',text:l.trim()});}return blocks;}
-function renderCifra(){let blocks=parseBlocks();let out=document.getElementById('output');out.innerHTML='';blocks.forEach(b=>{if(b.type==='space'){out.innerHTML+='<div style="height:10px"></div>';}else if(b.type==='section'){out.innerHTML+=`<div class="song-block"><div class="section-label">${b.text.toUpperCase()}</div></div>`;}else if(b.type==='pair'){let cifra=b.cifra;if(transpose!==0) cifra=transposeLine(cifra,transpose);if(simplify) cifra=simplifyLine(cifra);out.innerHTML+=`<div class="song-block"><div class="cifra-line" style="font-size:${cifraSize}px;color:var(--cifra)">${cifra}</div><div class="letra-line" style="font-size:${letraSize}px;color:var(--letra)">${b.letra.toUpperCase()}</div></div>`;}else if(b.type==='cifra'){let txt=b.text;if(transpose!==0) txt=transposeLine(txt,transpose);if(simplify) txt=simplifyLine(txt);out.innerHTML+=`<div class="song-block"><div class="cifra-line" style="font-size:${cifraSize}px;color:var(--cifra)">${txt}</div></div>`;}else if(b.type==='letra'){out.innerHTML+=`<div class="song-block"><div class="letra-line" style="font-size:${letraSize}px;color:var(--letra)">${b.text.toUpperCase()}</div></div>`;}});renderTelaGrande();}
-function renderTelaGrande(){let blocks=parseBlocks();let tg=document.getElementById('telaGrandeContent');let h='';blocks.forEach(b=>{if(b.type==='space'){h+='<div style="height:18px"></div>';}else if(b.type==='section'){h+=`<div class="tela-block"><div class="tela-section">${b.text.toUpperCase()}</div></div>`;}else if(b.type==='pair'){let cifra=b.cifra;if(transpose!==0) cifra=transposeLine(cifra,transpose);if(simplify) cifra=simplifyLine(cifra);h+=`<div class="tela-block"><div class="tela-cifra" style="font-size:${cifraSize+6}px;color:var(--cifra)">${cifra}</div><div class="tela-letra" style="font-size:${letraSize+11}px;color:var(--letra)">${b.letra.toUpperCase()}</div></div>`;}else if(b.type==='cifra'){let txt=b.text;if(transpose!==0) txt=transposeLine(txt,transpose);if(simplify) txt=simplifyLine(txt);h+=`<div class="tela-block"><div class="tela-cifra" style="font-size:${cifraSize+6}px;color:var(--cifra)">${txt}</div></div>`;}else{h+=`<div class="tela-block"><div class="tela-letra" style="font-size:${letraSize+11}px;color:var(--letra)">${b.text.toUpperCase()}</div></div>`;}});tg.innerHTML=h;document.getElementById('telaSyncInfo').innerText=`Tom ${transpose>0?'+':''}${transpose} ${simplify?'(Simplificada)':''} | Letra ${letraSize+11}px`;document.getElementById('telaTransposeSize').innerText=(transpose>0?'+':'')+transpose;}
+function renderCifra(){let blocks=parseBlocks();let out=document.getElementById('output');out.innerHTML='';blocks.forEach(b=>{if(b.type==='space'){out.innerHTML+='<div style="height:10px"></div>';}else if(b.type==='section'){out.innerHTML+=`<div class="song-block"><div class="section-label">${b.text.toUpperCase()}</div></div>`;}else if(b.type==='pair'){let cifra=b.cifra;if(transpose!==0) cifra=transposeLine(cifra,transpose);if(simplify) cifra=simplifyLine(cifra);out.innerHTML+=`<div class="song-block"><div class="cifra-line" style="font-size:${cifraSize}px;color:var(--cifra)">${cifra}</div><div class="letra-line" style="font-size:${letraSize}px;color:var(--letra)">${b.letra.toUpperCase()}</div></div>`;}else if(b.type==='cifra'){let txt=b.text;if(transpose!==0) txt=transposeLine(txt,transpose);if(simplify) txt=simplifyLine(txt);out.innerHTML+=`<div class="song-block"><div class="cifra-line" style="font-size:${cifraSize}px;color:var(--cifra)">${txt}</div></div>`;}else if(b.type==='letra'){out.innerHTML+=`<div class="song-block"><div class="letra-line" style="font-size:${letraSize}px;color:var(--letra)">${b.text.toUpperCase()}</div></div>`;}});let l=document.getElementById('letraSizeInfo');if(l)l.innerText=letraSize+'px';let c=document.getElementById('cifraSizeInfo');if(c)c.innerText=cifraSize+'px';renderTelaGrande();}
+function renderTelaGrande(){let blocks=parseBlocks();let tg=document.getElementById('telaGrandeContent');let h='';blocks.forEach(b=>{if(b.type==='space'){h+='<div style="height:18px"></div>';}else if(b.type==='section'){h+=`<div class="tela-block"><div class="tela-section">${b.text.toUpperCase()}</div></div>`;}else if(b.type==='pair'){let cifra=b.cifra;if(transpose!==0) cifra=transposeLine(cifra,transpose);if(simplify) cifra=simplifyLine(cifra);h+=`<div class="tela-block"><div class="tela-cifra" style="font-size:${cifraSize+6}px;color:var(--cifra)">${cifra}</div><div class="tela-letra" style="font-size:${letraSize+11}px;color:var(--letra)">${b.letra.toUpperCase()}</div></div>`;}else if(b.type==='cifra'){let txt=b.text;if(transpose!==0) txt=transposeLine(txt,transpose);if(simplify) txt=simplifyLine(txt);h+=`<div class="tela-block"><div class="tela-cifra" style="font-size:${cifraSize+6}px;color:var(--cifra)">${txt}</div></div>`;}else{h+=`<div class="tela-block"><div class="tela-letra" style="font-size:${letraSize+11}px;color:var(--letra)">${b.text.toUpperCase()}</div></div>`;}});tg.innerHTML=h;let info=document.getElementById('telaSyncInfo');if(info)info.innerText=`Tom ${transpose>0?'+':''}${transpose} ${simplify?'(Simplificada)':''} | Letra ${letraSize+11}px`;let l=document.getElementById('telaLetraSize');let c=document.getElementById('telaCifraSize');if(l)l.innerText=(letraSize+11)+'px';if(c)c.innerText=(cifraSize+6)+'px';let t=document.getElementById('telaTransposeSize');if(t)t.innerText=(transpose>0?'+':'')+transpose;}
 function setTranspose(v){transpose=v;updateTransposeUI();renderCifra();}
 function changeTranspose(d,isReset){if(isReset){transpose=0;}else{transpose=Math.max(-7,Math.min(7,transpose+d));}updateTransposeUI();renderCifra();}
-function updateTransposeUI(){document.getElementById('transposeDisplay').innerText=(transpose>0?'+':'')+transpose;let noteName='Tom Original';if(transpose!==0){let idx=(0+transpose)%12; if(idx<0) idx+=12;noteName='Tom: '+NOTES_SHARP[idx]+' ('+(transpose>0?'+':'')+transpose+')';}document.getElementById('transposeNote').innerText=noteName;document.getElementById('transposeChromatic').innerText=NOTES_SHARP.map((n,i)=>{let isActive = (i===((0+transpose)%12+12)%12);return isActive? '['+n+']': n;}).join(' ');document.querySelectorAll('.transpose-grid button').forEach(btn=>{btn.classList.remove('active','gold');let val=parseInt(btn.innerText);if(val===transpose){btn.classList.add('active','gold');}});let btn0=document.getElementById('btnT0');if(transpose===0){btn0.classList.add('active','gold');}}
-function toggleSimplify(){simplify=!simplify;let btn=document.getElementById('btnSimplify');btn.innerText=simplify?'⭐ SIMPLIFICADA':'📄 ORIGINAL';if(simplify){btn.classList.add('gold');}else{btn.classList.remove('gold');}renderCifra();}
+function updateTransposeUI(){let d=document.getElementById('transposeDisplay');if(d)d.innerText=(transpose>0?'+':'')+transpose;let note=document.getElementById('transposeNote');if(note){let name='Tom Original';if(transpose!==0){let idx=(0+transpose)%12;if(idx<0) idx+=12;name='Tom: '+NOTES_SHARP[idx]+' ('+(transpose>0?'+':'')+transpose+')';}note.innerText=name;}let chrom=document.getElementById('transposeChromatic');if(chrom){chrom.innerText=NOTES_SHARP.map((n,i)=>{let isActive=(i===((0+transpose)%12+12)%12);return isActive?'['+n+']':n;}).join(' ');}document.querySelectorAll('.transpose-grid button').forEach(btn=>{btn.classList.remove('active','gold');let val=parseInt(btn.innerText);if(val===transpose){btn.classList.add('active','gold');}});let btn0=document.getElementById('btnT0');if(btn0&&transpose===0)btn0.classList.add('active','gold');}
+function toggleSimplify(){simplify=!simplify;let btn=document.getElementById('btnSimplify');if(btn){btn.innerText=simplify?'⭐ SIMPLIFICADA':'📄 ORIGINAL';if(simplify){btn.classList.add('gold');}else{btn.classList.remove('gold');}}renderCifra();}
 function changeLetraSize(d){letraSize=Math.max(10,Math.min(50,letraSize+d*2));let r=document.getElementById('telaLetraRange');if(r)r.value=letraSize+11;renderCifra();}
 function changeCifraSize(d){cifraSize=Math.max(8,Math.min(40,cifraSize+d*2));let r=document.getElementById('telaCifraRange');if(r)r.value=cifraSize+6;renderCifra();}
 document.getElementById('telaLetraRange').addEventListener('input',e=>{letraSize=parseInt(e.target.value)-11;renderCifra();});
 document.getElementById('telaCifraRange').addEventListener('input',e=>{cifraSize=parseInt(e.target.value)-6;renderCifra();});
 function toggleTela(){let tg=document.getElementById('telaGrande');let open=tg.style.display==='flex';tg.style.display=open?'none':'flex';if(!open)renderTelaGrande();}
-function toggleScroll(){scrolling=!scrolling;document.getElementById('btnScroll').innerText=scrolling?'⏸ PAUSAR':'▶ AUTO SCROLL';if(scrolling){scrollInt=setInterval(()=>{let hc=document.getElementById('output');let tc=document.getElementById('telaGrandeContent');let tg=document.getElementById('telaGrande');if(tg.style.display==='flex'){tc.scrollBy(0,vel*1.2);}else{hc.scrollBy(0,vel*1.2);}},38);}else{clearInterval(scrollInt);}}
+function toggleScroll(){scrolling=!scrolling;let btn=document.getElementById('btnScroll');if(btn)btn.innerText=scrolling?'⏸ PAUSAR':'▶ AUTO SCROLL';if(scrolling){scrollInt=setInterval(()=>{let hc=document.getElementById('output');let tc=document.getElementById('telaGrandeContent');let tg=document.getElementById('telaGrande');if(tg.style.display==='flex'){tc.scrollBy(0,vel*1.2);}else{hc.scrollBy(0,vel*1.2);}},38);}else{clearInterval(scrollInt);}}
 function getRate(){return (bpm/100)*Math.pow(2,pitch/12);}
-function updatePlaybackRate(){let a=document.getElementById('audioVS');if(!a)return;let r=getRate();if(a.src)a.playbackRate=Math.max(0.25,Math.min(4,r));document.getElementById('rateInfo').innerText=`Rate ${r.toFixed(2)}x`;}
-function changeBPM(d){bpm=Math.max(40,Math.min(240,bpm+d));document.getElementById('bpmDisplay').innerText=bpm;document.getElementById('bpmRange').value=bpm;updatePlaybackRate();}
-function tapBPM(){let now=Date.now();tapTimes.push(now);if(tapTimes.length>4)tapTimes.shift();if(tapTimes.length>=2){let diffs=[];for(let i=1;i<tapTimes.length;i++)diffs.push(tapTimes[i]-tapTimes[i-1]);let avg=diffs.reduce((a,b)=>a+b,0)/diffs.length;bpm=Math.max(40,Math.min(240,Math.round(60000/avg)));document.getElementById('bpmDisplay').innerText=bpm;document.getElementById('bpmRange').value=bpm;updatePlaybackRate();}}
-function changePitch(d,isReset){if(isReset){pitch=0;}else{pitch=Math.max(-12,Math.min(12,pitch+d));}document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;document.getElementById('pitchRange').value=pitch;updatePlaybackRate();}
-document.getElementById('bpmRange').addEventListener('input',e=>{bpm=parseInt(e.target.value);document.getElementById('bpmDisplay').innerText=bpm;updatePlaybackRate();});
-document.getElementById('pitchRange').addEventListener('input',e=>{pitch=parseInt(e.target.value);document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;updatePlaybackRate();});
+function updatePlaybackRate(){let audio=document.getElementById('audioVS');if(!audio)return;let rate=getRate();if(audio.src)audio.playbackRate=Math.max(0.25,Math.min(4,rate));let txt=`Rate ${rate.toFixed(2)}x (BPM ${bpm} + Pitch ${pitch>0?'+':''}${pitch})`;let a=document.getElementById('rateInfo');if(a)a.innerText=txt;renderTelaGrande();}
+function changeBPM(d){bpm=Math.max(40,Math.min(240,bpm+d));syncBPM();updatePlaybackRate();}
+function tapBPM(){let now=Date.now();tapTimes.push(now);if(tapTimes.length>4)tapTimes.shift();if(tapTimes.length>=2){let diffs=[];for(let i=1;i<tapTimes.length;i++)diffs.push(tapTimes[i]-tapTimes[i-1]);let avg=diffs.reduce((a,b)=>a+b,0)/diffs.length;let newBpm=Math.round(60000/avg);bpm=Math.max(40,Math.min(240,newBpm));syncBPM();updatePlaybackRate();}}
+function syncBPM(){['bpmDisplay'].forEach(id=>{let e=document.getElementById(id);if(e)e.innerText=bpm;});['bpmRange'].forEach(id=>{let e=document.getElementById(id);if(e)e.value=bpm;});}
+function changePitch(d,isReset){if(isReset){pitch=0;}else{pitch=Math.max(-12,Math.min(12,pitch+d));}syncPitch();updatePlaybackRate();}
+function syncPitch(){['pitchDisplay'].forEach(id=>{let e=document.getElementById(id);if(e)e.innerText=(pitch>0?'+':'')+pitch;});['pitchRange'].forEach(id=>{let e=document.getElementById(id);if(e)e.value=pitch;});}
+document.getElementById('bpmRange').addEventListener('input',e=>{bpm=parseInt(e.target.value);syncBPM();updatePlaybackRate();});
+document.getElementById('pitchRange').addEventListener('input',e=>{pitch=parseInt(e.target.value);syncPitch();updatePlaybackRate();});
+document.getElementById('volBateria').addEventListener('input',e=>{document.getElementById('volBateriaVal').innerText=e.target.value+'%';});
 document.getElementById('volVS').addEventListener('input',e=>{document.getElementById('volVSVal').innerText=e.target.value+'%';document.getElementById('audioVS').volume=e.target.value/100;});
-function loadVS(input){let file=input.files[0];if(!file)return;currentAudioBlob=file;currentAudioName=file.name;let url=URL.createObjectURL(file);document.getElementById('audioVS').src=url;document.getElementById('audioVS').play();document.getElementById('vsInfo').innerHTML=`✅ VS: <b>${file.name}</b>`;updatePlaybackRate();}
-function salvarRepertorio(){let nome=document.getElementById('nomeMusica').value.trim();let artista=document.getElementById('artistaMusica').value.trim();if(!nome){alert('Digite o nome');return;}let cifra=document.getElementById('inputCifra').value || document.getElementById('inputCifraFull').value;if(!cifra.trim()){alert('Cole a cifra!');return;}let lista=JSON.parse(localStorage.getItem('taki-v10-3')||'[]');lista.push({nome,artista:artista||'Sem Artista',cifra,bpm,pitch,transpose,simplify,audioName:currentAudioName,temVS:!!currentAudioBlob});localStorage.setItem('taki-v10-3',JSON.stringify(lista));document.getElementById('saveStatus').innerText=`✅ "${nome}" salvo com Tom ${transpose}!`;carregarRepertorioLocal();setTimeout(()=>{document.getElementById('saveStatus').innerText='';},3000);}
-function carregarRepertorioLocal(){let todas=JSON.parse(localStorage.getItem('taki-v10-3')||'[]').map((m,i)=>({...m,idLocal:i}));renderCifras(todas);renderVS(todas);renderPastas(todas);}
-function renderCifras(todas){let semVS=todas.filter(m=>!m.temVS);let c=document.getElementById('listaCifras');if(semVS.length===0){c.innerHTML='<div style="color:var(--muted);text-align:center;padding:14px">Nenhuma.</div>';return;}let h='';semVS.forEach(m=>{h+=`<div class="repertorio-item"><div><div style="color:var(--text);font-weight:700">${m.nome} ${m.transpose?'(Tom '+(m.transpose>0?'+':'')+m.transpose+')':''}</div><div style="color:var(--muted);font-size:9px">${m.artista}</div></div><div><button class="small gold" onclick="tocarMusica(${m.idLocal})">▶</button></div></div>`;});c.innerHTML=h;}
-function renderVS(todas){let comVS=todas.filter(m=>m.temVS);let c=document.getElementById('listaVS');if(comVS.length===0){c.innerHTML='<div style="color:var(--muted);text-align:center;padding:14px">Nenhuma.</div>';return;}let h='';comVS.forEach(m=>{h+=`<div class="repertorio-item" style="border-color:var(--gold)"><div><div style="color:var(--text);font-weight:700">${m.nome} ${m.transpose?'(Tom '+(m.transpose>0?'+':'')+m.transpose+')':''}</div><div style="color:var(--muted);font-size:9px">${m.artista} • VS: ${m.audioName||'sim'}</div></div><div><button class="small gold" onclick="tocarMusica(${m.idLocal})">▶ VS</button></div></div>`;});c.innerHTML=h;}
-function renderPastas(todas){let grupos={};todas.forEach(m=>{let art=(m.artista||'Sem Artista').trim();if(!grupos[art])grupos[art]=[];grupos[art].push(m);});let c=document.getElementById('listaPastas');if(Object.keys(grupos).length===0){c.innerHTML='<div style="color:var(--muted);text-align:center;padding:14px">Nenhuma pasta.</div>';return;}let h='';Object.keys(grupos).sort().forEach(art=>{let musicas=grupos[art];h+=`<div class="folder"><div class="folder-header" onclick="this.nextElementSibling.classList.toggle('open')"><div style="color:var(--gold);font-weight:800">📁 ${art}</div><div style="color:var(--muted);font-size:10px">${musicas.length}</div></div><div class="folder-body">`;musicas.forEach(m=>{h+=`<div class="repertorio-item"><div><div style="color:var(--text)">${m.temVS?'🎵':'📄'} ${m.nome} ${m.transpose?'(Tom '+(m.transpose>0?'+':'')+m.transpose+')':''}</div></div><div><button class="small gold" onclick="tocarMusica(${m.idLocal})">▶</button></div></div>`;});h+=`</div></div>`;});c.innerHTML=h;}
-function tocarMusica(id){let lista=JSON.parse(localStorage.getItem('taki-v10-3')||'[]');let m=lista[id];if(!m)return;document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputCifraFull').value=m.cifra;bpm=m.bpm||100;pitch=m.pitch||0;transpose=m.transpose||0;simplify=m.simplify||false;document.getElementById('bpmDisplay').innerText=bpm;document.getElementById('bpmRange').value=bpm;document.getElementById('pitchDisplay').innerText=pitch;document.getElementById('pitchRange').value=pitch;updateTransposeUI();renderCifra();showView('home');}
-function exportarBackup(){let lista=JSON.parse(localStorage.getItem('taki-v10-3')||'[]');if(lista.length===0){alert('Nenhuma música');return;}let blob=new Blob([JSON.stringify(lista,null,2)],{type:'application/json'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download='taki-v10-3-bkp.json';a.click();}
-function importarBackup(input){let file=input.files[0];if(!file)return;let r=new FileReader();r.onload=e=>{try{let lista=JSON.parse(e.target.result);if(confirm(`Importar ${lista.length}?`)){let atual=JSON.parse(localStorage.getItem('taki-v10-3')||'[]');localStorage.setItem('taki-v10-3',JSON.stringify([...atual,...lista]));carregarRepertorioLocal();alert('Importado!');}}catch(err){alert('Erro: '+err.message);}};r.readAsText(file);}
-function openEditarTelaCheia(){let f=document.getElementById('inputCifraFull');let m=document.getElementById('inputCifra');if(m.value.trim() &&!f.value.trim())f.value=m.value;document.getElementById('telaEditar').style.display='flex';f.focus();}
-function closeEditarTelaCheia(){document.getElementById('inputCifra').value=document.getElementById('inputCifraFull').value;renderCifra();document.getElementById('telaEditar').style.display='none';}
-function setTheme(name){document.body.className='theme-'+name;localStorage.setItem('taki-theme',name);document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));document.getElementById('th-'+name).classList.add('active');}
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').innerText='📲 INSTALAR DIRETO - CLIQUE AQUI AGORA!';});
-function doInstall(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(c=>{if(c.outcome==='accepted'){document.getElementById('installBtn').innerText='✅ INSTALADO!';}deferredPrompt=null;});}else{alert('Chrome: 3 pontinhos > Instalar app | iPhone: Compartilhar > Tela Inicial');}}
-function doShare(){let u=window.location.href;if(navigator.share){navigator.share({title:'TAKI VS v10.3',url:u});}else{navigator.clipboard.writeText(u).then(()=>alert('Link copiado!'));}}
+function loadVS(input){let file=input.files[0];if(!file)return;currentAudioBlob=file;currentAudioName=file.name;let url=URL.createObjectURL(file);let a=document.getElementById('audioVS');a.src=url;a.play();let a2=document.getElementById('audioVS2');if(a2)a2.src=url;document.getElementById('vsInfo').innerHTML=`✅ VS: <b>${file.name}</b> (${(file.size/1024/1024).toFixed(1)}MB)`;updatePlaybackRate();}
+function salvarRepertorio(){let nome=document.getElementById('nomeMusica').value.trim();let artista=document.getElementById('artistaMusica').value.trim();if(!nome){alert('Digite o nome da música');return;}let cifra=document.getElementById('inputCifra').value || document.getElementById('inputCifraFull').value;if(!cifra.trim()){alert('Cole a cifra primeiro em tela cheia!');return;}let musica={nome:nome,artista:artista||'Sem Artista',cifra:cifra,bpm:bpm,pitch:pitch,transpose:transpose,simplify:simplify,audioName:currentAudioName,data:new Date().toISOString(),temVS:!!currentAudioBlob};let status=document.getElementById('saveStatus');if(status)status.innerText='💾 Salvando...';if(db&&currentAudioBlob){let tx=db.transaction('musicas','readwrite');musica.audioBlob=currentAudioBlob;tx.objectStore('musicas').add(musica).onsuccess=()=>{if(status)status.innerText=`✅ "${nome}" salvo! Tom ${transpose}`;document.getElementById('nomeMusica').value='';document.getElementById('artistaMusica').value='';carregarRepertorio();setTimeout(()=>{if(status)status.innerText='';},3000);};}else{let lista=JSON.parse(localStorage.getItem('taki-v10-4')||'[]');let copia={...musica};delete copia.audioBlob;lista.push(copia);localStorage.setItem('taki-v10-4',JSON.stringify(lista));if(status)status.innerText=`✅ "${nome}" salvo! Tom ${transpose}`;carregarRepertorioLocal();setTimeout(()=>{if(status)status.innerText='';},3000);}}
+function carregarRepertorio(){if(!db){carregarRepertorioLocal();return;}db.transaction('musicas','readonly').objectStore('musicas').getAll().onsuccess=e=>{renderAll(e.target.result,JSON.parse(localStorage.getItem('taki-v10-4')||'[]'));};}
+function carregarRepertorioLocal(){renderAll([],JSON.parse(localStorage.getItem('taki-v10-4')||'[]'));}
+function renderAll(dbLista,localLista){let todas=[...dbLista,...localLista.map((m,i)=>({...m,idLocal:i,isLocal:true}))];renderCifras(todas);renderVS(todas);renderPastas(todas);}
+function renderCifras(todas){let semVS=todas.filter(m=>!m.temVS);let c=document.getElementById('listaCifras');if(semVS.length===0){c.innerHTML='<div style="color:var(--muted);text-align:center;padding:14px;font-size:11px">Nenhuma cifra. Clique em ➕ ADICIONAR NOVA CIFRA!</div>';return;}let h='';semVS.forEach(m=>{let isLocal=m.isLocal;h+=`<div class="repertorio-item"><div><div style="color:var(--text);font-weight:700">${m.nome} ${m.transpose?' (Tom '+(m.transpose>0?'+':'')+m.transpose+')':''}</div><div style="color:var(--muted);font-size:9px">${m.artista} • BPM ${m.bpm}</div></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">▶</button><button class="small" onclick="editarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">📝</button><button class="small" style="color:#666;border-color:#333" onclick="excluirMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">🗑️</button></div></div>`;});c.innerHTML=h;}
+function renderVS(todas){let comVS=todas.filter(m=>m.temVS);let c=document.getElementById('listaVS');if(comVS.length===0){c.innerHTML='<div style="color:var(--muted);text-align:center;padding:14px;font-size:11px">Nenhuma com VS ainda.</div>';return;}let h='';comVS.forEach(m=>{let isLocal=m.isLocal;h+=`<div class="repertorio-item" style="border-color:var(--gold)"><div><div style="color:var(--text);font-weight:700">${m.nome} ${m.transpose?' (Tom '+(m.transpose>0?'+':'')+m.transpose+')':''}</div><div style="color:var(--muted);font-size:9px">${m.artista} • VS: ${m.audioName||'sim'} • BPM ${m.bpm}</div></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">▶ VS</button><button class="small" onclick="editarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">📝</button><button class="small" style="color:#666;border-color:#333" onclick="excluirMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">🗑️</button></div></div>`;});c.innerHTML=h;}
+function renderPastas(todas){let grupos={};todas.forEach(m=>{let art=(m.artista||'Sem Artista').trim()||'Sem Artista';if(!grupos[art])grupos[art]=[];grupos[art].push(m);});let c=document.getElementById('listaPastas');if(Object.keys(grupos).length===0){c.innerHTML='<div style="color:var(--muted);text-align:center;padding:14px;font-size:11px">Nenhuma pasta ainda.</div>';return;}let h='';Object.keys(grupos).sort().forEach(art=>{let musicas=grupos[art];h+=`<div class="folder"><div class="folder-header" onclick="this.nextElementSibling.classList.toggle('open')"><div class="folder-title">📁 ${art}</div><div class="folder-count">${musicas.length}</div></div><div class="folder-body">`;musicas.forEach(m=>{let isLocal=m.isLocal;h+=`<div class="repertorio-item"><div><div style="color:var(--text);font-weight:700">${m.temVS?'🎵':'📄'} ${m.nome} ${m.transpose?' (Tom '+(m.transpose>0?'+':'')+m.transpose+')':''}</div><div style="color:var(--muted);font-size:9px">${m.temVS?'VS: '+(m.audioName||'sim')+' • ':''}BPM ${m.bpm}</div></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">▶</button><button class="small" onclick="editarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">📝</button></div></div>`;});h+=`</div></div>`;});c.innerHTML=h;}
+function tocarMusica(idDB,idLocal){if(idDB!==-1&&db){db.transaction('musicas','readonly').objectStore('musicas').get(idDB).onsuccess=e=>{let m=e.target.result;if(m)aplicarMusica(m);};}else{let lista=JSON.parse(localStorage.getItem('taki-v10-4')||'[]');aplicarMusica(lista[idLocal]);}}
+function editarMusica(idDB,idLocal){if(idDB!==-1&&db){db.transaction('musicas','readonly').objectStore('musicas').get(idDB).onsuccess=e=>{let m=e.target.result;if(!m)return;document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputCifraFull').value=m.cifra;document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;bpm=m.bpm||100;pitch=m.pitch||0;transpose=m.transpose||0;simplify=m.simplify||false;syncBPM();syncPitch();updateTransposeUI();renderCifra();openEditarTelaCheia();};}else{let lista=JSON.parse(localStorage.getItem('taki-v10-4')||'[]');let m=lista[idLocal];document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputCifraFull').value=m.cifra;document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;bpm=m.bpm||100;pitch=m.pitch||0;transpose=m.transpose||0;simplify=m.simplify||false;syncBPM();syncPitch();updateTransposeUI();renderCifra();openEditarTelaCheia();}}
+function aplicarMusica(m){document.getElementById('inputCifra').value=m.cifra||'';document.getElementById('inputCifraFull').value=m.cifra||'';bpm=m.bpm||100;pitch=m.pitch||0;transpose=m.transpose||0;simplify=m.simplify||false;syncBPM();syncPitch();updateTransposeUI();if(m.audioBlob){currentAudioBlob=m.audioBlob;currentAudioName=m.audioName||'';let url=URL.createObjectURL(m.audioBlob);document.getElementById('audioVS').src=url;let a2=document.getElementById('audioVS2');if(a2)a2.src=url;document.getElementById('vsInfo').innerHTML=`✅ VS: ${m.audioName}`;}renderCifra();showView('home');}
+function excluirMusica(idDB,idLocal){if(!confirm('Excluir?'))return;if(idDB!==-1&&db){db.transaction('musicas','readwrite').objectStore('musicas').delete(idDB).onsuccess=()=>carregarRepertorio();}else{let l=JSON.parse(localStorage.getItem('taki-v10-4')||'[]');l.splice(idLocal,1);localStorage.setItem('taki-v10-4',JSON.stringify(l));carregarRepertorioLocal();}}
+function exportarBackup(){if(!db){let lista=JSON.parse(localStorage.getItem('taki-v10-4')||'[]');downloadJSON(lista,'taki-v10-4-bkp.json');return;}db.transaction('musicas','readonly').objectStore('musicas').getAll().onsuccess=e=>{let dbLista=e.target.result.map(m=>{let c={...m};delete c.audioBlob;return c;});let localLista=JSON.parse(localStorage.getItem('taki-v10-4')||'[]');let todas=[...dbLista,...localLista];if(todas.length===0){alert('Nenhuma música para exportar');return;}downloadJSON(todas,'taki-v10-4-bkp-'+new Date().toISOString().slice(0,10)+'.json');};}
+function downloadJSON(data,filename){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download=filename;a.click();URL.revokeObjectURL(url);alert('✅ Backup exportado: '+filename);}
+function importarBackup(input){let file=input.files[0];if(!file)return;let reader=new FileReader();reader.onload=e=>{try{let lista=JSON.parse(e.target.result);if(!Array.isArray(lista)){alert('Arquivo inválido');return;}if(confirm(`Importar ${lista.length} músicas?`)){let atual=JSON.parse(localStorage.getItem('taki-v10-4')||'[]');let novas=[...atual,...lista];localStorage.setItem('taki-v10-4',JSON.stringify(novas));carregarRepertorioLocal();alert(`✅ ${lista.length} músicas importadas!`);}}catch(err){alert('Erro: '+err.message);}};reader.readAsText(file);input.value='';}
+function openEditarTelaCheia(){let full=document.getElementById('inputCifraFull');let mini=document.getElementById('inputCifra');if(mini.value.trim() &&!full.value.trim())full.value=mini.value;if(full.value.trim() &&!mini.value.trim())mini.value=full.value;document.getElementById('telaEditar').style.display='flex';full.focus();}
+function closeEditarTelaCheia(){let full=document.getElementById('inputCifraFull').value;document.getElementById('inputCifra').value=full;renderCifra();document.getElementById('telaEditar').style.display='none';}
+function setTheme(name){document.body.className='theme-'+name;localStorage.setItem('taki-theme',name);document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));let btn=document.getElementById('th-'+name);if(btn)btn.classList.add('active');}
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;let b=document.getElementById('installBtn');let b2=document.getElementById('menuInstallBtn');if(b){b.innerText='📲 INSTALAR DIRETO - CLIQUE AQUI AGORA!';b.style.background='#c9a86a';b.style.color='#000';b.style.boxShadow='0 0 20px rgba(201,168,106,0.8)';}if(b2){b2.innerText='📲 INSTALAR DIRETO - PRONTO! 1 CLIQUE';b2.classList.add('gold');}});
+function doInstall(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(choice=>{if(choice.outcome==='accepted'){document.getElementById('installBtn').innerText='✅ INSTALADO! TELA INICIAL!';alert('✅ INSTALADO! Procura TAKI VS na sua tela inicial!');}else{alert('Você cancelou. Clica de novo!');}deferredPrompt=null;});}else{if(/iPhone|iPad|iPod/.test(navigator.userAgent)){alert('iPhone: Compartilhar > Tela Inicial');}else{alert('Chrome: 3 pontinhos > Instalar app');}}}
+function doShare(){let url=window.location.href;if(navigator.share){navigator.share({title:'TAKI VS v10.4',text:'Meu app!',url:url});}else{navigator.clipboard.writeText(url).then(()=>{alert('Link copiado! '+url);});}}
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 let savedTheme=localStorage.getItem('taki-theme')||'ouro-negro';setTheme(savedTheme);
-renderCifra();carregarRepertorioLocal();updatePlaybackRate();updateTransposeUI();
+renderCifra();carregarRepertorio();updatePlaybackRate();updateTransposeUI();
 </script>
 </body>
 </html>
