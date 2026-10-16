@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS ESTÚDIO v7 - Profissional Limpo",
-  "short_name": "TAKI VS v7",
-  "description": "Tela cheia dominio total + Menu limpo + Instalar direto + Compartilhar",
+  "name": "TAKI VS ESTUDIO",
+  "short_name": "TAKI VS ESTUDIO",
+  "description": "TAKI VS ESTUDIO - Cifra + VS vinculado + BPM + Pitch + Tela cheia",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",
