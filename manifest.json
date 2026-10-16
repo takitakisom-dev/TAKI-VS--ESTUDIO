@@ -1,10 +1,14 @@
 {
-  "name": "TAKI VS ESTUDIO v8",
-  "short_name": "TAKI VS v8",
-  "description": "Profissional - Pastas por artista, cifras sem VS e com VS, folha caderno",
+  "name": "TAKI VS ESTUDIO",
+  "short_name": "TAKI VS",
+  "description": "TAKI VS ESTUDIO - Cifras com VS bateria playback, pastas, backup",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
   "theme_color": "#0a0a0a",
-  "icons": [{"src": "icon-512.png","sizes": "512x512","type": "image/png","purpose": "any maskable"}]
+  "scope": "./",
+  "icons": [
+    {"src": "icon-512.png","sizes": "512x512","type": "image/png","purpose": "any maskable"},
+    {"src": "icon-512.png","sizes": "192x192","type": "image/png","purpose": "any"}
+  ]
 }
