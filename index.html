@@ -9,9 +9,8 @@
 <link rel="apple-touch-icon" href="icon-512.png">
 <meta name="theme-color" content="#0a0a0a">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="TAKI VS">
 <style>
-:root{--gold:#c9a86a;--bg:#080808;--card:#121212;--card2:#181818;--text:#e8dcc0;--muted:#888;--line:#222;--paper:#fdf6e3;--paper-line:#e8dcc8;--red-line:#e8a0a0;--green:#34c759;--red:#ff3b30}
+:root{--gold:#c9a86a;--bg:#080808;--card:#121212;--text:#e8dcc0;--muted:#888;--line:#222;--paper:#fdf6e3;--paper-line:#e8dcc8;--red-line:#e8a0a0}
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Inter,system-ui}
 body{background:var(--bg);color:var(--text);padding:0;padding-bottom:95px}
 .header{border-bottom:1px solid var(--line);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;background:#0a0a0a;position:sticky;top:0;z-index:50}
@@ -26,12 +25,11 @@ body{background:var(--bg);color:var(--text);padding:0;padding-bottom:95px}
 .main{padding:12px}
 .card{border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0;background:var(--card)}
 .card.save{border:1px solid var(--gold);background:linear-gradient(145deg,#1a1812,#121212)}
-.file-label{border:2px dashed var(--gold);padding:16px;border-radius:18px;display:block;text-align:center;cursor:pointer;background:linear-gradient(145deg,#1a1812,#111);color:var(--gold);font-weight:800;font-size:13px;line-height:1.4}
+.file-label{border:2px dashed var(--gold);padding:16px;border-radius:18px;display:block;text-align:center;cursor:pointer;background:linear-gradient(145deg,#1a1812,#111);color:var(--gold);font-weight:800;font-size:13px}
 input[type=text]{width:100%;background:#0a0a0a;color:var(--text);border:1px solid var(--line);padding:11px;border-radius:9px;font-size:13px}
-input[type=text]:focus{border-color:var(--gold);outline:none}
-.song-block{margin:14px 0;padding:0}
-.song-block.cifra-line{color:var(--gold);font-weight:800;font-size:14px;background:rgba(201,168,106,0.12);display:inline-block;padding:3px 8px;border-radius:5px;border-left:3px solid var(--gold);margin-bottom:3px;letter-spacing:0.5px}
-.song-block.letra-line{color:#fff8cc;font-size:17px;font-weight:700;text-transform:uppercase;line-height:1.3;margin-top:2px;letter-spacing:0.3px}
+.song-block{margin:20px 0;padding:0;line-height:1.15}
+.song-block.cifra-line{color:#c9a86a;font-weight:800;font-size:14px;display:block;padding:0;margin-bottom:6px;letter-spacing:0.5px}
+.song-block.letra-line{color:#ffffff;font-size:17px;font-weight:700;text-transform:uppercase;line-height:1.35;margin-top:0;display:block}
 .song-block.section-label{background:#1f1a0f;color:var(--gold);padding:5px 12px;border-radius:15px;font-weight:800;font-size:11px;display:inline-block;margin:18px 0 6px 0;border:1px solid var(--gold);letter-spacing:1px}
 .small{border:1px solid var(--line);background:#111;color:var(--gold);padding:6px 10px;border-radius:16px;font-size:10px;cursor:pointer;font-weight:600}
 .small.gold{background:var(--gold);color:#000;border-color:var(--gold)}
@@ -46,9 +44,9 @@ input[type=text]:focus{border-color:var(--gold);outline:none}
 #telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;overflow-y:auto}
 .tela-header{position:sticky;top:0;background:#000;border-bottom:1px solid var(--line);padding:10px 12px;display:flex;justify-content:space-between;align-items:center;z-index:10}
 .tela-content{padding:12px 16px 120px 16px}
-.tela-block{margin:16px 0}
-.tela-block.tela-cifra{color:var(--gold);font-weight:800;font-size:20px;background:rgba(201,168,106,0.12);padding:6px 12px;border-radius:6px;display:inline-block;margin-bottom:4px;border-left:4px solid var(--gold)}
-.tela-block.tela-letra{color:#fff;font-size:30px;font-weight:800;text-transform:uppercase;line-height:1.25;margin-top:2px}
+.tela-block{margin:24px 0}
+.tela-block.tela-cifra{color:#c9a86a!important;font-weight:800;font-size:20px;display:block;margin-bottom:6px}
+.tela-block.tela-letra{color:#ffffff!important;font-size:30px;font-weight:800;text-transform:uppercase;line-height:1.25}
 .tela-block.tela-section{background:#1a1a1a;color:var(--gold);padding:6px 14px;border-radius:18px;font-weight:800;font-size:13px;display:inline-block;margin:22px 0 6px 0;border:1px solid var(--gold)}
 #telaEditar{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--paper);z-index:9998;overflow:hidden;flex-direction:column}
 .tela-editar-header{padding:12px 14px;background:#0a0a0a;border-bottom:2px solid var(--gold);display:flex;justify-content:space-between;align-items:center}
@@ -69,11 +67,10 @@ input[type=text]:focus{border-color:var(--gold);outline:none}
 .fader{display:flex;align-items:center;gap:8px;margin-top:8px}
 input[type=range]{flex:1;accent-color:var(--gold)}
 .drum-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
-.drum-pad{border:2px solid var(--line);background:linear-gradient(145deg,#1c1c1c,#0e0e0e);border-radius:16px;padding:14px 8px;text-align:center;cursor:pointer;position:relative;overflow:hidden;transition:all 0.08s}
+.drum-pad{border:2px solid var(--line);background:linear-gradient(145deg,#1c1c1c,#0e0e0e);border-radius:16px;padding:14px 8px;text-align:center;cursor:pointer}
 .drum-pad:active{transform:scale(0.94);border-color:var(--gold);background:var(--gold)}
-.drum-pad:active.drum-name{color:#000}
-.drum-icon{font-size:38px;display:block;margin-bottom:4px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.8))}
-.drum-name{color:var(--gold);font-weight:800;font-size:11px;letter-spacing:0.5px}
+.drum-icon{font-size:36px;display:block;margin-bottom:4px}
+.drum-name{color:var(--gold);font-weight:800;font-size:11px}
 .drum-type{color:var(--muted);font-size:8px;margin-top:2px}
 .zoom-controls{background:#0a0a0a;border:1px solid var(--line);border-radius:18px;padding:7px 10px;display:flex;gap:6px;align-items:center;margin:8px 0;position:sticky;top:58px;z-index:5}
 </style>
@@ -85,7 +82,7 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 </div>
 <div id="menuOverlay" onclick="if(event.target.id==='menuOverlay') toggleMenu()">
 <div id="menuPanel">
-<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold);letter-spacing:1px">TAKI VS ESTUDIO</b><button class="btn" onclick="toggleMenu()">✕</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold)">TAKI VS ESTUDIO</b><button class="btn" onclick="toggleMenu()">✕</button></div>
 <div class="menu-title">Repertório</div>
 <button class="menu-item" onclick="showView('home')">🏠 INICIO</button>
 <button class="menu-item" onclick="showView('cifras')">📄 MINHAS CIFRAS (SEM VS)</button>
@@ -94,9 +91,6 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 <div class="menu-title">Edição</div>
 <button class="menu-item gold" onclick="openEditarTelaCheia()">📝 EDITAR CIFRA - TELA CHEIA CADERNO</button>
 <button class="menu-item" onclick="showView('bateria')">🥁 BATERIA REALISTA</button>
-<div class="menu-title">Controles</div>
-<button class="menu-item" onclick="showView('bpm')">🎛️ BPM / PITCH</button>
-<button class="menu-item gold" onclick="toggleTela();toggleMenu()">⛶ TELA CHEIA - LETRA DOMINIO</button>
 <div class="menu-title">Backup</div>
 <button class="menu-item" onclick="exportarBackup()">💾 EXPORTAR BKP (JSON)</button>
 <button class="menu-item" onclick="document.getElementById('importFile').click()">📥 IMPORTAR BKP</button>
@@ -104,16 +98,16 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 <div class="menu-title">App</div>
 <button class="menu-item" id="menuInstallBtn" onclick="doInstall()">📲 INSTALAR DIRETO - 1 CLIQUE</button>
 <button class="menu-item" onclick="doShare()">📤 COMPARTILHAR</button>
-<small style="color:#555;display:block;margin-top:18px;font-size:9px">v9 FIX: Tela cheia editar, bateria real, BKP, letra/cifra separado, tamanhos fix, instalar fix</small>
+<small style="color:#555;display:block;margin-top:18px;font-size:9px">v9.1 - Sem icones, só cor: cifra dourada, letra branca</small>
 </div>
 </div>
 <div class="main">
 <div id="view-home" class="view active">
-<div class="card"><b style="color:var(--gold);font-size:11px;letter-spacing:1px">📁 PUXAR VS DE BATERIA / PLAYBACK MUSICA MP3</b><label class="file-label" for="fileVS" style="margin-top:8px">🥁📁 CLIQUE AQUI PARA PUXAR VS DE BATERIA / PLAYBACK MUSICA MP3</label><input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)"><div id="vsInfo" style="margin-top:8px;font-size:11px;color:var(--muted)">Nenhum arquivo - Puxe sua bateria ou playback</div><audio id="audioVS" controls style="width:100%;margin-top:8px"></audio><div class="fader"><small style="font-size:10px">VOL VS</small><input type="range" id="volVS" min="0" max="100" value="80"><span id="volVSVal" style="font-size:11px">80%</span></div><div id="rateInfo" style="font-size:9px;color:#8a9a8a;margin-top:4px">Rate 1.00x (BPM 100 + Pitch 0)</div></div>
-<div class="card"><b style="font-size:11px;letter-spacing:1px;color:var(--gold)">🎛️ BPM & PITCH - NA HOME</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px"><div style="background:#0a0a0a;border:1px solid var(--line);border-radius:10px;padding:10px"><small style="color:var(--muted);font-size:9px">BPM</small><div class="bpm-display" id="bpmDisplay">100</div><input type="range" id="bpmRange" min="40" max="240" value="100" style="width:100%"><div style="display:flex;gap:5px;margin-top:6px"><button class="small" onclick="changeBPM(-5)">-5</button><button class="small" onclick="tapBPM()">TAP</button><button class="small" onclick="changeBPM(5)">+5</button></div></div><div style="background:#0a0a0a;border:1px solid var(--line);border-radius:10px;padding:10px"><small style="color:var(--muted);font-size:9px">PITCH</small><div class="pitch-display" id="pitchDisplay">0</div><input type="range" id="pitchRange" min="-12" max="12" value="0" style="width:100%"><div style="display:flex;gap:5px;margin-top:6px"><button class="small" onclick="changePitch(-1)">-1</button><button class="small" onclick="changePitch(0,true)">0</button><button class="small" onclick="changePitch(1)">+1</button></div></div></div></div>
-<div class="card save"><b style="color:var(--text);font-size:11px">💾 SALVAR MUSICA NA PASTA</b><div style="display:grid;grid-template-columns:1.2fr 1fr;gap:8px;margin-top:8px"><input type="text" id="nomeMusica" placeholder="Nome da música"><input type="text" id="artistaMusica" placeholder="Artista"></div><button class="small gold" style="width:100%;padding:11px;margin-top:8px;font-weight:800;font-size:11px" onclick="salvarRepertorio()">💾 SALVAR NA PASTA DO ARTISTA</button><div id="saveStatus" style="margin-top:6px;font-size:10px;color:var(--gold)"></div></div>
-<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:11px">🎵 PREVIEW - LETRA E CIFRA SEPARADOS</b><button class="btn gold" onclick="toggleTela()">⛶ TELA CHEIA</button></div>
-<div class="zoom-controls"><div style="display:flex;gap:4px;align-items:center"><small style="font-size:9px;color:var(--gold)">LETRA</small><button class="small" onclick="changeLetraSize(-1)">A-</button><button class="small" onclick="changeLetraSize(1)">A+</button><span id="letraSizeInfo" style="font-size:9px;color:var(--muted);margin-left:2px">17px</span></div><div style="display:flex;gap:4px;align-items:center;margin-left:10px"><small style="font-size:9px;color:var(--gold)">CIFRA</small><button class="small" onclick="changeCifraSize(-1)">C-</button><button class="small" onclick="changeCifraSize(1)">C+</button><span id="cifraSizeInfo" style="font-size:9px;color:var(--muted);margin-left:2px">14px</span></div><button class="small gold" style="margin-left:auto" onclick="openEditarTelaCheia()">📝 EDITAR TELA CHEIA</button></div>
+<div class="card"><b style="color:var(--gold);font-size:11px">📁 PUXAR VS DE BATERIA / PLAYBACK MUSICA MP3</b><label class="file-label" for="fileVS" style="margin-top:8px">CLIQUE AQUI PARA PUXAR VS DE BATERIA / PLAYBACK MUSICA MP3</label><input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)"><div id="vsInfo" style="margin-top:8px;font-size:11px;color:var(--muted)">Nenhum arquivo</div><audio id="audioVS" controls style="width:100%;margin-top:8px"></audio><div class="fader"><small>VOL VS</small><input type="range" id="volVS" min="0" max="100" value="80"><span id="volVSVal">80%</span></div><div id="rateInfo" style="font-size:9px;color:#8a9a8a;margin-top:4px">Rate 1.00x</div></div>
+<div class="card"><b style="font-size:11px;color:var(--gold)">🎛️ BPM & PITCH</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px"><div style="background:#0a0a0a;border:1px solid var(--line);border-radius:10px;padding:10px"><small style="color:var(--muted);font-size:9px">BPM</small><div class="bpm-display" id="bpmDisplay">100</div><input type="range" id="bpmRange" min="40" max="240" value="100" style="width:100%"><div style="display:flex;gap:5px;margin-top:6px"><button class="small" onclick="changeBPM(-5)">-5</button><button class="small" onclick="tapBPM()">TAP</button><button class="small" onclick="changeBPM(5)">+5</button></div></div><div style="background:#0a0a0a;border:1px solid var(--line);border-radius:10px;padding:10px"><small style="color:var(--muted);font-size:9px">PITCH</small><div class="pitch-display" id="pitchDisplay">0</div><input type="range" id="pitchRange" min="-12" max="12" value="0" style="width:100%"><div style="display:flex;gap:5px;margin-top:6px"><button class="small" onclick="changePitch(-1)">-1</button><button class="small" onclick="changePitch(0,true)">0</button><button class="small" onclick="changePitch(1)">+1</button></div></div></div></div>
+<div class="card save"><b style="font-size:11px">💾 SALVAR MUSICA NA PASTA</b><div style="display:grid;grid-template-columns:1.2fr 1fr;gap:8px;margin-top:8px"><input type="text" id="nomeMusica" placeholder="Nome da música"><input type="text" id="artistaMusica" placeholder="Artista"></div><button class="small gold" style="width:100%;padding:11px;margin-top:8px;font-weight:800;font-size:11px" onclick="salvarRepertorio()">💾 SALVAR NA PASTA DO ARTISTA</button><div id="saveStatus" style="margin-top:6px;font-size:10px;color:var(--gold)"></div></div>
+<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:11px">🎵 PREVIEW - DOURADO=CIFRA / BRANCO=LETRA</b><button class="btn gold" onclick="toggleTela()">⛶ TELA CHEIA</button></div>
+<div class="zoom-controls"><div style="display:flex;gap:4px;align-items:center"><small style="font-size:9px;color:var(--gold)">LETRA BRANCA</small><button class="small" onclick="changeLetraSize(-1)">A-</button><button class="small" onclick="changeLetraSize(1)">A+</button><span id="letraSizeInfo" style="font-size:9px;color:var(--muted)">17px</span></div><div style="display:flex;gap:4px;align-items:center;margin-left:10px"><small style="font-size:9px;color:var(--gold)">CIFRA DOURADA</small><button class="small" onclick="changeCifraSize(-1)">C-</button><button class="small" onclick="changeCifraSize(1)">C+</button><span id="cifraSizeInfo" style="font-size:9px;color:var(--muted)">14px</span></div><button class="small gold" style="margin-left:auto" onclick="openEditarTelaCheia()">📝 EDITAR</button></div>
 <div id="output" style="margin-top:12px"></div>
 <button class="btn" id="btnScroll" onclick="toggleScroll()" style="margin-top:12px;width:100%">▶ AUTO SCROLL</button>
 </div>
@@ -122,30 +116,29 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 <div id="view-vslist" class="view"><div class="card"><b style="font-size:11px">🎵 CIFRAS + VS SALVOS</b><div id="listaVS" style="margin-top:10px"></div></div></div>
 <div id="view-pastas" class="view"><div class="card"><b style="font-size:11px">📁 PASTAS POR ARTISTA</b><div id="listaPastas" style="margin-top:10px"></div></div></div>
 <div id="view-bateria" class="view">
-<div class="card"><b style="font-size:11px">🥁 BATERIA REALISTA - SOM ORIGINAL</b><small style="display:block;color:var(--muted);font-size:9px;margin-top:4px">Toque nos pads - som de estúdio próximo do original</small>
+<div class="card"><b style="font-size:11px">🥁 BATERIA REALISTA</b>
 <div class="drum-grid">
-<div class="drum-pad" onclick="playDrum('kick')"><span class="drum-icon">🥁</span><div class="drum-name">BOMBO</div><div class="drum-type">Kick - Grave estúdio</div></div>
-<div class="drum-pad" onclick="playDrum('snare')"><span class="drum-icon">🥁</span><div class="drum-name">CAIXA</div><div class="drum-type">Snare - Estalo seco</div></div>
-<div class="drum-pad" onclick="playDrum('hihat')"><span class="drum-icon">🎩</span><div class="drum-name">CHIMBAL</div><div class="drum-type">Hi-Hat fechado</div></div>
-<div class="drum-pad" onclick="playDrum('hihat_open')"><span class="drum-icon">🎩</span><div class="drum-name">CHIMBAL ABERTO</div><div class="drum-type">Hi-Hat aberto</div></div>
-<div class="drum-pad" onclick="playDrum('crash')"><span class="drum-icon">🔔</span><div class="drum-name">PRATO ATAQUE</div><div class="drum-type">Crash 18" brilho</div></div>
-<div class="drum-pad" onclick="playDrum('ride')"><span class="drum-icon">⭕</span><div class="drum-name">CONDUÇÃO</div><div class="drum-type">Ride - Ping</div></div>
-<div class="drum-pad" onclick="playDrum('tom1')"><span class="drum-icon">🪘</span><div class="drum-name">TOM 1</div><div class="drum-type">Tom agudo 10"</div></div>
-<div class="drum-pad" onclick="playDrum('tom2')"><span class="drum-icon">🪘</span><div class="drum-name">SURDO</div><div class="drum-type">Floor Tom 16"</div></div>
+<div class="drum-pad" onclick="playDrum('kick')"><span class="drum-icon">🥁</span><div class="drum-name">BOMBO</div><div class="drum-type">Kick grave</div></div>
+<div class="drum-pad" onclick="playDrum('snare')"><span class="drum-icon">🥁</span><div class="drum-name">CAIXA</div><div class="drum-type">Snare</div></div>
+<div class="drum-pad" onclick="playDrum('hihat')"><span class="drum-icon">🎩</span><div class="drum-name">CHIMBAL</div><div class="drum-type">Fechado</div></div>
+<div class="drum-pad" onclick="playDrum('hihat_open')"><span class="drum-icon">🎩</span><div class="drum-name">CHIMBAL ABERTO</div><div class="drum-type">Aberto</div></div>
+<div class="drum-pad" onclick="playDrum('crash')"><span class="drum-icon">🔔</span><div class="drum-name">PRATO ATAQUE</div><div class="drum-type">Crash</div></div>
+<div class="drum-pad" onclick="playDrum('ride')"><span class="drum-icon">⭕</span><div class="drum-name">CONDUÇÃO</div><div class="drum-type">Ride</div></div>
+<div class="drum-pad" onclick="playDrum('tom1')"><span class="drum-icon">🪘</span><div class="drum-name">TOM 1</div><div class="drum-type">Agudo</div></div>
+<div class="drum-pad" onclick="playDrum('tom2')"><span class="drum-icon">🪘</span><div class="drum-name">SURDO</div><div class="drum-type">Floor</div></div>
 </div>
-<div class="fader"><small style="font-size:10px">VOL BATERIA</small><input type="range" id="volBateria" min="0" max="100" value="85"><span id="volBateriaVal" style="font-size:11px">85%</span></div>
+<div class="fader"><small>VOL BATERIA</small><input type="range" id="volBateria" min="0" max="100" value="85"><span id="volBateriaVal">85%</span></div>
 <div style="margin-top:12px"><audio id="audioVS2" controls style="width:100%"></audio></div>
-<div style="display:flex;gap:6px;margin-top:10px"><button class="small" id="btnLoop" onclick="toggleLoop()">▶ LOOP BATERIA</button><button class="small" onclick="stopLoop()">⏹ STOP</button><button class="small gold" onclick="openMetronomo()">🎛️ METRONOMO</button></div>
 </div>
 </div>
-<div id="view-bpm" class="view"><div class="card"><b style="font-size:11px">🎛️ BPM & PITCH & LOOP</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px"><div style="background:#0a0a0a;border:1px solid var(--line);border-radius:10px;padding:12px"><small style="color:var(--muted);font-size:9px">BPM</small><div class="bpm-display" id="bpmDisplay2">100</div><input type="range" id="bpmRange2" min="40" max="240" value="100" style="width:100%"><div style="display:flex;gap:5px;margin-top:8px"><button class="small" onclick="changeBPM(-5)">-5</button><button class="small" onclick="tapBPM()">TAP</button><button class="small" onclick="changeBPM(5)">+5</button></div><div style="display:flex;gap:6px;margin-top:8px"><button class="small" id="btnLoop2" onclick="toggleLoop()">▶ LOOP</button><button class="small" onclick="stopLoop()">⏹ STOP</button></div></div><div style="background:#0a0a0a;border:1px solid var(--line);border-radius:10px;padding:12px"><small style="color:var(--muted);font-size:9px">PITCH</small><div class="pitch-display" id="pitchDisplay2">0</div><input type="range" id="pitchRange2" min="-12" max="12" value="0" style="width:100%"><div style="display:flex;gap:5px;margin-top:8px"><button class="small" onclick="changePitch(-1)">-1</button><button class="small" onclick="changePitch(0,true)">0</button><button class="small" onclick="changePitch(1)">+1</button></div></div></div><div id="rateInfo2" style="font-size:10px;color:var(--muted);margin-top:8px;text-align:center">Rate 1.00x</div></div></div>
+<div id="view-bpm" class="view"><div class="card"><b style="font-size:11px">🎛️ BPM & PITCH</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px"><div style="background:#0a0a0a;border:1px solid var(--line);border-radius:10px;padding:12px"><small style="color:var(--muted);font-size:9px">BPM</small><div class="bpm-display" id="bpmDisplay2">100</div><input type="range" id="bpmRange2" min="40" max="240" value="100" style="width:100%"><div style="display:flex;gap:5px;margin-top:8px"><button class="small" onclick="changeBPM(-5)">-5</button><button class="small" onclick="tapBPM()">TAP</button><button class="small" onclick="changeBPM(5)">+5</button></div><div style="display:flex;gap:6px;margin-top:8px"><button class="small" id="btnLoop2" onclick="toggleLoop()">▶ LOOP</button><button class="small" onclick="stopLoop()">⏹ STOP</button></div></div><div style="background:#0a0a0a;border:1px solid var(--line);border-radius:10px;padding:12px"><small style="color:var(--muted);font-size:9px">PITCH</small><div class="pitch-display" id="pitchDisplay2">0</div><input type="range" id="pitchRange2" min="-12" max="12" value="0" style="width:100%"><div style="display:flex;gap:5px;margin-top:8px"><button class="small" onclick="changePitch(-1)">-1</button><button class="small" onclick="changePitch(0,true)">0</button><button class="small" onclick="changePitch(1)">+1</button></div></div></div><div id="rateInfo2" style="font-size:10px;color:var(--muted);margin-top:8px;text-align:center">Rate 1.00x</div></div></div>
 </div>
-<div id="telaGrande"><div class="tela-header"><button class="btn" onclick="toggleTela()">✕ FECHAR</button><div style="text-align:center"><small style="color:var(--gold);font-size:10px;letter-spacing:1px">TELA CHEIA - DOMINIO TOTAL</small><br><small id="telaSyncInfo" style="color:var(--muted);font-size:9px"></small></div><button class="btn gold" onclick="toggleScroll()">▶ SCROLL</button></div><div style="padding:10px 16px;background:#080808;border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap"><div style="flex:1;min-width:140px"><small style="color:var(--muted);font-size:9px">LETRA: <span id="telaLetraSize" style="color:var(--gold)">30px</span></small><div style="display:flex;gap:4px;margin-top:4px"><button class="small" onclick="changeLetraSize(-2)">A--</button><button class="small" onclick="changeLetraSize(-1)">A-</button><button class="small" onclick="changeLetraSize(1)">A+</button><button class="small" onclick="changeLetraSize(2)">A++</button></div><input type="range" id="telaLetraRange" min="16" max="80" value="30" style="width:100%;margin-top:6px"></div><div style="flex:1;min-width:140px"><small style="color:var(--muted);font-size:9px">CIFRA: <span id="telaCifraSize" style="color:var(--gold)">22px</span></small><div style="display:flex;gap:4px;margin-top:4px"><button class="small" onclick="changeCifraSize(-2)">C--</button><button class="small" onclick="changeCifraSize(-1)">C-</button><button class="small" onclick="changeCifraSize(1)">C+</button><button class="small" onclick="changeCifraSize(2)">C++</button></div><input type="range" id="telaCifraRange" min="12" max="60" value="22" style="width:100%;margin-top:6px"></div></div><div class="tela-content" id="telaGrandeContent"></div></div>
+<div id="telaGrande"><div class="tela-header"><button class="btn" onclick="toggleTela()">✕ FECHAR</button><div style="text-align:center"><small style="color:var(--gold);font-size:10px">TELA CHEIA - DOMINIO TOTAL</small><br><small id="telaSyncInfo" style="color:var(--muted);font-size:9px"></small></div><button class="btn gold" onclick="toggleScroll()">▶ SCROLL</button></div><div style="padding:10px 16px;background:#080808;border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap"><div style="flex:1;min-width:140px"><small style="color:var(--muted);font-size:9px">LETRA BRANCA: <span id="telaLetraSize" style="color:#fff">30px</span></small><div style="display:flex;gap:4px;margin-top:4px"><button class="small" onclick="changeLetraSize(-2)">A--</button><button class="small" onclick="changeLetraSize(-1)">A-</button><button class="small" onclick="changeLetraSize(1)">A+</button><button class="small" onclick="changeLetraSize(2)">A++</button></div><input type="range" id="telaLetraRange" min="16" max="80" value="30" style="width:100%;margin-top:6px"></div><div style="flex:1;min-width:140px"><small style="color:var(--muted);font-size:9px">CIFRA DOURADA: <span id="telaCifraSize" style="color:var(--gold)">22px</span></small><div style="display:flex;gap:4px;margin-top:4px"><button class="small" onclick="changeCifraSize(-2)">C--</button><button class="small" onclick="changeCifraSize(-1)">C-</button><button class="small" onclick="changeCifraSize(1)">C+</button><button class="small" onclick="changeCifraSize(2)">C++</button></div><input type="range" id="telaCifraRange" min="12" max="60" value="22" style="width:100%;margin-top:6px"></div></div><div class="tela-content" id="telaGrandeContent"></div></div>
 <div id="telaEditar">
-<div class="tela-editar-header"><button class="btn" onclick="closeEditarTelaCheia()">✕ FECHAR</button><b style="color:var(--gold);font-size:12px;letter-spacing:1px">EDITAR CIFRA - TELA CHEIA CADERNO</b><button class="btn gold" onclick="renderCifra();closeEditarTelaCheia()">✨ RENDERIZAR</button></div>
+<div class="tela-editar-header"><button class="btn" onclick="closeEditarTelaCheia()">✕ FECHAR</button><b style="color:var(--gold);font-size:12px">EDITAR CIFRA - TELA CHEIA CADERNO</b><button class="btn gold" onclick="renderCifra();closeEditarTelaCheia()">✨ RENDERIZAR</button></div>
 <div class="caderno-wrap">
-<div class="caderno-top"><b>FOLHA DE CIFRA - TELA CHEIA - ESCREVA AQUI</b><div style="display:flex;gap:6px"><button class="small" onclick="document.getElementById('inputCifraFull').value=''">🗑️ LIMPAR</button><button class="small gold" onclick="renderCifra();closeEditarTelaCheia()">✨ RENDERIZAR E VOLTAR</button></div></div>
-<div class="caderno-lines"><textarea id="inputCifraFull" class="caderno-textarea" placeholder="Digite aqui em tela cheia..."></textarea></div>
+<div class="caderno-top"><b>FOLHA DE CIFRA - TELA CHEIA</b><button class="small gold" onclick="renderCifra();closeEditarTelaCheia()">✨ RENDERIZAR E VOLTAR</button></div>
+<div class="caderno-lines"><textarea id="inputCifraFull" class="caderno-textarea" placeholder="Digite aqui..."></textarea></div>
 </div>
 </div>
 <textarea id="inputCifra" style="display:none"></textarea>
@@ -153,103 +146,34 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 <script>
 let letraSize=17,cifraSize=14,vel=1.0,scrolling=false,scrollInt=null,audioCtx=null,deferredPrompt=null,bpm=100,pitch=0,loopInt=null,tapTimes=[],currentAudioBlob=null,currentAudioName='',db=null;
 function toggleMenu(){let m=document.getElementById('menuOverlay');m.style.display=m.style.display==='block'?'none':'block';}
-function showView(v){document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));let target=document.getElementById('view-'+v);if(target)target.classList.add('active');toggleMenu();window.scrollTo({top:0,behavior:'smooth'});if(v==='home')renderCifra();}
+function showView(v){document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));let t=document.getElementById('view-'+v);if(t)t.classList.add('active');toggleMenu();window.scrollTo({top:0,behavior:'smooth'});if(v==='home')renderCifra();}
 function initDB(){let req=indexedDB.open('taki-vs-estudio-v9',1);req.onupgradeneeded=e=>{db=e.target.result;if(!db.objectStoreNames.contains('musicas')){db.createObjectStore('musicas',{keyPath:'id',autoIncrement:true});}};req.onsuccess=e=>{db=e.target.result;carregarRepertorio();};req.onerror=e=>{carregarRepertorioLocal();}}initDB();
 function initAudio(){if(!audioCtx){audioCtx=new(window.AudioContext||window.webkitAudioContext)();}}
-function playDrum(type){
-initAudio();
-const now=audioCtx.currentTime;
-let vol=(document.getElementById('volBateria')?.value||85)/100;
-vol=Math.max(0,Math.min(1,vol));
-if(type==='kick'){
- let osc=audioCtx.createOscillator(); osc.frequency.setValueAtTime(120,now); osc.frequency.exponentialRampToValueAtTime(35,now+0.12);
- let gain=audioCtx.createGain(); gain.gain.setValueAtTime(1.2*vol,now); gain.gain.exponentialRampToValueAtTime(0.01,now+0.6);
- osc.connect(gain); gain.connect(audioCtx.destination); osc.start(now); osc.stop(now+0.6);
- let click=audioCtx.createOscillator(); click.frequency.setValueAtTime(3000,now); let cg=audioCtx.createGain(); cg.gain.setValueAtTime(0.4*vol,now); cg.gain.exponentialRampToValueAtTime(0.01,now+0.04); click.connect(cg); cg.connect(audioCtx.destination); click.start(now); click.stop(now+0.04);
-}else if(type==='snare'){
- let bufferSize=audioCtx.sampleRate*0.25; let buffer=audioCtx.createBuffer(1,bufferSize,audioCtx.sampleRate); let data=buffer.getChannelData(0);
- for(let i=0;i<bufferSize;i++){ data[i]=(Math.random()*2-1)*Math.pow(1-i/bufferSize,0.8); }
- let noise=audioCtx.createBufferSource(); noise.buffer=buffer;
- let nGain=audioCtx.createGain(); nGain.gain.setValueAtTime(0.9*vol,now); nGain.gain.exponentialRampToValueAtTime(0.01,now+0.25);
- let filter=audioCtx.createBiquadFilter(); filter.type='highpass'; filter.frequency.value=1200;
- noise.connect(filter); filter.connect(nGain); nGain.connect(audioCtx.destination); noise.start(now);
- let osc=audioCtx.createOscillator(); osc.frequency.setValueAtTime(180,now); osc.frequency.exponentialRampToValueAtTime(80,now+0.12);
- let oGain=audioCtx.createGain(); oGain.gain.setValueAtTime(0.8*vol,now); oGain.gain.exponentialRampToValueAtTime(0.01,now+0.15);
- osc.connect(oGain); oGain.connect(audioCtx.destination); osc.start(now); osc.stop(now+0.15);
-}else if(type==='hihat'){
- let bufferSize=audioCtx.sampleRate*0.08; let buffer=audioCtx.createBuffer(1,bufferSize,audioCtx.sampleRate); let data=buffer.getChannelData(0);
- for(let i=0;i<bufferSize;i++) data[i]=(Math.random()*2-1);
- let noise=audioCtx.createBufferSource(); noise.buffer=buffer;
- let f1=audioCtx.createBiquadFilter(); f1.type='highpass'; f1.frequency.value=7000;
- let f2=audioCtx.createBiquadFilter(); f2.type='highpass'; f2.frequency.value=8000;
- let g=audioCtx.createGain(); g.gain.setValueAtTime(0.5*vol,now); g.gain.exponentialRampToValueAtTime(0.01,now+0.1);
- noise.connect(f1); f1.connect(f2); f2.connect(g); g.connect(audioCtx.destination); noise.start(now);
-}else if(type==='hihat_open'){
- let bufferSize=audioCtx.sampleRate*0.4; let buffer=audioCtx.createBuffer(1,bufferSize,audioCtx.sampleRate); let data=buffer.getChannelData(0);
- for(let i=0;i<bufferSize;i++) data[i]=(Math.random()*2-1)*(1-i/bufferSize*0.3);
- let noise=audioCtx.createBufferSource(); noise.buffer=buffer;
- let f=audioCtx.createBiquadFilter(); f.type='highpass'; f.frequency.value=6000;
- let g=audioCtx.createGain(); g.gain.setValueAtTime(0.5*vol,now); g.gain.exponentialRampToValueAtTime(0.01,now+0.4);
- noise.connect(f); f.connect(g); g.connect(audioCtx.destination); noise.start(now);
-}else if(type==='crash'){
- for(let i=0;i<3;i++){ let osc=audioCtx.createOscillator(); osc.frequency.setValueAtTime(800+i*600+Math.random()*200,now); let g=audioCtx.createGain(); g.gain.setValueAtTime((0.3-i*0.05)*vol,now); g.gain.exponentialRampToValueAtTime(0.01,now+1.2); osc.connect(g); g.connect(audioCtx.destination); osc.start(now); osc.stop(now+1.2); }
- let bufferSize=audioCtx.sampleRate*1.0; let buffer=audioCtx.createBuffer(1,bufferSize,audioCtx.sampleRate); let data=buffer.getChannelData(0);
- for(let i=0;i<bufferSize;i++) data[i]=(Math.random()*2-1)*Math.pow(1-i/bufferSize,0.5);
- let noise=audioCtx.createBufferSource(); noise.buffer=buffer; let f=audioCtx.createBiquadFilter(); f.type='highpass'; f.frequency.value=4000; let g=audioCtx.createGain(); g.gain.setValueAtTime(0.4*vol,now); g.gain.exponentialRampToValueAtTime(0.01,now+1.0); noise.connect(f); f.connect(g); g.connect(audioCtx.destination); noise.start(now);
-}else if(type==='ride'){
- let osc=audioCtx.createOscillator(); osc.frequency.setValueAtTime(1200,now); let g=audioCtx.createGain(); g.gain.setValueAtTime(0.4*vol,now); g.gain.exponentialRampToValueAtTime(0.01,now+0.6); osc.connect(g); g.connect(audioCtx.destination); osc.start(now); osc.stop(now+0.6);
- let osc2=audioCtx.createOscillator(); osc2.frequency.setValueAtTime(2400,now); let g2=audioCtx.createGain(); g2.gain.setValueAtTime(0.2*vol,now); g2.gain.exponentialRampToValueAtTime(0.01,now+0.5); osc2.connect(g2); g2.connect(audioCtx.destination); osc2.start(now); osc2.stop(now+0.5);
-}else if(type==='tom1'){
- let osc=audioCtx.createOscillator(); osc.frequency.setValueAtTime(180,now); osc.frequency.exponentialRampToValueAtTime(90,now+0.35); let g=audioCtx.createGain(); g.gain.setValueAtTime(0.9*vol,now); g.gain.exponentialRampToValueAtTime(0.01,now+0.5); osc.connect(g); g.connect(audioCtx.destination); osc.start(now); osc.stop(now+0.5);
-}else if(type==='tom2'){
- let osc=audioCtx.createOscillator(); osc.frequency.setValueAtTime(110,now); osc.frequency.exponentialRampToValueAtTime(55,now+0.45); let g=audioCtx.createGain(); g.gain.setValueAtTime(1.0*vol,now); g.gain.exponentialRampToValueAtTime(0.01,now+0.7); osc.connect(g); g.connect(audioCtx.destination); osc.start(now); osc.stop(now+0.7);
+function playDrum(type){initAudio();const now=audioCtx.currentTime;let vol=(document.getElementById('volBateria')?.value||85)/100;vol=Math.max(0,Math.min(1,vol));
+if(type==='kick'){let osc=audioCtx.createOscillator();osc.frequency.setValueAtTime(120,now);osc.frequency.exponentialRampToValueAtTime(35,now+0.12);let gain=audioCtx.createGain();gain.gain.setValueAtTime(1.2*vol,now);gain.gain.exponentialRampToValueAtTime(0.01,now+0.6);osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+0.6);let click=audioCtx.createOscillator();click.frequency.setValueAtTime(3000,now);let cg=audioCtx.createGain();cg.gain.setValueAtTime(0.4*vol,now);cg.gain.exponentialRampToValueAtTime(0.01,now+0.04);click.connect(cg);cg.connect(audioCtx.destination);click.start(now);click.stop(now+0.04);
+}else if(type==='snare'){let bs=audioCtx.sampleRate*0.25;let b=audioCtx.createBuffer(1,bs,audioCtx.sampleRate);let d=b.getChannelData(0);for(let i=0;i<bs;i++){d[i]=(Math.random()*2-1)*Math.pow(1-i/bs,0.8);}let n=audioCtx.createBufferSource();n.buffer=b;let ng=audioCtx.createGain();ng.gain.setValueAtTime(0.9*vol,now);ng.gain.exponentialRampToValueAtTime(0.01,now+0.25);let f=audioCtx.createBiquadFilter();f.type='highpass';f.frequency.value=1200;n.connect(f);f.connect(ng);ng.connect(audioCtx.destination);n.start(now);let osc=audioCtx.createOscillator();osc.frequency.setValueAtTime(180,now);osc.frequency.exponentialRampToValueAtTime(80,now+0.12);let og=audioCtx.createGain();og.gain.setValueAtTime(0.8*vol,now);og.gain.exponentialRampToValueAtTime(0.01,now+0.15);osc.connect(og);og.connect(audioCtx.destination);osc.start(now);osc.stop(now+0.15);
+}else if(type==='hihat'){let bs=audioCtx.sampleRate*0.08;let b=audioCtx.createBuffer(1,bs,audioCtx.sampleRate);let d=b.getChannelData(0);for(let i=0;i<bs;i++)d[i]=(Math.random()*2-1);let n=audioCtx.createBufferSource();n.buffer=b;let f1=audioCtx.createBiquadFilter();f1.type='highpass';f1.frequency.value=7000;let f2=audioCtx.createBiquadFilter();f2.type='highpass';f2.frequency.value=8000;let g=audioCtx.createGain();g.gain.setValueAtTime(0.5*vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.1);n.connect(f1);f1.connect(f2);f2.connect(g);g.connect(audioCtx.destination);n.start(now);
+}else if(type==='hihat_open'){let bs=audioCtx.sampleRate*0.4;let b=audioCtx.createBuffer(1,bs,audioCtx.sampleRate);let d=b.getChannelData(0);for(let i=0;i<bs;i++)d[i]=(Math.random()*2-1)*(1-i/bs*0.3);let n=audioCtx.createBufferSource();n.buffer=b;let f=audioCtx.createBiquadFilter();f.type='highpass';f.frequency.value=6000;let g=audioCtx.createGain();g.gain.setValueAtTime(0.5*vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.4);n.connect(f);f.connect(g);g.connect(audioCtx.destination);n.start(now);
+}else if(type==='crash'){for(let i=0;i<3;i++){let osc=audioCtx.createOscillator();osc.frequency.setValueAtTime(800+i*600+Math.random()*200,now);let g=audioCtx.createGain();g.gain.setValueAtTime((0.3-i*0.05)*vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+1.2);osc.connect(g);g.connect(audioCtx.destination);osc.start(now);osc.stop(now+1.2);}let bs=audioCtx.sampleRate*1.0;let b=audioCtx.createBuffer(1,bs,audioCtx.sampleRate);let d=b.getChannelData(0);for(let i=0;i<bs;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/bs,0.5);let n=audioCtx.createBufferSource();n.buffer=b;let f=audioCtx.createBiquadFilter();f.type='highpass';f.frequency.value=4000;let g=audioCtx.createGain();g.gain.setValueAtTime(0.4*vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+1.0);n.connect(f);f.connect(g);g.connect(audioCtx.destination);n.start(now);
+}else if(type==='ride'){let osc=audioCtx.createOscillator();osc.frequency.setValueAtTime(1200,now);let g=audioCtx.createGain();g.gain.setValueAtTime(0.4*vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.6);osc.connect(g);g.connect(audioCtx.destination);osc.start(now);osc.stop(now+0.6);let osc2=audioCtx.createOscillator();osc2.frequency.setValueAtTime(2400,now);let g2=audioCtx.createGain();g2.gain.setValueAtTime(0.2*vol,now);g2.gain.exponentialRampToValueAtTime(0.01,now+0.5);osc2.connect(g2);g2.connect(audioCtx.destination);osc2.start(now);osc2.stop(now+0.5);
+}else if(type==='tom1'){let osc=audioCtx.createOscillator();osc.frequency.setValueAtTime(180,now);osc.frequency.exponentialRampToValueAtTime(90,now+0.35);let g=audioCtx.createGain();g.gain.setValueAtTime(0.9*vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.5);osc.connect(g);g.connect(audioCtx.destination);osc.start(now);osc.stop(now+0.5);
+}else if(type==='tom2'){let osc=audioCtx.createOscillator();osc.frequency.setValueAtTime(110,now);osc.frequency.exponentialRampToValueAtTime(55,now+0.45);let g=audioCtx.createGain();g.gain.setValueAtTime(1.0*vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.7);osc.connect(g);g.connect(audioCtx.destination);osc.start(now);osc.stop(now+0.7);}
 }
-}
-function isChordLine(line){
- let t=line.trim(); if(!t) return false;
- if(/[áéíóúàãõçâêôÁÉÍÓÚÃÕÇ]{3,}/.test(t)) return false;
- if(t.length>45) return false;
- if(/^[A-G][#b]?[0-9mM()\/\s#\/\\-]+$/.test(t) && /[A-G]/.test(t)) return true;
- if(/^(D5|D9|A11|G\/B|BM7|D7M|A7|E\/B)/.test(t)) return true;
- return false;
-}
-function isSection(line){
- let u=line.trim().toUpperCase(); if(u.length>28) return false;
- return ['PRIMEIRA','SEGUNDA','REFRÃO','REFRAO','PONTE','INTRO','VERSO','CHORUS','SOLO','FINAL'].some(k=>u.includes(k));
-}
-function parseBlocks(){
- let raw=document.getElementById('inputCifra').value + '\n' + document.getElementById('inputCifraFull').value;
- let a=document.getElementById('inputCifra').value.trim(); let b=document.getElementById('inputCifraFull').value.trim();
- raw = b.length > a.length? b : a;
- document.getElementById('inputCifra').value=raw; document.getElementById('inputCifraFull').value=raw;
- let lines=raw.split('\n');
- let blocks=[];
- for(let i=0;i<lines.length;i++){
-  let l=lines[i]; if(!l.trim()){ blocks.push({type:'space'}); continue; }
-  if(isSection(l)){ blocks.push({type:'section',text:l.trim()}); continue; }
-  if(isChordLine(l)){
-   let next=lines[i+1]||''; if(next.trim() &&!isChordLine(next) &&!isSection(next)){
-    blocks.push({type:'pair',cifra:l.trim(),letra:next.trim()}); i++; continue;
-   } else {
-    blocks.push({type:'cifra',text:l.trim()}); continue;
-   }
-  }
-  blocks.push({type:'letra',text:l.trim()});
- }
- return blocks;
-}
+function isChordLine(line){let t=line.trim();if(!t) return false;if(/[áéíóúàãõçâêôÁÉÍÓÚÃÕÇ]{3,}/.test(t)) return false;if(t.length>45) return false;if(/^[A-G][#b]?[0-9mM()\/\s#\/\-]+$/.test(t) && /[A-G]/.test(t)) return true;return false;}
+function isSection(line){let u=line.trim().toUpperCase();if(u.length>28) return false;return ['PRIMEIRA','SEGUNDA','REFRÃO','REFRAO','PONTE','INTRO','VERSO','CHORUS','SOLO','FINAL'].some(k=>u.includes(k));}
+function parseBlocks(){let a=document.getElementById('inputCifra').value.trim();let b=document.getElementById('inputCifraFull').value.trim();let raw=b.length>a.length?b:a;document.getElementById('inputCifra').value=raw;document.getElementById('inputCifraFull').value=raw;let lines=raw.split('\n');let blocks=[];for(let i=0;i<lines.length;i++){let l=lines[i];if(!l.trim()){blocks.push({type:'space'});continue;}if(isSection(l)){blocks.push({type:'section',text:l.trim()});continue;}if(isChordLine(l)){let next=lines[i+1]||'';if(next.trim() &&!isChordLine(next) &&!isSection(next)){blocks.push({type:'pair',cifra:l.trim(),letra:next.trim()});i++;continue;}else{blocks.push({type:'cifra',text:l.trim()});continue;}}blocks.push({type:'letra',text:l.trim()});}return blocks;}
 function renderCifra(){
  let blocks=parseBlocks();
  let out=document.getElementById('output'); out.innerHTML='';
  blocks.forEach(b=>{
-  if(b.type==='space'){ out.innerHTML+='<div style="height:8px"></div>'; }
+  if(b.type==='space'){ out.innerHTML+='<div style="height:10px"></div>'; }
   else if(b.type==='section'){ out.innerHTML+=`<div class="song-block"><div class="section-label">${b.text.toUpperCase()}</div></div>`; }
-  else if(b.type==='pair'){ out.innerHTML+=`<div class="song-block"><div class="cifra-line" style="font-size:${cifraSize}px">🎸 ${b.cifra}</div><div class="letra-line" style="font-size:${letraSize}px">🎤 ${b.letra.toUpperCase()}</div></div>`; }
-  else if(b.type==='cifra'){ out.innerHTML+=`<div class="song-block"><div class="cifra-line" style="font-size:${cifraSize}px">🎸 ${b.text}</div></div>`; }
-  else if(b.type==='letra'){ out.innerHTML+=`<div class="song-block"><div class="letra-line" style="font-size:${letraSize}px">🎤 ${b.text.toUpperCase()}</div></div>`; }
+  else if(b.type==='pair'){ out.innerHTML+=`<div class="song-block pair"><div class="cifra-line" style="font-size:${cifraSize}px;color:var(--gold)">${b.cifra}</div><div class="letra-line" style="font-size:${letraSize}px;color:#ffffff">${b.letra.toUpperCase()}</div></div>`; }
+  else if(b.type==='cifra'){ out.innerHTML+=`<div class="song-block"><div class="cifra-line" style="font-size:${cifraSize}px;color:var(--gold)">${b.text}</div></div>`; }
+  else if(b.type==='letra'){ out.innerHTML+=`<div class="song-block"><div class="letra-line" style="font-size:${letraSize}px;color:#ffffff">${b.text.toUpperCase()}</div></div>`; }
  });
- document.getElementById('letraSizeInfo').innerText=letraSize+'px';
- document.getElementById('cifraSizeInfo').innerText=cifraSize+'px';
+ let el1=document.getElementById('letraSizeInfo'); if(el1) el1.innerText=letraSize+'px';
+ let el2=document.getElementById('cifraSizeInfo'); if(el2) el2.innerText=cifraSize+'px';
  renderTelaGrande();
 }
 function renderTelaGrande(){
@@ -258,19 +182,19 @@ function renderTelaGrande(){
  blocks.forEach(b=>{
   if(b.type==='space'){ h+='<div style="height:18px"></div>'; }
   else if(b.type==='section'){ h+=`<div class="tela-block"><div class="tela-section">${b.text.toUpperCase()}</div></div>`; }
-  else if(b.type==='pair'){ h+=`<div class="tela-block"><div class="tela-cifra" style="font-size:${cifraSize+6}px">🎸 ${b.cifra}</div><div class="tela-letra" style="font-size:${letraSize+11}px">🎤 ${b.letra.toUpperCase()}</div></div>`; }
-  else if(b.type==='cifra'){ h+=`<div class="tela-block"><div class="tela-cifra" style="font-size:${cifraSize+6}px">🎸 ${b.text}</div></div>`; }
-  else{ h+=`<div class="tela-block"><div class="tela-letra" style="font-size:${letraSize+11}px">🎤 ${b.text.toUpperCase()}</div></div>`; }
+  else if(b.type==='pair'){ h+=`<div class="tela-block"><div class="tela-cifra" style="font-size:${cifraSize+6}px;color:var(--gold)">${b.cifra}</div><div class="tela-letra" style="font-size:${letraSize+11}px;color:#ffffff">${b.letra.toUpperCase()}</div></div>`; }
+  else if(b.type==='cifra'){ h+=`<div class="tela-block"><div class="tela-cifra" style="font-size:${cifraSize+6}px;color:var(--gold)">${b.text}</div></div>`; }
+  else{ h+=`<div class="tela-block"><div class="tela-letra" style="font-size:${letraSize+11}px;color:#ffffff">${b.text.toUpperCase()}</div></div>`; }
  });
  tg.innerHTML=h;
  let info=document.getElementById('telaSyncInfo'); if(info) info.innerText=`Letra ${letraSize+11}px | Cifra ${cifraSize+6}px | Rate ${getRate().toFixed(2)}x`;
  let l=document.getElementById('telaLetraSize'); let c=document.getElementById('telaCifraSize'); if(l) l.innerText=(letraSize+11)+'px'; if(c) c.innerText=(cifraSize+6)+'px';
 }
-function changeLetraSize(d){ letraSize=Math.max(10,Math.min(50,letraSize+d*2)); let r=document.getElementById('telaLetraRange'); if(r) r.value=letraSize+11; renderCifra(); }
-function changeCifraSize(d){ cifraSize=Math.max(8,Math.min(40,cifraSize+d*2)); let r=document.getElementById('telaCifraRange'); if(r) r.value=cifraSize+6; renderCifra(); }
-function changeSize(d,tipo){ if(tipo==='letra') changeLetraSize(d); else changeCifraSize(d); }
-document.getElementById('telaLetraRange').addEventListener('input',e=>{letraSize=parseInt(e.target.value)-11; renderCifra();});
-document.getElementById('telaCifraRange').addEventListener('input',e=>{cifraSize=parseInt(e.target.value)-6; renderCifra();});
+function changeLetraSize(d){letraSize=Math.max(10,Math.min(50,letraSize+d*2));let r=document.getElementById('telaLetraRange');if(r)r.value=letraSize+11;renderCifra();}
+function changeCifraSize(d){cifraSize=Math.max(8,Math.min(40,cifraSize+d*2));let r=document.getElementById('telaCifraRange');if(r)r.value=cifraSize+6;renderCifra();}
+function changeSize(d,tipo){if(tipo==='letra')changeLetraSize(d);else changeCifraSize(d);}
+document.getElementById('telaLetraRange').addEventListener('input',e=>{letraSize=parseInt(e.target.value)-11;renderCifra();});
+document.getElementById('telaCifraRange').addEventListener('input',e=>{cifraSize=parseInt(e.target.value)-6;renderCifra();});
 function toggleTela(){let tg=document.getElementById('telaGrande');let open=tg.style.display==='block';tg.style.display=open?'none':'block';if(!open)renderTelaGrande();}
 function toggleScroll(){scrolling=!scrolling;let btn=document.getElementById('btnScroll');if(btn)btn.innerText=scrolling?'⏸ PAUSAR':'▶ AUTO SCROLL';if(scrolling){scrollInt=setInterval(()=>{let tg=document.getElementById('telaGrande');if(tg.style.display==='block'){tg.scrollBy(0,vel*1.2);}else{window.scrollBy(0,vel*1.2);}},38);}else{clearInterval(scrollInt);}}
 function getRate(){return (bpm/100)*Math.pow(2,pitch/12);}
@@ -286,133 +210,29 @@ document.getElementById('pitchRange').addEventListener('input',e=>{pitch=parseIn
 document.getElementById('pitchRange2').addEventListener('input',e=>{pitch=parseInt(e.target.value);syncPitch();updatePlaybackRate();});
 function toggleLoop(){if(loopInt){stopLoop();return;}initAudio();let interval=60000/bpm;let btn=document.getElementById('btnLoop');let btn2=document.getElementById('btnLoop2');if(btn)btn.innerText='⏸ LOOP BATERIA';if(btn2)btn2.innerText='⏸ LOOP';loopInt=setInterval(()=>{playDrum('hihat');},interval);}
 function stopLoop(){if(loopInt){clearInterval(loopInt);loopInt=null;let btn=document.getElementById('btnLoop');let btn2=document.getElementById('btnLoop2');if(btn)btn.innerText='▶ LOOP BATERIA';if(btn2)btn2.innerText='▶ LOOP';}}
-function openMetronomo(){showView('bpm');}
 document.getElementById('volBateria').addEventListener('input',e=>{document.getElementById('volBateriaVal').innerText=e.target.value+'%';});
 document.getElementById('volVS').addEventListener('input',e=>{document.getElementById('volVSVal').innerText=e.target.value+'%';document.getElementById('audioVS').volume=e.target.value/100;});
 function loadVS(input){let file=input.files[0];if(!file)return;currentAudioBlob=file;currentAudioName=file.name;let url=URL.createObjectURL(file);let a=document.getElementById('audioVS');a.src=url;a.play();let a2=document.getElementById('audioVS2');if(a2)a2.src=url;document.getElementById('vsInfo').innerHTML=`✅ VS BATERIA/PLAYBACK: <b>${file.name}</b> (${(file.size/1024/1024).toFixed(1)}MB)`;updatePlaybackRate();}
-function salvarRepertorio(){
-let nome=document.getElementById('nomeMusica').value.trim();
-let artista=document.getElementById('artistaMusica').value.trim();
-if(!nome){alert('Digite o nome da música');return;}
-let cifra=document.getElementById('inputCifra').value || document.getElementById('inputCifraFull').value;
-if(!cifra.trim()){alert('Cole a cifra primeiro em tela cheia!');return;}
-let musica={nome:nome,artista:artista||'Sem Artista',cifra:cifra,bpm:bpm,pitch:pitch,audioName:currentAudioName,data:new Date().toISOString(),temVS:!!currentAudioBlob};
-let status=document.getElementById('saveStatus'); if(status) status.innerText='💾 Salvando...';
-if(db&&currentAudioBlob){
-let tx=db.transaction('musicas','readwrite'); musica.audioBlob=currentAudioBlob;
-tx.objectStore('musicas').add(musica).onsuccess=()=>{if(status)status.innerText=`✅ "${nome}" salvo na pasta ${musica.artista}!`;document.getElementById('nomeMusica').value='';document.getElementById('artistaMusica').value='';carregarRepertorio(); setTimeout(()=>{if(status)status.innerText='';},3000);};
-}else{
-let lista=JSON.parse(localStorage.getItem('taki-v9')||'[]'); let copia={...musica}; delete copia.audioBlob; lista.push(copia); localStorage.setItem('taki-v9',JSON.stringify(lista)); if(status)status.innerText=`✅ "${nome}" salvo na pasta ${musica.artista}!`; carregarRepertorioLocal(); setTimeout(()=>{if(status)status.innerText='';},3000);
-}
-}
+function salvarRepertorio(){let nome=document.getElementById('nomeMusica').value.trim();let artista=document.getElementById('artistaMusica').value.trim();if(!nome){alert('Digite o nome da música');return;}let cifra=document.getElementById('inputCifra').value || document.getElementById('inputCifraFull').value;if(!cifra.trim()){alert('Cole a cifra primeiro em tela cheia!');return;}let musica={nome:nome,artista:artista||'Sem Artista',cifra:cifra,bpm:bpm,pitch:pitch,audioName:currentAudioName,data:new Date().toISOString(),temVS:!!currentAudioBlob};let status=document.getElementById('saveStatus');if(status)status.innerText='💾 Salvando...';if(db&&currentAudioBlob){let tx=db.transaction('musicas','readwrite');musica.audioBlob=currentAudioBlob;tx.objectStore('musicas').add(musica).onsuccess=()=>{if(status)status.innerText=`✅ "${nome}" salvo na pasta ${musica.artista}!`;document.getElementById('nomeMusica').value='';document.getElementById('artistaMusica').value='';carregarRepertorio();setTimeout(()=>{if(status)status.innerText='';},3000);};}else{let lista=JSON.parse(localStorage.getItem('taki-v9')||'[]');let copia={...musica};delete copia.audioBlob;lista.push(copia);localStorage.setItem('taki-v9',JSON.stringify(lista));if(status)status.innerText=`✅ "${nome}" salvo na pasta ${musica.artista}!`;carregarRepertorioLocal();setTimeout(()=>{if(status)status.innerText='';},3000);}}
 function carregarRepertorio(){if(!db){carregarRepertorioLocal();return;}db.transaction('musicas','readonly').objectStore('musicas').getAll().onsuccess=e=>{renderAll(e.target.result,JSON.parse(localStorage.getItem('taki-v9')||'[]'));};}
 function carregarRepertorioLocal(){renderAll([],JSON.parse(localStorage.getItem('taki-v9')||'[]'));}
-function renderAll(dbLista,localLista){
-let todas=[...dbLista,...localLista.map((m,i)=>({...m,idLocal:i,isLocal:true}))];
-renderCifras(todas);renderVS(todas);renderPastas(todas);
-}
-function renderCifras(todas){
-let semVS=todas.filter(m=>!m.temVS); let c=document.getElementById('listaCifras');
-if(semVS.length===0){c.innerHTML='<div style="color:#555;text-align:center;padding:14px;font-size:11px">Nenhuma cifra sem VS. Salve sem puxar MP3.</div>';return;}
-let h='';semVS.forEach(m=>{let isLocal=m.isLocal;h+=`<div class="repertorio-item"><div><div class="repertorio-title">📄 ${m.nome}</div><div class="repertorio-meta">${m.artista} • BPM ${m.bpm}</div></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">▶</button><button class="small" onclick="editarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">📝</button><button class="small" style="color:#666;border-color:#333" onclick="excluirMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">🗑️</button></div></div>`;});c.innerHTML=h;
-}
-function renderVS(todas){
-let comVS=todas.filter(m=>m.temVS); let c=document.getElementById('listaVS');
-if(comVS.length===0){c.innerHTML='<div style="color:#555;text-align:center;padding:14px;font-size:11px">Nenhuma com VS ainda. Puxe VS BATERIA/PLAYBACK MP3 e salve.</div>';return;}
-let h='';comVS.forEach(m=>{let isLocal=m.isLocal;h+=`<div class="repertorio-item" style="border-color:var(--gold)"><div><div class="repertorio-title">🎵 ${m.nome}</div><div class="repertorio-meta">${m.artista} • VS: ${m.audioName||'sim'} • BPM ${m.bpm} • Pitch ${m.pitch}</div></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">▶ VS</button><button class="small" onclick="editarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">📝</button><button class="small" style="color:#666;border-color:#333" onclick="excluirMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">🗑️</button></div></div>`;});c.innerHTML=h;
-}
-function renderPastas(todas){
-let grupos={}; todas.forEach(m=>{let art=(m.artista||'Sem Artista').trim()||'Sem Artista'; if(!grupos[art])grupos[art]=[]; grupos[art].push(m);});
-let c=document.getElementById('listaPastas');
-if(Object.keys(grupos).length===0){c.innerHTML='<div style="color:#555;text-align:center;padding:14px;font-size:11px">Nenhuma pasta ainda. Salve com Artista que cria automático!</div>';return;}
-let h=''; Object.keys(grupos).sort().forEach(art=>{let musicas=grupos[art]; h+=`<div class="folder"><div class="folder-header" onclick="this.nextElementSibling.classList.toggle('open')"><div class="folder-title">📁 ${art}</div><div class="folder-count">${musicas.length}</div></div><div class="folder-body">`; musicas.forEach(m=>{let isLocal=m.isLocal; h+=`<div class="repertorio-item"><div><div class="repertorio-title">${m.temVS?'🎵':'📄'} ${m.nome}</div><div class="repertorio-meta">${m.temVS?'VS: '+(m.audioName||'sim')+' • ':''}BPM ${m.bpm}</div></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">▶</button><button class="small" onclick="editarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">📝</button></div></div>`;}); h+=`</div></div>`;}); c.innerHTML=h;
-}
+function renderAll(dbLista,localLista){let todas=[...dbLista,...localLista.map((m,i)=>({...m,idLocal:i,isLocal:true}))];renderCifras(todas);renderVS(todas);renderPastas(todas);}
+function renderCifras(todas){let semVS=todas.filter(m=>!m.temVS);let c=document.getElementById('listaCifras');if(semVS.length===0){c.innerHTML='<div style="color:#555;text-align:center;padding:14px;font-size:11px">Nenhuma cifra sem VS.</div>';return;}let h='';semVS.forEach(m=>{let isLocal=m.isLocal;h+=`<div class="repertorio-item"><div><div class="repertorio-title">${m.nome}</div><div class="repertorio-meta">${m.artista} • BPM ${m.bpm}</div></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">▶</button><button class="small" onclick="editarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">📝</button><button class="small" style="color:#666;border-color:#333" onclick="excluirMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">🗑️</button></div></div>`;});c.innerHTML=h;}
+function renderVS(todas){let comVS=todas.filter(m=>m.temVS);let c=document.getElementById('listaVS');if(comVS.length===0){c.innerHTML='<div style="color:#555;text-align:center;padding:14px;font-size:11px">Nenhuma com VS ainda.</div>';return;}let h='';comVS.forEach(m=>{let isLocal=m.isLocal;h+=`<div class="repertorio-item" style="border-color:var(--gold)"><div><div class="repertorio-title">${m.nome}</div><div class="repertorio-meta">${m.artista} • VS: ${m.audioName||'sim'} • BPM ${m.bpm} • Pitch ${m.pitch}</div></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">▶ VS</button><button class="small" onclick="editarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">📝</button><button class="small" style="color:#666;border-color:#333" onclick="excluirMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">🗑️</button></div></div>`;});c.innerHTML=h;}
+function renderPastas(todas){let grupos={};todas.forEach(m=>{let art=(m.artista||'Sem Artista').trim()||'Sem Artista';if(!grupos[art])grupos[art]=[];grupos[art].push(m);});let c=document.getElementById('listaPastas');if(Object.keys(grupos).length===0){c.innerHTML='<div style="color:#555;text-align:center;padding:14px;font-size:11px">Nenhuma pasta ainda.</div>';return;}let h='';Object.keys(grupos).sort().forEach(art=>{let musicas=grupos[art];h+=`<div class="folder"><div class="folder-header" onclick="this.nextElementSibling.classList.toggle('open')"><div class="folder-title">📁 ${art}</div><div class="folder-count">${musicas.length}</div></div><div class="folder-body">`;musicas.forEach(m=>{let isLocal=m.isLocal;h+=`<div class="repertorio-item"><div><div class="repertorio-title">${m.temVS?'🎵':'📄'} ${m.nome}</div><div class="repertorio-meta">${m.temVS?'VS: '+(m.audioName||'sim')+' • ':''}BPM ${m.bpm}</div></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">▶</button><button class="small" onclick="editarMusica(${isLocal?-1:m.id},${isLocal?m.idLocal:-1})">📝</button></div></div>`;});h+=`</div></div>`;});c.innerHTML=h;}
 function tocarMusica(idDB,idLocal){if(idDB!==-1&&db){db.transaction('musicas','readonly').objectStore('musicas').get(idDB).onsuccess=e=>{let m=e.target.result;if(m)aplicarMusica(m);};}else{let lista=JSON.parse(localStorage.getItem('taki-v9')||'[]');aplicarMusica(lista[idLocal]);}}
-function editarMusica(idDB,idLocal){
-if(idDB!==-1&&db){db.transaction('musicas','readonly').objectStore('musicas').get(idDB).onsuccess=e=>{let m=e.target.result;if(!m)return;document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputCifraFull').value=m.cifra;document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;bpm=m.bpm||100;pitch=m.pitch||0;syncBPM();syncPitch();renderCifra();openEditarTelaCheia();};}
-else{let lista=JSON.parse(localStorage.getItem('taki-v9')||'[]');let m=lista[idLocal];document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputCifraFull').value=m.cifra;document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;bpm=m.bpm||100;pitch=m.pitch||0;syncBPM();syncPitch();renderCifra();openEditarTelaCheia();}
-}
+function editarMusica(idDB,idLocal){if(idDB!==-1&&db){db.transaction('musicas','readonly').objectStore('musicas').get(idDB).onsuccess=e=>{let m=e.target.result;if(!m)return;document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputCifraFull').value=m.cifra;document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;bpm=m.bpm||100;pitch=m.pitch||0;syncBPM();syncPitch();renderCifra();openEditarTelaCheia();};}else{let lista=JSON.parse(localStorage.getItem('taki-v9')||'[]');let m=lista[idLocal];document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputCifraFull').value=m.cifra;document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;bpm=m.bpm||100;pitch=m.pitch||0;syncBPM();syncPitch();renderCifra();openEditarTelaCheia();}}
 function aplicarMusica(m){document.getElementById('inputCifra').value=m.cifra||'';document.getElementById('inputCifraFull').value=m.cifra||'';bpm=m.bpm||100;pitch=m.pitch||0;syncBPM();syncPitch();updatePlaybackRate();if(m.audioBlob){currentAudioBlob=m.audioBlob;currentAudioName=m.audioName||'';let url=URL.createObjectURL(m.audioBlob);document.getElementById('audioVS').src=url;let a2=document.getElementById('audioVS2');if(a2)a2.src=url;document.getElementById('vsInfo').innerHTML=`✅ VS BATERIA/PLAYBACK: ${m.audioName}`;}renderCifra();showView('home');}
 function excluirMusica(idDB,idLocal){if(!confirm('Excluir?'))return;if(idDB!==-1&&db){db.transaction('musicas','readwrite').objectStore('musicas').delete(idDB).onsuccess=()=>carregarRepertorio();}else{let l=JSON.parse(localStorage.getItem('taki-v9')||'[]');l.splice(idLocal,1);localStorage.setItem('taki-v9',JSON.stringify(l));carregarRepertorioLocal();}}
-function exportarBackup(){
-if(!db){let lista=JSON.parse(localStorage.getItem('taki-v9')||'[]');downloadJSON(lista,'taki-vs-bkp-v9.json');return;}
-db.transaction('musicas','readonly').objectStore('musicas').getAll().onsuccess=e=>{
- let dbLista=e.target.result.map(m=>{let c={...m};delete c.audioBlob;return c;});
- let localLista=JSON.parse(localStorage.getItem('taki-v9')||'[]');
- let todas=[...dbLista,...localLista];
- if(todas.length===0){alert('Nenhuma música para exportar');return;}
- downloadJSON(todas,'taki-vs-bkp-v9-'+new Date().toISOString().slice(0,10)+'.json');
-};
-}
-function downloadJSON(data,filename){
-let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-let url=URL.createObjectURL(blob); let a=document.createElement('a'); a.href=url; a.download=filename; a.click(); URL.revokeObjectURL(url);
-alert('✅ Backup exportado: '+filename+'\nSalve no Drive!');
-}
-function importarBackup(input){
-let file=input.files[0]; if(!file)return;
-let reader=new FileReader(); reader.onload=e=>{
- try{
-  let lista=JSON.parse(e.target.result); if(!Array.isArray(lista)){alert('Arquivo inválido');return;}
-  if(confirm(`Importar ${lista.length} músicas? Vai adicionar ao seu repertório.`)){
-   let atual=JSON.parse(localStorage.getItem('taki-v9')||'[]');
-   let novas=[...atual,...lista];
-   localStorage.setItem('taki-v9',JSON.stringify(novas));
-   carregarRepertorioLocal();
-   alert(`✅ ${lista.length} músicas importadas! VS de bateria/playback precisa puxar de novo.`);
-  }
- }catch(err){alert('Erro ao importar: '+err.message);}
-}; reader.readAsText(file); input.value='';
-}
-function openEditarTelaCheia(){
-let full=document.getElementById('inputCifraFull'); let mini=document.getElementById('inputCifra');
-if(mini.value.trim() &&!full.value.trim()) full.value=mini.value;
-if(full.value.trim() &&!mini.value.trim()) mini.value=full.value;
-document.getElementById('telaEditar').style.display='flex';
-full.focus();
-}
-function closeEditarTelaCheia(){
-let full=document.getElementById('inputCifraFull').value; document.getElementById('inputCifra').value=full;
-renderCifra();
-document.getElementById('telaEditar').style.display='none';
-}
-window.addEventListener('beforeinstallprompt',(e)=>{
- e.preventDefault(); deferredPrompt=e;
- let b=document.getElementById('installBtn'); let b2=document.getElementById('menuInstallBtn');
- if(b){ b.innerText='📲 INSTALAR DIRETO - 1 CLIQUE'; b.style.background='var(--gold)'; b.style.color='#000'; b.style.boxShadow='0 0 20px rgba(201,168,106,0.6)'; }
- if(b2){ b2.innerText='📲 INSTALAR DIRETO - PRONTO! CLIQUE AQUI'; b2.classList.add('gold'); }
-});
-function doInstall(){
-if(deferredPrompt){
- deferredPrompt.prompt();
- deferredPrompt.userChoice.then(choice=>{
-  if(choice.outcome==='accepted'){
-   document.getElementById('installBtn').innerText='✅ INSTALADO!';
-   document.getElementById('menuInstallBtn').innerText='✅ INSTALADO!';
-   alert('✅ Instalado! Procure TAKI VS ESTUDIO na sua tela inicial!');
-  }else{
-   alert('Instalação cancelada. Tente de novo no botão.');
-  }
-  deferredPrompt=null;
- });
-}else{
- if(/iPhone|iPad|iPod/.test(navigator.userAgent)){
-  alert('iPhone: Toque no botão COMPARTILHAR (quadrado com seta ↑) na barra inferior > Adicionar à Tela de Início > Adicionar');
- }else{
-  alert('Se não apareceu o botão instalar:\n\n1. Chrome: 3 pontinhos ⋮ no topo > Instalar app / Adicionar à tela inicial\n\n2. Ou: O Chrome vai mostrar automaticamente "Adicionar à tela inicial" - aceite!\n\nDICA: Use Chrome atualizado!');
- }
-}
-}
-function doShare(){
-let url=window.location.href;
-let text='🥁 TAKI VS ESTUDIO - Meu app de cifras com VS de bateria/playback! Baixa aí: ';
-if(navigator.share){
- navigator.share({title:'TAKI VS ESTUDIO',text:text,url:url}).catch(()=>{});
-}else{
- navigator.clipboard.writeText(url).then(()=>{alert('✅ Link copiado! Cole no WhatsApp:\n'+url);}).catch(()=>{prompt('Copie o link:',url);});
-}
-}
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+function exportarBackup(){if(!db){let lista=JSON.parse(localStorage.getItem('taki-v9')||'[]');downloadJSON(lista,'taki-vs-bkp-v9.json');return;}db.transaction('musicas','readonly').objectStore('musicas').getAll().onsuccess=e=>{let dbLista=e.target.result.map(m=>{let c={...m};delete c.audioBlob;return c;});let localLista=JSON.parse(localStorage.getItem('taki-v9')||'[]');let todas=[...dbLista,...localLista];if(todas.length===0){alert('Nenhuma música para exportar');return;}downloadJSON(todas,'taki-vs-bkp-v9-'+new Date().toISOString().slice(0,10)+'.json');};}
+function downloadJSON(data,filename){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download=filename;a.click();URL.revokeObjectURL(url);alert('✅ Backup exportado: '+filename);}
+function importarBackup(input){let file=input.files[0];if(!file)return;let reader=new FileReader();reader.onload=e=>{try{let lista=JSON.parse(e.target.result);if(!Array.isArray(lista)){alert('Arquivo inválido');return;}if(confirm(`Importar ${lista.length} músicas?`)){let atual=JSON.parse(localStorage.getItem('taki-v9')||'[]');let novas=[...atual,...lista];localStorage.setItem('taki-v9',JSON.stringify(novas));carregarRepertorioLocal();alert(`✅ ${lista.length} músicas importadas!`);}}catch(err){alert('Erro: '+err.message);}};reader.readAsText(file);input.value='';}
+function openEditarTelaCheia(){let full=document.getElementById('inputCifraFull');let mini=document.getElementById('inputCifra');if(mini.value.trim() &&!full.value.trim())full.value=mini.value;if(full.value.trim() &&!mini.value.trim())mini.value=full.value;document.getElementById('telaEditar').style.display='flex';full.focus();}
+function closeEditarTelaCheia(){let full=document.getElementById('inputCifraFull').value;document.getElementById('inputCifra').value=full;renderCifra();document.getElementById('telaEditar').style.display='none';}
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;let b=document.getElementById('installBtn');let b2=document.getElementById('menuInstallBtn');if(b){b.innerText='📲 INSTALAR DIRETO - 1 CLIQUE';}if(b2){b2.innerText='📲 INSTALAR DIRETO - PRONTO!';b2.classList.add('gold');}});
+function doInstall(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(choice=>{if(choice.outcome==='accepted'){document.getElementById('installBtn').innerText='✅ INSTALADO!';}deferredPrompt=null;});}else{if(/iPhone|iPad|iPod/.test(navigator.userAgent)){alert('iPhone: Compartilhar > Tela Inicial');}else{alert('Chrome: 3 pontinhos > Instalar app');}}}
+function doShare(){let url=window.location.href;if(navigator.share){navigator.share({title:'TAKI VS ESTUDIO',text:'Meu app!',url:url});}else{navigator.clipboard.writeText(url).then(()=>{alert('Link copiado! '+url);});}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 renderCifra();carregarRepertorio();updatePlaybackRate();
 </script>
 </body>
