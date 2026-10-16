@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS ESTUDIO v10.4",
+  "name": "TAKI VS v10.5",
   "short_name": "TAKI VS",
-  "description": "v10.4 - Nova Cifra + Fix Vermelho Letra Branca + Transpose Botoes",
+  "description": "v10.5 Vermelho clarinho transparente",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
