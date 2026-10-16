@@ -8,62 +8,84 @@
 <link rel="icon" href="icon-512.png">
 <meta name="theme-color" content="#d4af37">
 <style>
-:root{--gold:#d4af37;--bg:#0a0a0a;--card:#151515;--text:#f5e6a8}
+:root{--gold:#d4af37;--bg:#000;--card:#151515;--text:#f5e6a8}
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui}
-body{background:var(--bg);color:var(--text);padding:12px}
-.header{border:2px solid var(--gold);padding:12px;text-align:center;background:linear-gradient(#1a1a1a,#0a0a0a);border-radius:12px}
-.header h1{color:var(--gold);letter-spacing:2px;font-size:22px}
+body{background:var(--bg);color:var(--text);padding:12px;padding-bottom:90px}
+.header{border:2px solid var(--gold);padding:12px;text-align:center;background:linear-gradient(#1a1a1a,#000);border-radius:12px;position:sticky;top:0;z-index:10}
+.header h1{color:var(--gold);letter-spacing:2px;font-size:20px}
 .top-row{display:flex;gap:8px;margin:12px 0}
-.btn{flex:1;border:1.5px solid var(--gold);background:#111;color:var(--gold);padding:12px;border-radius:25px;font-weight:900;cursor:pointer}
+.btn{flex:1;border:1.5px solid var(--gold);background:#111;color:var(--gold);padding:12px;border-radius:25px;font-weight:900;cursor:pointer;font-size:12px}
 .btn.active{background:var(--gold);color:#000}
+.install-btn{display:none;position:fixed;bottom:20px;left:12px;right:12px;background:var(--gold);color:#000;padding:16px;border-radius:30px;font-weight:900;text-align:center;z-index:100;border:none;box-shadow:0 0 20px var(--gold);font-size:16px}
 .themes{display:flex;gap:8px;overflow-x:auto;padding:6px 0}
 .dot{width:36px;height:36px;border-radius:50%;border:2px solid var(--gold);cursor:pointer;flex-shrink:0}
 .card{border:1.5px solid var(--gold);border-radius:12px;padding:12px;margin:12px 0;background:var(--card)}
-textarea{width:100%;height:90px;background:#000;color:var(--gold);border:1px solid var(--gold);padding:10px;border-radius:8px}
+textarea{width:100%;height:120px;background:#000;color:var(--gold);border:1px solid var(--gold);padding:10px;border-radius:8px;font-size:13px}
 .fader{display:flex;align-items:center;gap:10px}
 input[type=range]{flex:1;accent-color:var(--gold)}
-.lyric{white-space:pre-wrap;line-height:1.9;font-size:16px}
-.chord{color:var(--gold);font-weight:900;background:rgba(212,175,55,0.15);padding:2px 6px;border-radius:6px}
+.lyric{line-height:1.6}
+.cifra-line{color:var(--gold);font-weight:900;font-size:15px;background:rgba(212,175,55,0.12);display:inline-block;padding:2px 8px;border-radius:6px;margin-bottom:2px}
+.letra-line{color:#fff8cc;font-size:18px;font-weight:700;text-transform:uppercase;margin-top:2px}
 .controls{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.small{border:1.2px solid var(--gold);background:#000;color:var(--gold);padding:7px 12px;border-radius:20px;font-size:12px;cursor:pointer;font-weight:700}
+.small{border:1.2px solid var(--gold);background:#000;color:var(--gold);padding:7px 12px;border-radius:20px;font-size:11px;cursor:pointer;font-weight:700}
 .progress{width:100%;height:10px;background:#333;border-radius:5px;overflow:hidden;margin-top:12px;border:1px solid var(--gold)}
 .progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),#fff0a0);width:35%}
-#telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;padding:20px;overflow-y:auto}
+#telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;overflow-y:auto;padding:0}
+.tela-header{position:sticky;top:0;background:#000;border-bottom:2px solid var(--gold);padding:10px 12px;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.tela-content{padding:16px 20px 80px 20px}
+.tela-cifra{color:var(--gold);font-weight:900;font-size:20px;background:rgba(212,175,55,0.15);padding:6px 12px;border-radius:8px;display:inline-block;margin:18px 0 6px 0;border-left:4px solid var(--gold)}
+.tela-letra{color:#fff;font-size:28px;font-weight:800;line-height:1.2;text-transform:uppercase;margin-bottom:8px}
+.parte-label{background:rgba(212,175,55,0.25);color:var(--gold);padding:6px 14px;border-radius:20px;font-weight:900;font-size:14px;display:inline-block;margin:20px 0 4px 0}
 .drum-kit{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 .pad{border:2px solid var(--gold);background:linear-gradient(145deg,#1a1a1a,#000);color:var(--gold);padding:18px 6px;border-radius:12px;font-weight:900;font-size:12px;cursor:pointer;text-align:center;box-shadow:0 4px 0 #8a6d1b;transition:0.1s}
-.pad:active{transform:translateY(4px);background:var(--gold);color:#000}
+.pad:active{transform:translateY(4px);box-shadow:none;background:var(--gold);color:#000}
+.vs-tabs{display:flex;gap:6px;margin-top:10px}
+.vs-tab{flex:1;padding:10px;border-radius:20px;border:1.5px solid var(--gold);background:#000;color:var(--gold);font-weight:800;font-size:11px;cursor:pointer;text-align:center}
+.vs-tab.active{background:var(--gold);color:#000}
+.player-box{background:#000;border:1px dashed var(--gold);border-radius:10px;padding:10px;margin-top:10px;display:none}
+audio{width:100%;margin-top:8px}
+.file-label{border:1.5px solid var(--gold);padding:10px;border-radius:20px;display:block;text-align:center;cursor:pointer;background:#111;color:var(--gold);font-weight:800}
 </style>
 </head>
 <body>
-<div class="header"><h1>TAKI VS ESTUDIO</h1><small>Modo Composicao • Diplomata Gold • Bateria com Som</small></div>
+<div class="header"><h1>TAKI VS ESTUDIO</h1><small>Modo Cifra Club • Tela Grande Inteligente</small></div>
 <div class="top-row">
 <button class="btn" onclick="toggleTela()">⛶ TELA GRANDE</button>
 <button class="btn active" id="btnScroll" onclick="toggleScroll()">▶ AUTO SCROLL</button>
 </div>
-<div><small style="color:var(--gold)">TEMA DE CORES</small><div class="themes">
+<div><small style="color:var(--gold)">TEMA</small><div class="themes">
+<div class="dot" style="background:#000" onclick="setTheme('#000','#f5e6a8','#151515')"></div>
 <div class="dot" style="background:#0a1931" onclick="setTheme('#0a1931','#d4af37','#151515')"></div>
-<div class="dot" style="background:#ffb6d9" onclick="setTheme('#2a0a1a','#fff','#3a152a')"></div>
-<div class="dot" style="background:#000" onclick="setTheme('#000','#d4af37','#151515')"></div>
-<div class="dot" style="background:#0a5c36" onclick="setTheme('#0a2a1a','#aaffaa','#152a1a')"></div>
-<div class="dot" style="background:#2563eb" onclick="setTheme('#0a1931','#aaccff','#102040')"></div>
 <div class="dot" style="background:#fff" onclick="setTheme('#fff','#000','#eee')"></div>
-<div class="dot" style="background:#ff00aa" onclick="setTheme('#2a0a2a','#ff88cc','#3a1530')"></div>
 </div></div>
 <div class="card">
-<b>📝 COLE SUA CIFRA AQUI</b>
-<textarea id="inputCifra">[Am] No silencio da noite eu caminho so
-[G] Pensando em voce, sigo sem temor
-[F] Entre acordes e versos, so paixao
-[C] E voce e eu, na nossa cancao</textarea>
-<div style="margin-top:8px"><button class="small" onclick="renderCifra()">RENDERIZAR</button>
-<label style="margin-left:10px"><input type="checkbox" id="simplificada" onchange="renderCifra()"> CIFRA SIMPLIFICADA</label></div>
+<b>📝 COLE SUA CIFRA (CIFRA CLUB)</b>
+<textarea id="inputCifra">D5 D E/B
+D9 A11/C# G/B
+D9 A11/C# G/B
+
+Primeira Parte
+D5 D7M(9) D5
+MEU CAMINHO É CADA MANHÃ
+D7M(9) BM7(11)
+NÃO PROCURE SABER ONDE ESTOU
+BM7(9/11) BM7(11)
+MEU DESTINO NÃO É DE NINGUÉM
+A7(4) D5
+E EU NÃO DEIXO OS MEUS PASSOS NO CHÃO</textarea>
+<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+<button class="small" onclick="renderCifra()">✨ RENDERIZAR</button>
+<label style="margin-left:6px;font-size:12px"><input type="checkbox" id="simplificada" onchange="renderCifra()"> SIMPLIFICADA</label>
+</div>
 </div>
 <div class="card">
-<b>🎚️ VS FADER — BALANCO TAKI x ESTUDIO</b>
-<div class="fader"><span>TAKI</span><input type="range" id="vsFader" min="0" max="100" value="50"><span>SOUL</span><span id="vsVal">50%</span></div>
+<b>🎚️ VS PLAYER - ADD SEU VS</b>
+<div class="vs-tabs">
+<button class="vs-tab active" id="tabBateria" onclick="switchVS('bateria')">🥁 VS BATERIA</button>
+<button class="vs-tab" id="tabPlayback" onclick="switchVS('playback')">🎵 VS PLAYBACK</button>
+<button class="vs-tab" id="tabAmbos" onclick="switchVS('ambos')">🔊 AMBOS</button>
 </div>
-<div class="card">
-<b>🥁 BATERIA TAKI - COM SOM REAL</b>
+<div id="boxBateria">
 <div class="drum-kit">
 <button class="pad" onclick="playDrum('kick')">🥁<br>BOMBO</button>
 <button class="pad" onclick="playDrum('snare')">🥁<br>CAIXA</button>
@@ -72,9 +94,21 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 <button class="pad" onclick="playDrum('tom1')">🔵<br>TOM 1</button>
 <button class="pad" onclick="playDrum('tom2')">🔴<br>TOM 2</button>
 </div>
+<div class="fader"><small>VOL BATERIA</small><input type="range" id="volBateria" min="0" max="100" value="80"><span id="volBateriaVal">80%</span></div>
+</div>
+<div id="boxPlayback" class="player-box">
+<label class="file-label" for="fileVS">📁 ADD SEU VS / PLAYBACK MP3</label>
+<input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)">
+<div id="vsInfo" style="margin-top:8px;font-size:12px"></div>
+<audio id="audioVS" controls></audio>
+<div class="fader"><small>VOL VS</small><input type="range" id="volVS" min="0" max="100" value="70"><span id="volVSVal">70%</span></div>
+</div>
+<div id="boxAmbos" style="margin-top:10px">
+<div class="fader"><span>TAKI</span><input type="range" id="vsFader" min="0" max="100" value="50"><span>ESTUDIO</span><span id="vsVal">50%</span></div>
+</div>
 </div>
 <div class="card">
-<b>🎵 LETRA & CIFRA</b>
+<b>🎵 PREVIEW - CIFRA SEPARADA</b>
 <div id="output" class="lyric"></div>
 <div class="controls">
 <button class="small" onclick="changeSize(-1,'letra')">A- LETRA</button>
@@ -85,49 +119,105 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 <button class="small" style="background:var(--gold);color:#000" onclick="toggleScroll()">▶ PLAY</button>
 </div>
 <div class="progress"><div id="bar" class="progress-bar"></div></div>
-<div style="display:flex;justify-content:space-between"><small>Rolagem: <span id="roll">35%</span></small><small id="sizeInfo"></small></div>
+<div style="display:flex;justify-content:space-between"><small>Rolagem: <span id="roll">0%</span></small><small id="sizeInfo"></small></div>
 </div>
-<div id="telaGrande" onclick="toggleTela()"><div id="telaGrandeContent"></div></div>
+<div id="telaGrande">
+<div class="tela-header">
+<button class="btn" style="flex:0 0 auto;padding:8px 16px" onclick="toggleTela()">✕ VOLTAR</button>
+<div style="font-size:11px;color:var(--gold);text-align:center">TELA GRANDE<br><span id="telaSyncInfo"></span></div>
+<div style="display:flex;gap:6px">
+<button class="small" onclick="changeSize(-1,'letra')">A-</button>
+<button class="small" onclick="changeSize(1,'letra')">A+</button>
+</div>
+</div>
+<div class="tela-content" id="telaGrandeContent"></div>
+</div>
+<button id="installBtn" class="install-btn">📲 INSTALAR TAKI VS ESTUDIO</button>
 <script>
-let letraSize=16,cifraSize=18,vel=1.0,scrolling=false,scrollInt=null,progress=35;
-let audioCtx=null;
+let letraSize=18,cifraSize=15,vel=1.0,scrolling=false,scrollInt=null,progress=0;
+let audioCtx=null,currentVSType='bateria',deferredPrompt=null;
 function initAudio(){if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();}}
 function playDrum(type){
- initAudio(); const now=audioCtx.currentTime;
- if(type==='kick'){let o=audioCtx.createOscillator();let g=audioCtx.createGain();o.frequency.setValueAtTime(150,now);o.frequency.exponentialRampToValueAtTime(40,now+0.2);g.gain.setValueAtTime(1,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.4);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.4);}
- else if(type==='snare'){let nBuffer=audioCtx.createBuffer(1,audioCtx.sampleRate*0.2,audioCtx.sampleRate);let data=nBuffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/data.length,2);let n=audioCtx.createBufferSource();n.buffer=nBuffer;let ng=audioCtx.createGain();ng.gain.setValueAtTime(1,now);ng.gain.exponentialRampToValueAtTime(0.01,now+0.2);n.connect(ng);ng.connect(audioCtx.destination);n.start(now);let o=audioCtx.createOscillator();o.frequency.setValueAtTime(180,now);let og=audioCtx.createGain();og.gain.setValueAtTime(1,now);og.gain.exponentialRampToValueAtTime(0.01,now+0.1);o.connect(og);og.connect(audioCtx.destination);o.start(now);o.stop(now+0.1);}
- else if(type==='hihat'){let o=audioCtx.createOscillator();o.type='square';o.frequency.setValueAtTime(8000,now);let g=audioCtx.createGain();g.gain.setValueAtTime(0.4,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.08);let f=audioCtx.createBiquadFilter();f.type='highpass';f.frequency.value=5000;o.connect(f);f.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.08);}
- else if(type==='crash'){let o1=audioCtx.createOscillator();o1.frequency.setValueAtTime(1200,now);let o2=audioCtx.createOscillator();o2.frequency.setValueAtTime(2400,now);let g=audioCtx.createGain();g.gain.setValueAtTime(0.6,now);g.gain.exponentialRampToValueAtTime(0.01,now+1.2);o1.connect(g);o2.connect(g);g.connect(audioCtx.destination);o1.start(now);o1.stop(now+1.2);o2.start(now);o2.stop(now+1.2);}
- else if(type==='tom1'||type==='tom2'){let freq=type==='tom1'?180:120;let o=audioCtx.createOscillator();o.frequency.setValueAtTime(freq,now);o.frequency.exponentialRampToValueAtTime(freq*0.6,now+0.3);let g=audioCtx.createGain();g.gain.setValueAtTime(0.9,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.5);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.5);}
+ initAudio();const now=audioCtx.currentTime;let vol=document.getElementById('volBateria').value/100;
+ if(type==='kick'){let o=audioCtx.createOscillator();let g=audioCtx.createGain();o.frequency.setValueAtTime(150,now);o.frequency.exponentialRampToValueAtTime(40,now+0.2);g.gain.setValueAtTime(vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.4);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.4);}
+ else if(type==='snare'){let b=audioCtx.createBuffer(1,audioCtx.sampleRate*0.2,audioCtx.sampleRate);let d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,1.5);let n=audioCtx.createBufferSource();n.buffer=b;let ng=audioCtx.createGain();ng.gain.setValueAtTime(vol,now);ng.gain.exponentialRampToValueAtTime(0.01,now+0.2);n.connect(ng);ng.connect(audioCtx.destination);n.start(now);let o=audioCtx.createOscillator();o.frequency.setValueAtTime(180,now);let og=audioCtx.createGain();og.gain.setValueAtTime(vol,now);og.gain.exponentialRampToValueAtTime(0.01,now+0.1);o.connect(og);og.connect(audioCtx.destination);o.start(now);o.stop(now+0.1);}
+ else if(type==='hihat'){let o=audioCtx.createOscillator();o.type='square';o.frequency.setValueAtTime(8000,now);let g=audioCtx.createGain();g.gain.setValueAtTime(vol*0.5,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.08);let f=audioCtx.createBiquadFilter();f.type='highpass';f.frequency.value=5000;o.connect(f);f.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.08);}
+ else if(type==='crash'){let o1=audioCtx.createOscillator();o1.frequency.setValueAtTime(1200,now);let o2=audioCtx.createOscillator();o2.frequency.setValueAtTime(2400,now);let g=audioCtx.createGain();g.gain.setValueAtTime(vol*0.7,now);g.gain.exponentialRampToValueAtTime(0.01,now+1.2);o1.connect(g);o2.connect(g);g.connect(audioCtx.destination);o1.start(now);o1.stop(now+1.2);o2.start(now);o2.stop(now+1.2);}
+ else if(type==='tom1'||type==='tom2'){let freq=type==='tom1'?180:120;let o=audioCtx.createOscillator();o.frequency.setValueAtTime(freq,now);o.frequency.exponentialRampToValueAtTime(freq*0.6,now+0.3);let g=audioCtx.createGain();g.gain.setValueAtTime(vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.5);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.5);}
 }
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+function isChordLine(line){
+ if(!line.trim())return false;let t=line.trim();
+ if(/[áéíóúàãõçâêôÁÉÍÓÚÃÕÇ]/g.test(t))return false;
+ let words=t.split(/\s+/);
+ if(words.length>=3&&words.filter(w=>w.length>4).length>=2)return false;
+ let onlyChordChars=/^[A-G0-9#bmM()\/\s]+$/;
+ if(!onlyChordChars.test(t))return false;
+ if(/[A-G][#b]?[0-9]/.test(t)||/[A-G]5/.test(t)||/[A-G]\//.test(t)||/\b[A-G]M/.test(t)||/^D5/.test(t)||/BM7/.test(t)||/A11/.test(t)){if(t.length>60)return false;return true;}
+ return false;
+}
+function isSectionLabel(line){let u=line.trim().toUpperCase();return ['PRIMEIRA PARTE','SEGUNDA PARTE','REFRÃO','REFRAO','PONTE','INTRO','VERSO','CHORUS','SOLO','FINAL'].some(s=>u.includes(s))&&line.trim().length<30;}
+function simplifyChords(txt){return txt.replace(/D7M\(9\)/g,'D').replace(/BM7\(11\)/g,'B').replace(/BM7\(9\/11\)/g,'B').replace(/A11\/C#/g,'A').replace(/G\/B/g,'G').replace(/E\/B/g,'E').replace(/A7\(4\)/g,'A').replace(/G7M/g,'G');}
+function parseContent(){
+ let raw=document.getElementById('inputCifra').value;
+ if(document.getElementById('simplificada').checked){raw=simplifyChords(raw);}
+ let lines=raw.split('\n');let blocks=[];
+ for(let l of lines){
+   if(!l.trim()){blocks.push({type:'space'});continue;}
+   if(isSectionLabel(l)){blocks.push({type:'section',text:l.trim()});continue;}
+   if(isChordLine(l)){blocks.push({type:'cifra',text:l.trim()});continue;}
+   blocks.push({type:'letra',text:l.trim()});
+ }
+ return blocks;
+}
 function renderCifra(){
- let txt=document.getElementById('inputCifra').value;
- if(document.getElementById('simplificada').checked){txt=txt.replace(/Am7|Am9/g,'Am').replace(/G7|G9/g,'G').replace(/F7M/g,'F').replace(/C7M/g,'C');}
- let html=txt.replace(/\[([^\]]+)\]/g,'<span class="chord" style="font-size:'+cifraSize+'px">$1</span>');
- document.getElementById('output').innerHTML=html;
- document.getElementById('output').style.fontSize=letraSize+'px';
- document.getElementById('sizeInfo').innerText='Letra '+letraSize+'px | Cifra '+cifraSize+'px';
- renderTelaGrande();
+ let blocks=parseContent();let out=document.getElementById('output');out.innerHTML='';
+ blocks.forEach(b=>{
+   if(b.type==='space'){out.innerHTML+='<div style="height:12px"></div>';}
+   else if(b.type==='section'){out.innerHTML+=`<div><span class="parte-label">${b.text.toUpperCase()}</span></div>`;}
+   else if(b.type==='cifra'){out.innerHTML+=`<div style="margin-bottom:2px"><div class="cifra-line" style="font-size:${cifraSize}px">${b.text}</div></div>`;}
+   else if(b.type==='letra'){out.innerHTML+=`<div style="margin-top:2px"><div class="letra-line" style="font-size:${letraSize}px">${b.text.toUpperCase()}</div></div>`;}
+ });
+ document.getElementById('sizeInfo').innerText=`Letra ${letraSize}px | Cifra ${cifraSize}px`;renderTelaGrande();
 }
 function renderTelaGrande(){
- let txt=document.getElementById('inputCifra').value;
- let tg=document.getElementById('telaGrandeContent');
- let h='<div style="text-align:center;color:var(--gold);font-size:12px;border:1px dashed var(--gold);padding:8px;border-radius:20px;margin-bottom:16px">TOQUE PARA VOLTAR • SINCRONIZADO: Letra '+letraSize+'px / Cifra '+cifraSize+'px</div>';
- txt.split('\n').forEach(l=>{
-   let m=l.match(/\[([^\]]+)\]/);
-   if(m){h+=`<div style="font-size:${cifraSize}px;color:#d4af37;font-weight:900;background:rgba(212,175,55,0.15);display:inline-block;padding:4px 12px;border-radius:8px;margin-top:18px">${m[1]}</div>`;}
-   let lyric=l.replace(/\[.*?\]/g,'').trim();
-   if(lyric){h+=`<div style="font-size:${letraSize}px;color:#f5e6a8;margin-bottom:18px">${lyric.toUpperCase()}</div>`;}
+ let blocks=parseContent();let tg=document.getElementById('telaGrandeContent');let h='';
+ blocks.forEach(b=>{
+   if(b.type==='space'){h+='<div style="height:18px"></div>';}
+   else if(b.type==='section'){h+=`<div><span class="parte-label" style="font-size:18px;padding:8px 18px">${b.text.toUpperCase()}</span></div>`;}
+   else if(b.type==='cifra'){h+=`<div class="tela-cifra" style="font-size:${cifraSize+5}px">${b.text}</div>`;}
+   else if(b.type==='letra'){h+=`<div class="tela-letra" style="font-size:${letraSize+10}px">${b.text.toUpperCase()}</div>`;}
  });
- tg.innerHTML=h;
+ tg.innerHTML=h;document.getElementById('telaSyncInfo').innerText=`Letra ${letraSize}px | Cifra ${cifraSize}px`;
 }
-function changeSize(d,tipo){if(tipo==='letra'){letraSize=Math.max(10,Math.min(40,letraSize+d*2));}else{cifraSize=Math.max(10,Math.min(40,cifraSize+d*2));}renderCifra();}
+function changeSize(d,tipo){if(tipo==='letra'){letraSize=Math.max(10,Math.min(50,letraSize+d*2));}else{cifraSize=Math.max(8,Math.min(40,cifraSize+d*2));}renderCifra();}
 function changeVel(){vel+=0.2;if(vel>2.5)vel=0.5;document.getElementById('velBtn').innerText='VEL '+vel.toFixed(1)+'x';}
-function toggleTela(){let tg=document.getElementById('telaGrande');tg.style.display=tg.style.display==='block'?'none':'block';if(tg.style.display==='block'){renderTelaGrande();}}
-function toggleScroll(){scrolling=!scrolling;let btn=document.getElementById('btnScroll');btn.innerText=scrolling?'⏸ PAUSAR':'▶ AUTO SCROLL';btn.classList.toggle('active',scrolling);if(scrolling){scrollInt=setInterval(()=>{window.scrollBy(0,vel);progress+=0.08;if(progress>100)progress=0;document.getElementById('bar').style.width=progress+'%';document.getElementById('roll').innerText=Math.round(progress)+'%';},40);}else{clearInterval(scrollInt);}}
-document.getElementById('vsFader').addEventListener('input',e=>{document.getElementById('vsVal').innerText=e.target.value+'%';});
+function toggleTela(){let tg=document.getElementById('telaGrande');tg.style.display=tg.style.display==='block'?'none':'block';if(tg.style.display==='block')renderTelaGrande();}
+function toggleScroll(){scrolling=!scrolling;let btn=document.getElementById('btnScroll');btn.innerText=scrolling?'⏸ PAUSAR':'▶ AUTO SCROLL';btn.classList.toggle('active',scrolling);if(scrolling){scrollInt=setInterval(()=>{window.scrollBy(0,vel*1.2);progress+=0.05;if(progress>100)progress=0;document.getElementById('bar').style.width=progress+'%';document.getElementById('roll').innerText=Math.round(progress)+'%';},35);}else{clearInterval(scrollInt);}}
+function switchVS(type){
+ currentVSType=type;document.querySelectorAll('.vs-tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab'+type.charAt(0).toUpperCase()+type.slice(1)).classList.add('active');
+ document.getElementById('boxBateria').style.display=(type==='bateria'||type==='ambos')?'block':'none';
+ document.getElementById('boxPlayback').style.display=(type==='playback'||type==='ambos')?'block':'none';
+ document.getElementById('boxAmbos').style.display=(type==='ambos')?'block':'none';
+ if(type==='playback')document.getElementById('boxPlayback').style.display='block';
+}
+function loadVS(input){
+ let file=input.files[0];if(!file)return;let url=URL.createObjectURL(file);let audio=document.getElementById('audioVS');audio.src=url;
+ document.getElementById('vsInfo').innerHTML=`✅ <b>${file.name}</b> (${(file.size/1024/1024).toFixed(1)} MB)`;audio.play();
+}
+document.getElementById('volBateria').addEventListener('input',e=>document.getElementById('volBateriaVal').innerText=e.target.value+'%');
+document.getElementById('volVS').addEventListener('input',e=>{document.getElementById('volVSVal').innerText=e.target.value+'%';document.getElementById('audioVS').volume=e.target.value/100;});
+document.getElementById('vsFader').addEventListener('input',e=>{
+ let v=e.target.value;document.getElementById('vsVal').innerText=v+'%';
+ let bateriaVol=(100-v)/100*0.8,vsVol=v/100;document.getElementById('audioVS').volume=vsVol;
+ document.getElementById('volBateria').value=Math.round(bateriaVol*100);document.getElementById('volBateriaVal').innerText=Math.round(bateriaVol*100)+'%';
+});
 function setTheme(bg,text,card){document.body.style.background=bg;document.body.style.color=text;document.querySelectorAll('.card').forEach(c=>c.style.background=card);}
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').style.display='block';});
+document.getElementById('installBtn').addEventListener('click',async()=>{
+ if(!deferredPrompt){alert('Para instalar: Chrome > 3 pontinhos > Instalar app / Adicionar à tela inicial');return;}
+ deferredPrompt.prompt();const {outcome}=await deferredPrompt.userChoice;if(outcome==='accepted'){document.getElementById('installBtn').style.display='none';}deferredPrompt=null;
+});
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
 renderCifra();
 </script>
 </body>
