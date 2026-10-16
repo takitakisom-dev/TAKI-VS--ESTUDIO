@@ -1,10 +1,10 @@
 {
-  "name": "TAKI VS ESTUDIO",
-  "short_name": "TAKI VS ESTUDIO",
-  "description": "TAKI VS ESTUDIO - Cifra + VS vinculado + BPM + Pitch + Tela cheia",
+  "name": "TAKI VS ESTUDIO v8",
+  "short_name": "TAKI VS v8",
+  "description": "Profissional - Pastas por artista, cifras sem VS e com VS, folha caderno",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#d4af37",
+  "background_color": "#080808",
+  "theme_color": "#0a0a0a",
   "icons": [{"src": "icon-512.png","sizes": "512x512","type": "image/png","purpose": "any maskable"}]
 }
