@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS ESTUDIO",
-  "short_name": "TAKI VS",
-  "description": "TAKI VS ESTUDIO - Cifras com VS bateria playback, pastas, backup",
+  "name": "TAKI VS ESTUDIO v10",
+  "short_name": "TAKI VS v10",
+  "description": "v10 - Scroll só da letra/cifra + 7 temas + BKP + bateria real",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
