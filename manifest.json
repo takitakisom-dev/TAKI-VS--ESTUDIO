@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS ESTUDIO v10.2",
+  "name": "TAKI VS ESTUDIO v10.3",
   "short_name": "TAKI VS",
-  "description": "Fix claridade - 7 temas visiveis",
+  "description": "Transpose botoes -7 a +7 + simplificar",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
