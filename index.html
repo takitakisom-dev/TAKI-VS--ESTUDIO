@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAKI VS ESTÚDIO</title>
+<title>TAKI VS ESTUDIO</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-512.png">
 <meta name="theme-color" content="#d4af37">
@@ -12,53 +11,67 @@
 :root{--gold:#d4af37;--bg:#0a0a0a;--card:#151515;--text:#f5e6a8}
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui}
 body{background:var(--bg);color:var(--text);padding:12px}
-.header{border:2px solid var(--gold);padding:12px;text-align:center;background:linear-gradient(#1a1a1a,#0a0a0a);border-radius:8px}
+.header{border:2px solid var(--gold);padding:12px;text-align:center;background:linear-gradient(#1a1a1a,#0a0a0a);border-radius:12px}
 .header h1{color:var(--gold);letter-spacing:2px;font-size:22px}
 .top-row{display:flex;gap:8px;margin:12px 0}
-.btn{flex:1;border:1.5px solid var(--gold);background:#111;color:var(--gold);padding:10px;border-radius:20px;font-weight:bold;cursor:pointer}
+.btn{flex:1;border:1.5px solid var(--gold);background:#111;color:var(--gold);padding:12px;border-radius:25px;font-weight:900;cursor:pointer}
 .btn.active{background:var(--gold);color:#000}
 .themes{display:flex;gap:8px;overflow-x:auto;padding:6px 0}
 .dot{width:36px;height:36px;border-radius:50%;border:2px solid var(--gold);cursor:pointer;flex-shrink:0}
-.card{border:1.5px solid var(--gold);border-radius:8px;padding:10px;margin:10px 0;background:var(--card)}
-textarea{width:100%;height:90px;background:#000;color:var(--gold);border:1px solid var(--gold);padding:8px;border-radius:6px}
+.card{border:1.5px solid var(--gold);border-radius:12px;padding:12px;margin:12px 0;background:var(--card)}
+textarea{width:100%;height:90px;background:#000;color:var(--gold);border:1px solid var(--gold);padding:10px;border-radius:8px}
 .fader{display:flex;align-items:center;gap:10px}
 input[type=range]{flex:1;accent-color:var(--gold)}
-.lyric{white-space:pre-wrap;line-height:1.8;font-size:16px}
-.chord{color:var(--gold);font-weight:bold}
-.controls{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.small{border:1px solid var(--gold);background:#000;color:var(--gold);padding:6px 10px;border-radius:15px;font-size:12px;cursor:pointer}
-.progress{width:100%;height:8px;background:#333;border-radius:4px;overflow:hidden;margin-top:10px}
-.progress-bar{height:100%;background:var(--gold);width:35%}
-#telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:99;padding:20px;overflow-y:auto}
+.lyric{white-space:pre-wrap;line-height:1.9;font-size:16px}
+.chord{color:var(--gold);font-weight:900;background:rgba(212,175,55,0.15);padding:2px 6px;border-radius:6px}
+.controls{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.small{border:1.2px solid var(--gold);background:#000;color:var(--gold);padding:7px 12px;border-radius:20px;font-size:12px;cursor:pointer;font-weight:700}
+.progress{width:100%;height:10px;background:#333;border-radius:5px;overflow:hidden;margin-top:12px;border:1px solid var(--gold)}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),#fff0a0);width:35%}
+#telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;padding:20px;overflow-y:auto}
+.drum-kit{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.pad{border:2px solid var(--gold);background:linear-gradient(145deg,#1a1a1a,#000);color:var(--gold);padding:18px 6px;border-radius:12px;font-weight:900;font-size:12px;cursor:pointer;text-align:center;box-shadow:0 4px 0 #8a6d1b;transition:0.1s}
+.pad:active{transform:translateY(4px);background:var(--gold);color:#000}
 </style>
 </head>
 <body>
-<div class="header"><h1>TAKI VS ESTÚDIO</h1><small>Modo Composição • Tema Diplomático</small></div>
+<div class="header"><h1>TAKI VS ESTUDIO</h1><small>Modo Composicao • Diplomata Gold • Bateria com Som</small></div>
 <div class="top-row">
 <button class="btn" onclick="toggleTela()">⛶ TELA GRANDE</button>
 <button class="btn active" id="btnScroll" onclick="toggleScroll()">▶ AUTO SCROLL</button>
 </div>
 <div><small style="color:var(--gold)">TEMA DE CORES</small><div class="themes">
-<div class="dot" style="background:#0a1931" onclick="setTheme('#0a1931','#d4af37')"></div>
-<div class="dot" style="background:#ffb6d9" onclick="setTheme('#2a0a1a','#fff')"></div>
-<div class="dot" style="background:#000" onclick="setTheme('#000','#d4af37')"></div>
-<div class="dot" style="background:#0a5c36" onclick="setTheme('#0a2a1a','#aaffaa')"></div>
-<div class="dot" style="background:#2563eb" onclick="setTheme('#0a1931','#aaccff')"></div>
-<div class="dot" style="background:#fff" onclick="setTheme('#fff','#000')"></div>
-<div class="dot" style="background:#ff00aa" onclick="setTheme('#2a0a2a','#ff88cc')"></div>
+<div class="dot" style="background:#0a1931" onclick="setTheme('#0a1931','#d4af37','#151515')"></div>
+<div class="dot" style="background:#ffb6d9" onclick="setTheme('#2a0a1a','#fff','#3a152a')"></div>
+<div class="dot" style="background:#000" onclick="setTheme('#000','#d4af37','#151515')"></div>
+<div class="dot" style="background:#0a5c36" onclick="setTheme('#0a2a1a','#aaffaa','#152a1a')"></div>
+<div class="dot" style="background:#2563eb" onclick="setTheme('#0a1931','#aaccff','#102040')"></div>
+<div class="dot" style="background:#fff" onclick="setTheme('#fff','#000','#eee')"></div>
+<div class="dot" style="background:#ff00aa" onclick="setTheme('#2a0a2a','#ff88cc','#3a1530')"></div>
 </div></div>
 <div class="card">
 <b>📝 COLE SUA CIFRA AQUI</b>
-<textarea id="inputCifra">[Am] No silêncio da noite eu caminho só
-[G] Pensando em você, sigo sem temor
-[F] Entre acordes e versos, só paixão
-[C] É você e eu, na nossa canção</textarea>
+<textarea id="inputCifra">[Am] No silencio da noite eu caminho so
+[G] Pensando em voce, sigo sem temor
+[F] Entre acordes e versos, so paixao
+[C] E voce e eu, na nossa cancao</textarea>
 <div style="margin-top:8px"><button class="small" onclick="renderCifra()">RENDERIZAR</button>
 <label style="margin-left:10px"><input type="checkbox" id="simplificada" onchange="renderCifra()"> CIFRA SIMPLIFICADA</label></div>
 </div>
 <div class="card">
-<b>🎚️ VS FADER — BALANÇO TAKI x ESTÚDIO</b>
+<b>🎚️ VS FADER — BALANCO TAKI x ESTUDIO</b>
 <div class="fader"><span>TAKI</span><input type="range" id="vsFader" min="0" max="100" value="50"><span>SOUL</span><span id="vsVal">50%</span></div>
+</div>
+<div class="card">
+<b>🥁 BATERIA TAKI - COM SOM REAL</b>
+<div class="drum-kit">
+<button class="pad" onclick="playDrum('kick')">🥁<br>BOMBO</button>
+<button class="pad" onclick="playDrum('snare')">🥁<br>CAIXA</button>
+<button class="pad" onclick="playDrum('hihat')">🎩<br>CHIMBAL</button>
+<button class="pad" onclick="playDrum('crash')">💥<br>PRATO</button>
+<button class="pad" onclick="playDrum('tom1')">🔵<br>TOM 1</button>
+<button class="pad" onclick="playDrum('tom2')">🔴<br>TOM 2</button>
+</div>
 </div>
 <div class="card">
 <b>🎵 LETRA & CIFRA</b>
@@ -68,47 +81,54 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 <button class="small" onclick="changeSize(1,'letra')">A+ LETRA</button>
 <button class="small" onclick="changeSize(-1,'cifra')">C- CIFRA</button>
 <button class="small" onclick="changeSize(1,'cifra')">C+ CIFRA</button>
-<button class="small" id="velBtn" onclick="changeVel()">VELOCIDADE 1.0x</button>
+<button class="small" id="velBtn" onclick="changeVel()">VEL 1.0x</button>
 <button class="small" style="background:var(--gold);color:#000" onclick="toggleScroll()">▶ PLAY</button>
 </div>
 <div class="progress"><div id="bar" class="progress-bar"></div></div>
-<small>Rolagem: <span id="roll">35%</span></small>
+<div style="display:flex;justify-content:space-between"><small>Rolagem: <span id="roll">35%</span></small><small id="sizeInfo"></small></div>
 </div>
-<div id="telaGrande" onclick="toggleTela()"></div>
+<div id="telaGrande" onclick="toggleTela()"><div id="telaGrandeContent"></div></div>
 <script>
 let letraSize=16,cifraSize=18,vel=1.0,scrolling=false,scrollInt=null,progress=35;
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+let audioCtx=null;
+function initAudio(){if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();}}
+function playDrum(type){
+ initAudio(); const now=audioCtx.currentTime;
+ if(type==='kick'){let o=audioCtx.createOscillator();let g=audioCtx.createGain();o.frequency.setValueAtTime(150,now);o.frequency.exponentialRampToValueAtTime(40,now+0.2);g.gain.setValueAtTime(1,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.4);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.4);}
+ else if(type==='snare'){let nBuffer=audioCtx.createBuffer(1,audioCtx.sampleRate*0.2,audioCtx.sampleRate);let data=nBuffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/data.length,2);let n=audioCtx.createBufferSource();n.buffer=nBuffer;let ng=audioCtx.createGain();ng.gain.setValueAtTime(1,now);ng.gain.exponentialRampToValueAtTime(0.01,now+0.2);n.connect(ng);ng.connect(audioCtx.destination);n.start(now);let o=audioCtx.createOscillator();o.frequency.setValueAtTime(180,now);let og=audioCtx.createGain();og.gain.setValueAtTime(1,now);og.gain.exponentialRampToValueAtTime(0.01,now+0.1);o.connect(og);og.connect(audioCtx.destination);o.start(now);o.stop(now+0.1);}
+ else if(type==='hihat'){let o=audioCtx.createOscillator();o.type='square';o.frequency.setValueAtTime(8000,now);let g=audioCtx.createGain();g.gain.setValueAtTime(0.4,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.08);let f=audioCtx.createBiquadFilter();f.type='highpass';f.frequency.value=5000;o.connect(f);f.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.08);}
+ else if(type==='crash'){let o1=audioCtx.createOscillator();o1.frequency.setValueAtTime(1200,now);let o2=audioCtx.createOscillator();o2.frequency.setValueAtTime(2400,now);let g=audioCtx.createGain();g.gain.setValueAtTime(0.6,now);g.gain.exponentialRampToValueAtTime(0.01,now+1.2);o1.connect(g);o2.connect(g);g.connect(audioCtx.destination);o1.start(now);o1.stop(now+1.2);o2.start(now);o2.stop(now+1.2);}
+ else if(type==='tom1'||type==='tom2'){let freq=type==='tom1'?180:120;let o=audioCtx.createOscillator();o.frequency.setValueAtTime(freq,now);o.frequency.exponentialRampToValueAtTime(freq*0.6,now+0.3);let g=audioCtx.createGain();g.gain.setValueAtTime(0.9,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.5);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.5);}
+}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
 function renderCifra(){
  let txt=document.getElementById('inputCifra').value;
  if(document.getElementById('simplificada').checked){txt=txt.replace(/Am7|Am9/g,'Am').replace(/G7|G9/g,'G').replace(/F7M/g,'F').replace(/C7M/g,'C');}
- let html=txt.replace(/\[([^\]]+)\]/g,'<span class="chord" style="font-size:'+cifraSize+'px"> $1 </span><br>');
+ let html=txt.replace(/\[([^\]]+)\]/g,'<span class="chord" style="font-size:'+cifraSize+'px">$1</span>');
  document.getElementById('output').innerHTML=html;
  document.getElementById('output').style.fontSize=letraSize+'px';
- renderTelaGrande(txt);
+ document.getElementById('sizeInfo').innerText='Letra '+letraSize+'px | Cifra '+cifraSize+'px';
+ renderTelaGrande();
 }
-function renderTelaGrande(txt){
- let tg=document.getElementById('telaGrande');
- let lines=txt.split('\n');let h='';
- lines.forEach(l=>{
-  let m=l.match(/\[([^\]]+)\]/);
-  if(m){h+=`<div style="font-size:${cifraSize*2.5}px;color:#d4af37;font-weight:900">${m[1]}</div>`}
-  let lyric=l.replace(/\[.*?\]/g,'').trim();
-  if(lyric){h+=`<div style="font-size:${letraSize*1.8}px;color:#f5e6a8;margin-bottom:24px">${lyric.toUpperCase()}</div>`}
+function renderTelaGrande(){
+ let txt=document.getElementById('inputCifra').value;
+ let tg=document.getElementById('telaGrandeContent');
+ let h='<div style="text-align:center;color:var(--gold);font-size:12px;border:1px dashed var(--gold);padding:8px;border-radius:20px;margin-bottom:16px">TOQUE PARA VOLTAR • SINCRONIZADO: Letra '+letraSize+'px / Cifra '+cifraSize+'px</div>';
+ txt.split('\n').forEach(l=>{
+   let m=l.match(/\[([^\]]+)\]/);
+   if(m){h+=`<div style="font-size:${cifraSize}px;color:#d4af37;font-weight:900;background:rgba(212,175,55,0.15);display:inline-block;padding:4px 12px;border-radius:8px;margin-top:18px">${m[1]}</div>`;}
+   let lyric=l.replace(/\[.*?\]/g,'').trim();
+   if(lyric){h+=`<div style="font-size:${letraSize}px;color:#f5e6a8;margin-bottom:18px">${lyric.toUpperCase()}</div>`;}
  });
- tg.innerHTML='<div style="text-align:center;color:#d4af37;font-size:12px;margin-bottom:20px">TOQUE PARA VOLTAR</div>'+h;
+ tg.innerHTML=h;
 }
-function changeSize(d,tipo){
- if(tipo=='letra'){letraSize+=d*2;} else{cifraSize+=d*2;} renderCifra();
-}
-function changeVel(){vel+=0.2; if(vel>2.0)vel=0.5; document.getElementById('velBtn').innerText='VELOCIDADE '+vel.toFixed(1)+'x';}
-function toggleTela(){let tg=document.getElementById('telaGrande'); tg.style.display=tg.style.display=='block'?'none':'block'; if(tg.style.display=='block')renderCifra();}
-function toggleScroll(){
- scrolling=!scrolling;
- if(scrolling){scrollInt=setInterval(()=>{window.scrollBy(0, vel); progress+=0.1; document.getElementById('bar').style.width=progress+'%';}, 50);} else {clearInterval(scrollInt);}
-}
-document.getElementById('vsFader').addEventListener('input',e=>{document.getElementById('vsVal').innerText=e.target.value+'%'});
+function changeSize(d,tipo){if(tipo==='letra'){letraSize=Math.max(10,Math.min(40,letraSize+d*2));}else{cifraSize=Math.max(10,Math.min(40,cifraSize+d*2));}renderCifra();}
+function changeVel(){vel+=0.2;if(vel>2.5)vel=0.5;document.getElementById('velBtn').innerText='VEL '+vel.toFixed(1)+'x';}
+function toggleTela(){let tg=document.getElementById('telaGrande');tg.style.display=tg.style.display==='block'?'none':'block';if(tg.style.display==='block'){renderTelaGrande();}}
+function toggleScroll(){scrolling=!scrolling;let btn=document.getElementById('btnScroll');btn.innerText=scrolling?'⏸ PAUSAR':'▶ AUTO SCROLL';btn.classList.toggle('active',scrolling);if(scrolling){scrollInt=setInterval(()=>{window.scrollBy(0,vel);progress+=0.08;if(progress>100)progress=0;document.getElementById('bar').style.width=progress+'%';document.getElementById('roll').innerText=Math.round(progress)+'%';},40);}else{clearInterval(scrollInt);}}
+document.getElementById('vsFader').addEventListener('input',e=>{document.getElementById('vsVal').innerText=e.target.value+'%';});
+function setTheme(bg,text,card){document.body.style.background=bg;document.body.style.color=text;document.querySelectorAll('.card').forEach(c=>c.style.background=card);}
 renderCifra();
-function setTheme(bg,c){document.body.style.background=bg; document.body.style.color=c;}
 </script>
 </body>
 </html>
