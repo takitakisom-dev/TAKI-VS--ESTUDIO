@@ -3,22 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAKI VS ESTUDIO</title>
+<title>TAKI VS ESTUDIO v6</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-512.png">
 <meta name="theme-color" content="#d4af37">
 <style>
-:root{--gold:#d4af37;--bg:#000;--card:#151515;--text:#f5e6a8;--red:#ff3b30}
+:root{--gold:#d4af37;--bg:#000;--card:#151515;--text:#f5e6a8;--red:#ff3b30;--green:#34c759}
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui}
-body{background:var(--bg);color:var(--text);padding:12px;padding-bottom:100px}
+body{background:var(--bg);color:var(--text);padding:12px;padding-bottom:120px}
 .header{border:2px solid var(--gold);padding:12px;text-align:center;background:linear-gradient(#1a1a1a,#000);border-radius:12px;position:sticky;top:0;z-index:20}
-.header h1{color:var(--gold);letter-spacing:2px;font-size:20px}
+.header h1{color:var(--gold);letter-spacing:2px;font-size:22px}
+.header small{color:var(--gold);font-weight:700}
 .top-row{display:flex;gap:8px;margin:12px 0}
-.btn{flex:1;border:1.5px solid var(--gold);background:#111;color:var(--gold);padding:12px;border-radius:25px;font-weight:900;cursor:pointer;font-size:12px}
+.btn{flex:1;border:1.5px solid var(--gold);background:#111;color:var(--gold);padding:12px;border-radius:25px;font-weight:900;cursor:pointer;font-size:11px}
 .btn.active{background:var(--gold);color:#000}
-.install-btn{display:none;position:fixed;bottom:20px;left:12px;right:12px;background:var(--gold);color:#000;padding:16px;border-radius:30px;font-weight:900;text-align:center;z-index:100;border:none;box-shadow:0 0 25px var(--gold);font-size:16px}
+.install-btn{display:block;position:fixed;bottom:12px;left:12px;right:12px;background:var(--gold);color:#000;padding:14px;border-radius:30px;font-weight:900;text-align:center;z-index:100;border:none;box-shadow:0 0 25px var(--gold);font-size:14px}
 .card{border:1.5px solid var(--gold);border-radius:12px;padding:12px;margin:12px 0;background:var(--card)}
-textarea{width:100%;height:120px;background:#000;color:var(--gold);border:1px solid var(--gold);padding:10px;border-radius:8px;font-size:13px}
+.card.save{border:2.5px solid var(--green);box-shadow:0 0 20px rgba(52,199,87,0.3);background:linear-gradient(145deg,#0a1a0a,#151515)}
+textarea{width:100%;height:110px;background:#000;color:var(--gold);border:1px solid var(--gold);padding:10px;border-radius:8px;font-size:13px}
+input[type=text]{width:100%;background:#000;color:var(--gold);border:1.5px solid var(--gold);padding:12px;border-radius:10px;font-size:14px;font-weight:700}
 .fader{display:flex;align-items:center;gap:10px;margin-top:10px}
 input[type=range]{flex:1;accent-color:var(--gold)}
 .cifra-line{color:var(--gold);font-weight:900;font-size:15px;background:rgba(212,175,55,0.12);display:inline-block;padding:2px 8px;border-radius:6px}
@@ -27,6 +30,8 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 .small{border:1.2px solid var(--gold);background:#000;color:var(--gold);padding:7px 12px;border-radius:20px;font-size:11px;cursor:pointer;font-weight:700}
 .small.red{border-color:var(--red);color:var(--red)}
 .small.red.active{background:var(--red);color:#fff}
+.small.green{border-color:var(--green);color:var(--green);background:rgba(52,199,87,0.1)}
+.small.green.active{background:var(--green);color:#000}
 .progress{width:100%;height:10px;background:#333;border-radius:5px;overflow:hidden;margin-top:12px;border:1px solid var(--gold)}
 .progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),#fff0a0);width:0%}
 #telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;overflow-y:auto;padding:0}
@@ -41,20 +46,47 @@ input[type=range]{flex:1;accent-color:var(--gold)}
 .vs-tabs{display:flex;gap:6px;margin-top:10px}
 .vs-tab{flex:1;padding:10px;border-radius:20px;border:1.5px solid var(--gold);background:#000;color:var(--gold);font-weight:800;font-size:11px;cursor:pointer;text-align:center}
 .vs-tab.active{background:var(--gold);color:#000}
-.player-box{background:#000;border:1px dashed var(--gold);border-radius:10px;padding:10px;margin-top:10px}
+.player-box{background:#000;border:2px solid var(--gold);border-radius:12px;padding:12px;margin-top:12px;display:block}
 audio{width:100%;margin-top:8px}
-.file-label{border:1.5px solid var(--gold);padding:10px;border-radius:20px;display:block;text-align:center;cursor:pointer;background:#111;color:var(--gold);font-weight:800}
+.file-label{border:2px solid var(--gold);padding:14px;border-radius:25px;display:block;text-align:center;cursor:pointer;background:linear-gradient(#1a1a1a,#000);color:var(--gold);font-weight:900;font-size:14px;box-shadow:0 0 12px rgba(212,175,55,0.3)}
 .bpm-box{background:#000;border:1.5px solid var(--gold);border-radius:10px;padding:10px;margin-top:10px}
 .bpm-display{font-size:36px;font-weight:900;color:var(--gold);text-align:center}
 .pitch-display{font-size:24px;font-weight:900;color:#aaffaa;text-align:center}
 .rec-box{background:rgba(255,59,48,0.08);border:1.5px solid var(--red);border-radius:10px;padding:10px;margin-top:10px}
+.repertorio-item{background:#000;border:1.5px solid var(--gold);border-radius:10px;padding:10px;margin:8px 0;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.repertorio-info{flex:1}
+.repertorio-title{color:var(--gold);font-weight:900;font-size:14px}
+.repertorio-meta{color:#aaa;font-size:10px;margin-top:2px}
 </style>
 </head>
 <body>
-<div class="header"><h1>TAKI VS ESTUDIO</h1><small>Final • BPM • Pitch • Gravacao • VS</small></div>
-<div class="top-row">
-<button class="btn" onclick="toggleTela()">⛶ TELA GRANDE</button>
-<button class="btn active" id="btnScroll" onclick="toggleScroll()">▶ AUTO SCROLL</button>
+<div class="header"><h1>TAKI VS ESTUDIO v6</h1><small>🚀 REPERTORIO VINCULADO - Cifra + VS + BPM + Gravacao</small></div>
+<div class="top-row"><button class="btn" onclick="toggleTela()">⛶ TELA GRANDE</button><button class="btn active" id="btnScroll" onclick="toggleScroll()">▶ AUTO SCROLL</button></div>
+<div class="card" style="border-width:2.5px;box-shadow:0 0 18px rgba(212,175,55,0.4)">
+<b>📁 ADD SEU PLAYBACK / VS - SEMPRE VISIVEL</b>
+<label class="file-label" for="fileVS">📁 CLIQUE AQUI PARA PUXAR SEU PLAYBACK / VS MP3</label>
+<input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)">
+<div id="vsInfo" style="margin-top:8px;font-size:12px;color:var(--gold)">Nenhum arquivo - clique acima</div>
+<audio id="audioVS" controls style="display:block"></audio>
+<div class="fader"><small>VOL VS</small><input type="range" id="volVS" min="0" max="100" value="80"><span id="volVSVal">80%</span></div>
+</div>
+<div class="card save">
+<b style="color:var(--green)">💾 SALVAR MUSICA NO REPERTORIO (Cifra + VS Vinculados)</b>
+<small style="display:block;color:var(--green);margin:6px 0">Salva tudo junto: cifra + VS + BPM + Pitch + bateria gravada. Na hora do show, puxa 1 clique!</small>
+<input type="text" id="nomeMusica" placeholder="Ex: Meu Caminho - Alto Louvor - Tom D">
+<div style="display:flex;gap:8px;margin-top:10px">
+<button class="small green" style="flex:1;padding:12px;font-size:13px;font-weight:900" onclick="salvarRepertorio()">💾 SALVAR NO REPERTORIO</button>
+</div>
+<div id="saveStatus" style="margin-top:8px;font-size:11px;color:var(--green)"></div>
+</div>
+<div class="card" style="border-color:var(--gold);border-width:2px">
+<b>📚 MEU REPERTORIO - PUXA TUDO VINCULADO</b>
+<small style="display:block;color:var(--gold);margin:6px 0">Clica em TOCAR e já vem cifra + VS + BPM + tudo automatico!</small>
+<div id="listaRepertorio"><div style="font-size:12px;color:#888;padding:10px;text-align:center">Nenhuma musica salva ainda.<br>Salve sua primeira musica acima!</div></div>
+<div style="display:flex;gap:6px;margin-top:10px">
+<button class="small" onclick="carregarRepertorio()">🔄 ATUALIZAR LISTA</button>
+<button class="small red" onclick="limparTudo()">🗑️ LIMPAR TUDO</button>
+</div>
 </div>
 <div class="card">
 <b>📝 COLE SUA CIFRA (CIFRA CLUB)</b>
@@ -64,117 +96,52 @@ D9 A11/C# G/B
 
 Primeira Parte
 D5 D7M(9) D5
-MEU CAMINHO É CADA MANHÃ
+MEU CAMINHO E CADA MANHA
 D7M(9) BM7(11)
-NÃO PROCURE SABER ONDE ESTOU
+NAO PROCURE SABER ONDE ESTOU
 BM7(9/11) BM7(11)
-MEU DESTINO NÃO É DE NINGUÉM
+MEU DESTINO NAO E DE NINGUEM
 A7(4) D5
-E EU NÃO DEIXO OS MEUS PASSOS NO CHÃO</textarea>
-<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-<button class="small" onclick="renderCifra()">✨ RENDERIZAR</button>
-<label style="margin-left:6px;font-size:12px"><input type="checkbox" id="simplificada" onchange="renderCifra()"> CIFRA SIMPLIFICADA</label>
-</div>
+E EU NAO DEIXO OS MEUS PASSOS NO CHAO</textarea>
+<div style="margin-top:8px;display:flex;gap:6px"><button class="small" onclick="renderCifra()">✨ RENDERIZAR</button><label style="margin-left:6px;font-size:11px"><input type="checkbox" id="simplificada" onchange="renderCifra()"> SIMPLIFICADA</label></div>
 </div>
 <div class="card">
-<b>🎚️ VS PLAYER - ADD SEU VS</b>
-<div class="vs-tabs">
-<button class="vs-tab active" id="tabBateria" onclick="switchVS('bateria')">🥁 BATERIA</button>
-<button class="vs-tab" id="tabPlayback" onclick="switchVS('playback')">🎵 PLAYBACK</button>
-<button class="vs-tab" id="tabAmbos" onclick="switchVS('ambos')">🔊 AMBOS</button>
-</div>
-<div id="boxBateria">
-<div class="drum-kit">
-<button class="pad" onclick="playDrum('kick')">🥁<br>BOMBO</button>
-<button class="pad" onclick="playDrum('snare')">🥁<br>CAIXA</button>
-<button class="pad" onclick="playDrum('hihat')">🎩<br>CHIMBAL</button>
-<button class="pad" onclick="playDrum('crash')">💥<br>PRATO</button>
-<button class="pad" onclick="playDrum('tom1')">🔵<br>TOM 1</button>
-<button class="pad" onclick="playDrum('tom2')">🔴<br>TOM 2</button>
-</div>
-<div class="fader"><small>VOL BATERIA</small><input type="range" id="volBateria" min="0" max="100" value="80"><span id="volBateriaVal">80%</span></div>
-</div>
-<div id="boxPlayback" class="player-box" style="display:none">
-<label class="file-label" for="fileVS">📁 ADD SEU VS / PLAYBACK MP3</label>
-<input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)">
-<div id="vsInfo" style="margin-top:8px;font-size:12px"></div>
-<audio id="audioVS" controls></audio>
-<div class="fader"><small>VOL VS</small><input type="range" id="volVS" min="0" max="100" value="70"><span id="volVSVal">70%</span></div>
-</div>
-<div id="boxAmbos" style="display:none;margin-top:10px">
-<div class="fader"><span>TAKI</span><input type="range" id="vsFader" min="0" max="100" value="50"><span>ESTUDIO</span><span id="vsVal">50%</span></div>
-</div>
+<b>🎚️ VS PLAYER</b>
+<div class="vs-tabs"><button class="vs-tab active" id="tabBateria" onclick="switchVS('bateria')">🥁 BATERIA</button><button class="vs-tab" id="tabPlayback" onclick="switchVS('playback')">🎵 PLAYBACK</button><button class="vs-tab" id="tabAmbos" onclick="switchVS('ambos')">🔊 AMBOS</button></div>
+<div id="boxBateria"><div class="drum-kit"><button class="pad" onclick="playDrum('kick')">🥁<br>BOMBO</button><button class="pad" onclick="playDrum('snare')">🥁<br>CAIXA</button><button class="pad" onclick="playDrum('hihat')">🎩<br>CHIMBAL</button><button class="pad" onclick="playDrum('crash')">💥<br>PRATO</button><button class="pad" onclick="playDrum('tom1')">🔵<br>TOM 1</button><button class="pad" onclick="playDrum('tom2')">🔴<br>TOM 2</button></div><div class="fader"><small>VOL BATERIA</small><input type="range" id="volBateria" min="0" max="100" value="80"><span id="volBateriaVal">80%</span></div></div>
+<div id="boxPlayback2" class="player-box" style="display:none;border-style:dashed"><small>Player extra</small><audio id="audioVS2" controls></audio></div>
+<div id="boxAmbos" style="display:none;margin-top:10px"><div class="fader"><span>TAKI</span><input type="range" id="vsFader" min="0" max="100" value="50"><span>ESTUDIO</span><span id="vsVal">50%</span></div></div>
 </div>
 <div class="card">
-<b>🎛️ CONTROLE BPM & PITCH</b>
+<b>🎛️ BPM & PITCH</b>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-<div class="bpm-box">
-<small style="color:var(--gold)">BPM - VELOCIDADE</small>
-<div class="bpm-display" id="bpmDisplay">100</div>
-<input type="range" id="bpmRange" min="40" max="240" value="100" style="width:100%">
-<div style="display:flex;gap:6px;margin-top:8px">
-<button class="small" onclick="changeBPM(-5)">-5</button>
-<button class="small" onclick="tapBPM()">TAP</button>
-<button class="small" onclick="changeBPM(5)">+5</button>
-</div>
-<div style="display:flex;gap:6px;margin-top:6px">
-<button class="small" id="btnLoop" onclick="toggleLoop()">▶ LOOP METRONOMO</button>
-<button class="small" onclick="stopLoop()">⏹ STOP</button>
-</div>
-</div>
-<div class="bpm-box" style="border-color:#aaffaa">
-<small style="color:#aaffaa">PITCH - TOM</small>
-<div class="pitch-display" id="pitchDisplay">0</div>
-<input type="range" id="pitchRange" min="-12" max="12" value="0" style="width:100%;accent-color:#aaffaa">
-<div style="display:flex;gap:6px;margin-top:8px">
-<button class="small" onclick="changePitch(-1)">-1</button>
-<button class="small" onclick="changePitch(0,true)">0 RESET</button>
-<button class="small" onclick="changePitch(1)">+1</button>
-</div>
-<small style="color:#aaffaa">Muda tom do VS sem mudar letra</small>
-</div>
+<div class="bpm-box"><small style="color:var(--gold)">BPM</small><div class="bpm-display" id="bpmDisplay">100</div><input type="range" id="bpmRange" min="40" max="240" value="100" style="width:100%"><div style="display:flex;gap:6px;margin-top:8px"><button class="small" onclick="changeBPM(-5)">-5</button><button class="small" onclick="tapBPM()">TAP</button><button class="small" onclick="changeBPM(5)">+5</button></div><div style="display:flex;gap:6px;margin-top:6px"><button class="small" id="btnLoop" onclick="toggleLoop()">▶ LOOP</button><button class="small" onclick="stopLoop()">⏹ STOP</button></div></div>
+<div class="bpm-box" style="border-color:#aaffaa"><small style="color:#aaffaa">PITCH</small><div class="pitch-display" id="pitchDisplay">0</div><input type="range" id="pitchRange" min="-12" max="12" value="0" style="width:100%"><div style="display:flex;gap:6px;margin-top:8px"><button class="small" onclick="changePitch(-1)">-1</button><button class="small" onclick="changePitch(0,true)">0</button><button class="small" onclick="changePitch(1)">+1</button></div></div>
 </div>
 </div>
 <div class="card">
-<b>🔴 GRAVACAO DA BATERIA</b>
-<div class="rec-box">
-<div style="display:flex;gap:6px;flex-wrap:wrap">
-<button class="small red" id="btnRec" onclick="toggleRec()">🔴 REC BATERIA</button>
-<button class="small" id="btnPlayRec" onclick="playRec()" style="display:none">▶ TOCAR GRAVACAO</button>
-<button class="small" onclick="clearRec()">🗑️ LIMPAR</button>
-</div>
-<div id="recInfo" style="margin-top:8px;font-size:11px;color:var(--gold)">Nenhuma gravacao</div>
-<div id="recVisual" style="margin-top:8px;display:flex;gap:2px;flex-wrap:wrap"></div>
-</div>
+<b>🔴 GRAVACAO BATERIA</b>
+<div class="rec-box"><div style="display:flex;gap:6px"><button class="small red" id="btnRec" onclick="toggleRec()">🔴 REC BATERIA</button><button class="small" id="btnPlayRec" onclick="playRec()" style="display:none">▶ TOCAR</button><button class="small" onclick="clearRec()">🗑️ LIMPAR</button></div><div id="recInfo" style="margin-top:8px;font-size:11px">Nenhuma gravacao</div><div id="recVisual" style="margin-top:8px;display:flex;gap:2px;flex-wrap:wrap"></div></div>
 </div>
 <div class="card">
-<b>🎵 PREVIEW - SEPARADO CIFRA/LETRA</b>
+<b>🎵 PREVIEW - CIFRA SEPARADA</b>
 <div id="output" class="lyric"></div>
-<div class="controls">
-<button class="small" onclick="changeSize(-1,'letra')">A- LETRA</button>
-<button class="small" onclick="changeSize(1,'letra')">A+ LETRA</button>
-<button class="small" onclick="changeSize(-1,'cifra')">C- CIFRA</button>
-<button class="small" onclick="changeSize(1,'cifra')">C+ CIFRA</button>
-<button class="small" id="velBtn" onclick="changeVel()">VEL 1.0x</button>
-<button class="small" style="background:var(--gold);color:#000" onclick="toggleScroll()">▶ PLAY</button>
+<div class="controls"><button class="small" onclick="changeSize(-1,'letra')">A- LETRA</button><button class="small" onclick="changeSize(1,'letra')">A+ LETRA</button><button class="small" onclick="changeSize(-1,'cifra')">C- CIFRA</button><button class="small" onclick="changeSize(1,'cifra')">C+ CIFRA</button><button class="small" id="velBtn" onclick="changeVel()">VEL 1.0x</button><button class="small" style="background:var(--gold);color:#000" onclick="toggleScroll()">▶ PLAY</button></div>
+<div class="progress"><div id="bar" class="progress-bar"></div></div><div style="display:flex;justify-content:space-between"><small>Rolagem: <span id="roll">0%</span></small><small id="sizeInfo"></small></div>
 </div>
-<div class="progress"><div id="bar" class="progress-bar"></div></div>
-<div style="display:flex;justify-content:space-between"><small>Rolagem: <span id="roll">0%</span></small><small id="sizeInfo"></small></div>
-</div>
-<div id="telaGrande">
-<div class="tela-header">
-<button class="btn" style="flex:0 0 auto;padding:8px 16px" onclick="toggleTela()">✕ VOLTAR</button>
-<div style="font-size:11px;color:var(--gold);text-align:center">TELA GRANDE<br><span id="telaSyncInfo"></span></div>
-<div style="display:flex;gap:6px"><button class="small" onclick="changeSize(-1,'letra')">A-</button><button class="small" onclick="changeSize(1,'letra')">A+</button></div>
-</div>
-<div class="tela-content" id="telaGrandeContent"></div>
-</div>
-<button id="installBtn" class="install-btn">📲 INSTALAR TAKI VS ESTUDIO</button>
+<div id="telaGrande"><div class="tela-header"><button class="btn" style="flex:0 0 auto;padding:8px 16px" onclick="toggleTela()">✕ VOLTAR</button><div style="font-size:11px;color:var(--gold);text-align:center">TELA GRANDE<br><span id="telaSyncInfo"></span></div><div style="display:flex;gap:6px"><button class="small" onclick="changeSize(-1,'letra')">A-</button><button class="small" onclick="changeSize(1,'letra')">A+</button></div></div><div class="tela-content" id="telaGrandeContent"></div></div>
+<button id="installBtn" class="install-btn" style="display:block">📲 INSTALAR TAKI VS ESTUDIO v6</button>
 <script>
-let letraSize=18,cifraSize=15,vel=1.0,scrolling=false,scrollInt=null,progress=0;
-let audioCtx=null,currentVSType='bateria',deferredPrompt=null;
-let bpm=100,pitch=0,loopInt=null,tapTimes=[];
-let isRec=false,recStart=0,recEvents=[],recDuration=0;
+let letraSize=18,cifraSize=15,vel=1.0,scrolling=false,scrollInt=null,progress=0,audioCtx=null,deferredPrompt=null,bpm=100,pitch=0,loopInt=null,tapTimes=[],isRec=false,recStart=0,recEvents=[];
+let currentAudioBlob=null, currentAudioName='';
+let db=null;
+function initDB(){
+ let req=indexedDB.open('taki-vs-v6',1);
+ req.onupgradeneeded=e=>{ db=e.target.result; if(!db.objectStoreNames.contains('musicas')){ db.createObjectStore('musicas',{keyPath:'id',autoIncrement:true}); } };
+ req.onsuccess=e=>{ db=e.target.result; carregarRepertorio(); };
+ req.onerror=e=>{ carregarRepertorioLocal(); }
+}
+initDB();
 function initAudio(){if(!audioCtx){audioCtx=new(window.AudioContext||window.webkitAudioContext)();}}
 function playDrum(type,isReplay=false){
  initAudio();const now=audioCtx.currentTime;let vol=document.getElementById('volBateria').value/100;
@@ -183,11 +150,11 @@ function playDrum(type,isReplay=false){
  else if(type==='hihat'||type==='click'){let o=audioCtx.createOscillator();o.type='square';o.frequency.setValueAtTime(type==='click'?1200:8000,now);let g=audioCtx.createGain();g.gain.setValueAtTime(vol*0.6,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.08);let f=audioCtx.createBiquadFilter();f.type='highpass';f.frequency.value=3000;o.connect(f);f.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.08);}
  else if(type==='crash'){let o1=audioCtx.createOscillator();o1.frequency.setValueAtTime(1200,now);let o2=audioCtx.createOscillator();o2.frequency.setValueAtTime(2400,now);let g=audioCtx.createGain();g.gain.setValueAtTime(vol*0.7,now);g.gain.exponentialRampToValueAtTime(0.01,now+1.2);o1.connect(g);o2.connect(g);g.connect(audioCtx.destination);o1.start(now);o1.stop(now+1.2);o2.start(now);o2.stop(now+1.2);}
  else if(type==='tom1'||type==='tom2'){let freq=type==='tom1'?180:120;let o=audioCtx.createOscillator();o.frequency.setValueAtTime(freq,now);o.frequency.exponentialRampToValueAtTime(freq*0.6,now+0.3);let g=audioCtx.createGain();g.gain.setValueAtTime(vol,now);g.gain.exponentialRampToValueAtTime(0.01,now+0.5);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+0.5);}
- if(isRec&&!isReplay){let t=audioCtx.currentTime-recStart;recEvents.push({type:type,time:t});let dot=document.createElement('div');dot.style.width='8px';dot.style.height='18px';dot.style.background='var(--red)';dot.style.borderRadius='3px';document.getElementById('recVisual').appendChild(dot);document.getElementById('recInfo').innerText=`Gravando... ${recEvents.length} batidas - ${t.toFixed(1)}s`;}
+ if(isRec&&!isReplay){let t=audioCtx.currentTime-recStart;recEvents.push({type:type,time:t});let dot=document.createElement('div');dot.style.width='8px';dot.style.height='18px';dot.style.background='var(--red)';dot.style.borderRadius='3px';document.getElementById('recVisual').appendChild(dot);document.getElementById('recInfo').innerText=`Gravando... ${recEvents.length} batidas`;}
 }
 function isChordLine(line){if(!line.trim())return false;let t=line.trim();if(/[áéíóúàãõçâêôÁÉÍÓÚÃÕÇ]/.test(t))return false;let words=t.split(/\s+/);if(words.length>=3&&words.filter(w=>w.length>4).length>=2)return false;if(!/^[A-G0-9#bmM()\/\s]+$/.test(t))return false;if(/[A-G][#b]?[0-9]/.test(t)||/[A-G]5/.test(t)||/[A-G]\//.test(t)||/\b[A-G]M/.test(t)||/^D5/.test(t)||/BM7/.test(t)||/A11/.test(t)){if(t.length>60)return false;return true;}return false;}
-function isSectionLabel(line){let u=line.trim().toUpperCase();return ['PRIMEIRA PARTE','SEGUNDA PARTE','REFRÃO','REFRAO','PONTE','INTRO','VERSO','CHORUS','SOLO','FINAL'].some(s=>u.includes(s))&&line.trim().length<30;}
-function simplifyChords(txt){return txt.replace(/D7M\(9\)/g,'D').replace(/BM7\(11\)/g,'B').replace(/BM7\(9\/11\)/g,'B').replace(/A11\/C#/g,'A').replace(/G\/B/g,'G').replace(/E\/B/g,'E').replace(/A7\(4\)/g,'A');}
+function isSectionLabel(line){let u=line.trim().toUpperCase();return ['PRIMEIRA PARTE','SEGUNDA PARTE','REFRÃO','REFRAO','PONTE','INTRO','VERSO','CHORUS','SOLO'].some(s=>u.includes(s))&&line.trim().length<30;}
+function simplifyChords(txt){return txt.replace(/D7M\(9\)/g,'D').replace(/BM7\(11\)/g,'B').replace(/BM7\(9\/11\)/g,'B').replace(/A11\/C#/g,'A').replace(/G\/B/g,'G');}
 function parseContent(){let raw=document.getElementById('inputCifra').value;if(document.getElementById('simplificada').checked){raw=simplifyChords(raw);}let lines=raw.split('\n');let blocks=[];for(let l of lines){if(!l.trim()){blocks.push({type:'space'});continue;}if(isSectionLabel(l)){blocks.push({type:'section',text:l.trim()});continue;}if(isChordLine(l)){blocks.push({type:'cifra',text:l.trim()});continue;}blocks.push({type:'letra',text:l.trim()});}return blocks;}
 function renderCifra(){let blocks=parseContent();let out=document.getElementById('output');out.innerHTML='';blocks.forEach(b=>{if(b.type==='space'){out.innerHTML+='<div style="height:12px"></div>';}else if(b.type==='section'){out.innerHTML+=`<div><span class="parte-label">${b.text.toUpperCase()}</span></div>`;}else if(b.type==='cifra'){out.innerHTML+=`<div style="margin-bottom:2px"><div class="cifra-line" style="font-size:${cifraSize}px">${b.text}</div></div>`;}else if(b.type==='letra'){out.innerHTML+=`<div style="margin-top:2px"><div class="letra-line" style="font-size:${letraSize}px">${b.text.toUpperCase()}</div></div>`;}});document.getElementById('sizeInfo').innerText=`Letra ${letraSize}px | Cifra ${cifraSize}px`;renderTelaGrande();}
 function renderTelaGrande(){let blocks=parseContent();let tg=document.getElementById('telaGrandeContent');let h='';blocks.forEach(b=>{if(b.type==='space'){h+='<div style="height:18px"></div>';}else if(b.type==='section'){h+=`<div><span class="parte-label" style="font-size:18px;padding:8px 18px">${b.text.toUpperCase()}</span></div>`;}else if(b.type==='cifra'){h+=`<div class="tela-cifra" style="font-size:${cifraSize+5}px">${b.text}</div>`;}else if(b.type==='letra'){h+=`<div class="tela-letra" style="font-size:${letraSize+10}px">${b.text.toUpperCase()}</div>`;}});tg.innerHTML=h;document.getElementById('telaSyncInfo').innerText=`Letra ${letraSize}px | Cifra ${cifraSize}px`;}
@@ -195,8 +162,18 @@ function changeSize(d,tipo){if(tipo==='letra'){letraSize=Math.max(10,Math.min(50
 function changeVel(){vel+=0.2;if(vel>2.5)vel=0.5;document.getElementById('velBtn').innerText='VEL '+vel.toFixed(1)+'x';}
 function toggleTela(){let tg=document.getElementById('telaGrande');tg.style.display=tg.style.display==='block'?'none':'block';if(tg.style.display==='block')renderTelaGrande();}
 function toggleScroll(){scrolling=!scrolling;let btn=document.getElementById('btnScroll');btn.innerText=scrolling?'⏸ PAUSAR':'▶ AUTO SCROLL';btn.classList.toggle('active',scrolling);if(scrolling){scrollInt=setInterval(()=>{window.scrollBy(0,vel*1.2);progress+=0.05;if(progress>100)progress=0;document.getElementById('bar').style.width=progress+'%';document.getElementById('roll').innerText=Math.round(progress)+'%';},35);}else{clearInterval(scrollInt);}}
-function switchVS(type){currentVSType=type;document.querySelectorAll('.vs-tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab'+type.charAt(0).toUpperCase()+type.slice(1)).classList.add('active');document.getElementById('boxBateria').style.display=(type==='bateria'||type==='ambos')?'block':'none';document.getElementById('boxPlayback').style.display=(type==='playback'||type==='ambos')?'block':'none';document.getElementById('boxAmbos').style.display=(type==='ambos')?'block':'none';if(type==='playback')document.getElementById('boxPlayback').style.display='block';}
-function loadVS(input){let file=input.files[0];if(!file)return;let url=URL.createObjectURL(file);let audio=document.getElementById('audioVS');audio.src=url;document.getElementById('vsInfo').innerHTML=`✅ <b>${file.name}</b> (${(file.size/1024/1024).toFixed(1)} MB)`;updatePlaybackRate();audio.play();}
+function switchVS(type){document.querySelectorAll('.vs-tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab'+type.charAt(0).toUpperCase()+type.slice(1)).classList.add('active');document.getElementById('boxBateria').style.display=(type==='bateria'||type==='ambos')?'block':'none';document.getElementById('boxPlayback2').style.display=(type==='playback'||type==='ambos')?'block':'none';document.getElementById('boxAmbos').style.display=(type==='ambos')?'block':'none';}
+function loadVS(input){
+ let file=input.files[0];if(!file)return;
+ currentAudioBlob=file;
+ currentAudioName=file.name;
+ let url=URL.createObjectURL(file);
+ let audio=document.getElementById('audioVS');audio.src=url;
+ let audio2=document.getElementById('audioVS2');if(audio2)audio2.src=url;
+ document.getElementById('vsInfo').innerHTML=`✅ <b>${file.name}</b> (${(file.size/1024/1024).toFixed(1)} MB) - Pronto para salvar vinculado!`;
+ updatePlaybackRate();
+ audio.play();
+}
 function updatePlaybackRate(){let audio=document.getElementById('audioVS');if(!audio.src)return;let rate=(bpm/100)*Math.pow(2,pitch/12);audio.playbackRate=Math.max(0.25,Math.min(4,rate));}
 function changeBPM(d){bpm=Math.max(40,Math.min(240,bpm+d));document.getElementById('bpmRange').value=bpm;document.getElementById('bpmDisplay').innerText=bpm;updatePlaybackRate();if(loopInt){stopLoop();toggleLoop();}}
 function tapBPM(){let now=Date.now();tapTimes.push(now);if(tapTimes.length>4)tapTimes.shift();if(tapTimes.length>=2){let diffs=[];for(let i=1;i<tapTimes.length;i++)diffs.push(tapTimes[i]-tapTimes[i-1]);let avg=diffs.reduce((a,b)=>a+b,0)/diffs.length;let newBpm=Math.round(60000/avg);bpm=Math.max(40,Math.min(240,newBpm));document.getElementById('bpmRange').value=bpm;document.getElementById('bpmDisplay').innerText=bpm;updatePlaybackRate();}}
@@ -204,17 +181,85 @@ document.getElementById('bpmRange').addEventListener('input',e=>{bpm=parseInt(e.
 function changePitch(d,isReset){if(isReset){pitch=0;}else{pitch=Math.max(-12,Math.min(12,pitch+d));}document.getElementById('pitchRange').value=pitch;document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;updatePlaybackRate();}
 document.getElementById('pitchRange').addEventListener('input',e=>{pitch=parseInt(e.target.value);document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;updatePlaybackRate();});
 function toggleLoop(){if(loopInt){stopLoop();return;}initAudio();let interval=60000/bpm;document.getElementById('btnLoop').innerText='⏸ PAUSAR LOOP';document.getElementById('btnLoop').classList.add('active');loopInt=setInterval(()=>{playDrum('click',true);},interval);}
-function stopLoop(){if(loopInt){clearInterval(loopInt);loopInt=null;document.getElementById('btnLoop').innerText='▶ LOOP METRONOMO';document.getElementById('btnLoop').classList.remove('active');}}
-function toggleRec(){initAudio();if(!isRec){isRec=true;recEvents=[];recStart=audioCtx.currentTime;document.getElementById('recVisual').innerHTML='';document.getElementById('btnRec').innerText='⏹ PARAR REC';document.getElementById('btnRec').classList.add('active');document.getElementById('recInfo').innerText='Gravando... toque nos pads!';document.getElementById('btnPlayRec').style.display='none';}else{isRec=false;recDuration=audioCtx.currentTime-recStart;document.getElementById('btnRec').innerText='🔴 REC BATERIA';document.getElementById('btnRec').classList.remove('active');document.getElementById('recInfo').innerText=`Gravado ${recEvents.length} batidas em ${recDuration.toFixed(1)}s`;document.getElementById('btnPlayRec').style.display=recEvents.length?'inline-block':'none';}}
+function stopLoop(){if(loopInt){clearInterval(loopInt);loopInt=null;document.getElementById('btnLoop').innerText='▶ LOOP';document.getElementById('btnLoop').classList.remove('active');}}
+function toggleRec(){initAudio();if(!isRec){isRec=true;recEvents=[];recStart=audioCtx.currentTime;document.getElementById('recVisual').innerHTML='';document.getElementById('btnRec').innerText='⏹ PARAR REC';document.getElementById('btnRec').classList.add('active');document.getElementById('recInfo').innerText='Gravando... toque nos pads!';document.getElementById('btnPlayRec').style.display='none';}else{isRec=false;document.getElementById('btnRec').innerText='🔴 REC BATERIA';document.getElementById('btnRec').classList.remove('active');document.getElementById('recInfo').innerText=`Gravado ${recEvents.length} batidas`;document.getElementById('btnPlayRec').style.display=recEvents.length?'inline-block':'none';}}
 function playRec(){if(!recEvents.length)return;initAudio();document.getElementById('recInfo').innerText=`Tocando ${recEvents.length} batidas...`;recEvents.forEach(ev=>{setTimeout(()=>{playDrum(ev.type,true);},ev.time*1000);});}
 function clearRec(){recEvents=[];isRec=false;document.getElementById('recVisual').innerHTML='';document.getElementById('recInfo').innerText='Nenhuma gravacao';document.getElementById('btnRec').innerText='🔴 REC BATERIA';document.getElementById('btnRec').classList.remove('active');document.getElementById('btnPlayRec').style.display='none';}
 document.getElementById('volBateria').addEventListener('input',e=>document.getElementById('volBateriaVal').innerText=e.target.value+'%');
 document.getElementById('volVS').addEventListener('input',e=>{document.getElementById('volVSVal').innerText=e.target.value+'%';document.getElementById('audioVS').volume=e.target.value/100;});
 document.getElementById('vsFader').addEventListener('input',e=>{let v=e.target.value;document.getElementById('vsVal').innerText=v+'%';let bVol=(100-v)/100*0.8,vsVol=v/100;document.getElementById('audioVS').volume=vsVol;document.getElementById('volBateria').value=Math.round(bVol*100);document.getElementById('volBateriaVal').innerText=Math.round(bVol*100)+'%';});
+function salvarRepertorio(){
+ let nome=document.getElementById('nomeMusica').value.trim();
+ if(!nome){ alert('Digite o nome da musica!'); return; }
+ let cifra=document.getElementById('inputCifra').value;
+ if(!cifra.trim()){ alert('Cole a cifra primeiro!'); return; }
+ let status=document.getElementById('saveStatus');
+ status.innerText='💾 Salvando...';
+ let musica={ nome:nome, cifra:cifra, bpm:bpm, pitch:pitch, recEvents:recEvents, audioName:currentAudioName||'', data:new Date().toISOString(), temVS:!!currentAudioBlob };
+ if(db && currentAudioBlob){
+   let tx=db.transaction('musicas','readwrite');
+   let store=tx.objectStore('musicas');
+   musica.audioBlob=currentAudioBlob;
+   let req=store.add(musica);
+   req.onsuccess=()=>{ status.innerText=`✅ "${nome}" salvo com VS vinculado!`; document.getElementById('nomeMusica').value=''; carregarRepertorio(); setTimeout(()=>status.innerText='',3000); };
+   req.onerror=()=>{ salvarRepertorioLocal(musica); };
+ } else { salvarRepertorioLocal(musica); }
+}
+function salvarRepertorioLocal(musica){
+ let lista=JSON.parse(localStorage.getItem('taki-repertorio')||'[]');
+ let copia={...musica}; delete copia.audioBlob;
+ lista.push(copia);
+ localStorage.setItem('taki-repertorio',JSON.stringify(lista));
+ document.getElementById('saveStatus').innerText=`✅ "${musica.nome}" salvo (cifra + BPM + pitch + bateria)`;
+ carregarRepertorioLocal();
+}
+function carregarRepertorio(){
+ if(!db){ carregarRepertorioLocal(); return; }
+ let tx=db.transaction('musicas','readonly');
+ let store=tx.objectStore('musicas');
+ let req=store.getAll();
+ req.onsuccess=()=>{ let lista=req.result; let localLista=JSON.parse(localStorage.getItem('taki-repertorio')||'[]'); renderLista(lista, localLista); };
+ req.onerror=()=>carregarRepertorioLocal();
+}
+function carregarRepertorioLocal(){ let lista=JSON.parse(localStorage.getItem('taki-repertorio')||'[]'); renderLista([], lista); }
+function renderLista(dbLista, localLista){
+ let container=document.getElementById('listaRepertorio');
+ let todas=[...dbLista,...localLista.map((m,i)=>({...m, idLocal:i, isLocal:true}))];
+ if(todas.length===0){ container.innerHTML='<div style="font-size:12px;color:#888;padding:10px;text-align:center">Nenhuma musica salva ainda.</div>'; return; }
+ let html='';
+ todas.forEach((m)=>{
+   let isLocal=m.isLocal; let id=m.id!==undefined?m.id:m.idLocal; let temVS=m.temVS||m.audioBlob||m.audioName;
+   html+=`<div class="repertorio-item"><div class="repertorio-info"><div class="repertorio-title">${m.nome}</div><div class="repertorio-meta">${temVS?'🎵 VS: '+(m.audioName||'sim')+' • ':''}BPM ${m.bpm||100} • Pitch ${m.pitch||0} • ${m.recEvents? m.recEvents.length+' batidas' : '0 batidas'} • ${new Date(m.data).toLocaleDateString()}</div></div><div style="display:flex;gap:4px;flex-direction:column"><button class="small green" style="padding:8px 12px" onclick="tocarMusica(${isLocal? -1 : m.id}, ${isLocal? m.idLocal : -1})">▶ TOCAR</button><button class="small red" style="padding:6px 10px;font-size:10px" onclick="excluirMusica(${isLocal? -1 : m.id}, ${isLocal? m.idLocal : -1})">🗑️</button></div></div>`;
+ });
+ container.innerHTML=html;
+}
+function tocarMusica(idDB, idLocal){
+ if(idDB!==-1 && db){ let tx=db.transaction('musicas','readonly'); let store=tx.objectStore('musicas'); let req=store.get(idDB); req.onsuccess=()=>{ let m=req.result; if(!m) return; aplicarMusica(m); }; } else { let lista=JSON.parse(localStorage.getItem('taki-repertorio')||'[]'); let m=lista[idLocal]; if(m) aplicarMusica(m); }
+}
+function aplicarMusica(m){
+ document.getElementById('inputCifra').value=m.cifra||''; bpm=m.bpm||100; pitch=m.pitch||0; recEvents=m.recEvents||[];
+ document.getElementById('bpmRange').value=bpm; document.getElementById('bpmDisplay').innerText=bpm;
+ document.getElementById('pitchRange').value=pitch; document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;
+ document.getElementById('recVisual').innerHTML=''; recEvents.forEach(()=>{ let dot=document.createElement('div'); dot.style.width='8px'; dot.style.height='12px'; dot.style.background='var(--gold)'; dot.style.borderRadius='2px'; document.getElementById('recVisual').appendChild(dot); });
+ document.getElementById('recInfo').innerText=`${recEvents.length} batidas carregadas`;
+ if(m.audioBlob){ currentAudioBlob=m.audioBlob; currentAudioName=m.audioName||'VS salvo'; let url=URL.createObjectURL(m.audioBlob); document.getElementById('audioVS').src=url; document.getElementById('vsInfo').innerHTML=`✅ VS vinculado carregado: <b>${m.audioName}</b>`; document.getElementById('audioVS2').src=url; }
+ renderCifra(); updatePlaybackRate(); window.scrollTo({top:0,behavior:'smooth'});
+}
+function excluirMusica(idDB, idLocal){
+ if(!confirm('Excluir essa musica?')) return;
+ if(idDB!==-1 && db){ let tx=db.transaction('musicas','readwrite'); tx.objectStore('musicas').delete(idDB); tx.oncomplete=()=>carregarRepertorio(); } else { let lista=JSON.parse(localStorage.getItem('taki-repertorio')||'[]'); lista.splice(idLocal,1); localStorage.setItem('taki-repertorio',JSON.stringify(lista)); carregarRepertorioLocal(); }
+}
+function limparTudo(){
+ if(!confirm('Apagar TODO repertorio?')) return;
+ if(db){ let tx=db.transaction('musicas','readwrite'); tx.objectStore('musicas').clear(); }
+ localStorage.removeItem('taki-repertorio');
+ carregarRepertorio();
+}
 window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').style.display='block';});
-document.getElementById('installBtn').addEventListener('click',async()=>{if(!deferredPrompt){alert('Chrome > 3 pontinhos > Instalar app');return;}deferredPrompt.prompt();const {outcome}=await deferredPrompt.userChoice;if(outcome==='accepted'){document.getElementById('installBtn').style.display='none';}deferredPrompt=null;});
+document.getElementById('installBtn').addEventListener('click',async()=>{if(!deferredPrompt){alert('Para instalar: Chrome > 3 pontinhos > Instalar app');return;}deferredPrompt.prompt();const {outcome}=await deferredPrompt.userChoice;if(outcome==='accepted'){document.getElementById('installBtn').style.display='none';}deferredPrompt=null;});
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
 renderCifra();
+carregarRepertorio();
 </script>
 </body>
 </html>
