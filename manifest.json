@@ -1,11 +1,10 @@
 {
   "name": "TAKI VS ESTÚDIO",
   "short_name": "TAKI VS",
-  "description": "Cifra Club diplomata - separa letra e cifra, VS bateria e VS playback",
+  "description": "Cifra Club diplomata - BPM, Pitch, Gravacao, VS bateria e playback",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#d4af37",
-  "orientation": "portrait",
   "icons": [{"src": "icon-512.png","sizes": "512x512","type": "image/png","purpose": "any maskable"}]
 }
