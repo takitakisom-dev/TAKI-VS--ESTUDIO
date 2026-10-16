@@ -1,1 +1,114 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAKI VS ESTÚDIO</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-512.png">
+<meta name="theme-color" content="#d4af37">
+<style>
+:root{--gold:#d4af37;--bg:#0a0a0a;--card:#151515;--text:#f5e6a8}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui}
+body{background:var(--bg);color:var(--text);padding:12px}
+.header{border:2px solid var(--gold);padding:12px;text-align:center;background:linear-gradient(#1a1a1a,#0a0a0a);border-radius:8px}
+.header h1{color:var(--gold);letter-spacing:2px;font-size:22px}
+.top-row{display:flex;gap:8px;margin:12px 0}
+.btn{flex:1;border:1.5px solid var(--gold);background:#111;color:var(--gold);padding:10px;border-radius:20px;font-weight:bold;cursor:pointer}
+.btn.active{background:var(--gold);color:#000}
+.themes{display:flex;gap:8px;overflow-x:auto;padding:6px 0}
+.dot{width:36px;height:36px;border-radius:50%;border:2px solid var(--gold);cursor:pointer;flex-shrink:0}
+.card{border:1.5px solid var(--gold);border-radius:8px;padding:10px;margin:10px 0;background:var(--card)}
+textarea{width:100%;height:90px;background:#000;color:var(--gold);border:1px solid var(--gold);padding:8px;border-radius:6px}
+.fader{display:flex;align-items:center;gap:10px}
+input[type=range]{flex:1;accent-color:var(--gold)}
+.lyric{white-space:pre-wrap;line-height:1.8;font-size:16px}
+.chord{color:var(--gold);font-weight:bold}
+.controls{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.small{border:1px solid var(--gold);background:#000;color:var(--gold);padding:6px 10px;border-radius:15px;font-size:12px;cursor:pointer}
+.progress{width:100%;height:8px;background:#333;border-radius:4px;overflow:hidden;margin-top:10px}
+.progress-bar{height:100%;background:var(--gold);width:35%}
+#telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:99;padding:20px;overflow-y:auto}
+</style>
+</head>
+<body>
+<div class="header"><h1>TAKI VS ESTÚDIO</h1><small>Modo Composição • Tema Diplomático</small></div>
+<div class="top-row">
+<button class="btn" onclick="toggleTela()">⛶ TELA GRANDE</button>
+<button class="btn active" id="btnScroll" onclick="toggleScroll()">▶ AUTO SCROLL</button>
+</div>
+<div><small style="color:var(--gold)">TEMA DE CORES</small><div class="themes">
+<div class="dot" style="background:#0a1931" onclick="setTheme('#0a1931','#d4af37')"></div>
+<div class="dot" style="background:#ffb6d9" onclick="setTheme('#2a0a1a','#fff')"></div>
+<div class="dot" style="background:#000" onclick="setTheme('#000','#d4af37')"></div>
+<div class="dot" style="background:#0a5c36" onclick="setTheme('#0a2a1a','#aaffaa')"></div>
+<div class="dot" style="background:#2563eb" onclick="setTheme('#0a1931','#aaccff')"></div>
+<div class="dot" style="background:#fff" onclick="setTheme('#fff','#000')"></div>
+<div class="dot" style="background:#ff00aa" onclick="setTheme('#2a0a2a','#ff88cc')"></div>
+</div></div>
+<div class="card">
+<b>📝 COLE SUA CIFRA AQUI</b>
+<textarea id="inputCifra">[Am] No silêncio da noite eu caminho só
+[G] Pensando em você, sigo sem temor
+[F] Entre acordes e versos, só paixão
+[C] É você e eu, na nossa canção</textarea>
+<div style="margin-top:8px"><button class="small" onclick="renderCifra()">RENDERIZAR</button>
+<label style="margin-left:10px"><input type="checkbox" id="simplificada" onchange="renderCifra()"> CIFRA SIMPLIFICADA</label></div>
+</div>
+<div class="card">
+<b>🎚️ VS FADER — BALANÇO TAKI x ESTÚDIO</b>
+<div class="fader"><span>TAKI</span><input type="range" id="vsFader" min="0" max="100" value="50"><span>SOUL</span><span id="vsVal">50%</span></div>
+</div>
+<div class="card">
+<b>🎵 LETRA & CIFRA</b>
+<div id="output" class="lyric"></div>
+<div class="controls">
+<button class="small" onclick="changeSize(-1,'letra')">A- LETRA</button>
+<button class="small" onclick="changeSize(1,'letra')">A+ LETRA</button>
+<button class="small" onclick="changeSize(-1,'cifra')">C- CIFRA</button>
+<button class="small" onclick="changeSize(1,'cifra')">C+ CIFRA</button>
+<button class="small" id="velBtn" onclick="changeVel()">VELOCIDADE 1.0x</button>
+<button class="small" style="background:var(--gold);color:#000" onclick="toggleScroll()">▶ PLAY</button>
+</div>
+<div class="progress"><div id="bar" class="progress-bar"></div></div>
+<small>Rolagem: <span id="roll">35%</span></small>
+</div>
+<div id="telaGrande" onclick="toggleTela()"></div>
+<script>
+let letraSize=16,cifraSize=18,vel=1.0,scrolling=false,scrollInt=null,progress=35;
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+function renderCifra(){
+ let txt=document.getElementById('inputCifra').value;
+ if(document.getElementById('simplificada').checked){txt=txt.replace(/Am7|Am9/g,'Am').replace(/G7|G9/g,'G').replace(/F7M/g,'F').replace(/C7M/g,'C');}
+ let html=txt.replace(/\[([^\]]+)\]/g,'<span class="chord" style="font-size:'+cifraSize+'px"> $1 </span><br>');
+ document.getElementById('output').innerHTML=html;
+ document.getElementById('output').style.fontSize=letraSize+'px';
+ renderTelaGrande(txt);
+}
+function renderTelaGrande(txt){
+ let tg=document.getElementById('telaGrande');
+ let lines=txt.split('\n');let h='';
+ lines.forEach(l=>{
+  let m=l.match(/\[([^\]]+)\]/);
+  if(m){h+=`<div style="font-size:${cifraSize*2.5}px;color:#d4af37;font-weight:900">${m[1]}</div>`}
+  let lyric=l.replace(/\[.*?\]/g,'').trim();
+  if(lyric){h+=`<div style="font-size:${letraSize*1.8}px;color:#f5e6a8;margin-bottom:24px">${lyric.toUpperCase()}</div>`}
+ });
+ tg.innerHTML='<div style="text-align:center;color:#d4af37;font-size:12px;margin-bottom:20px">TOQUE PARA VOLTAR</div>'+h;
+}
+function changeSize(d,tipo){
+ if(tipo=='letra'){letraSize+=d*2;} else{cifraSize+=d*2;} renderCifra();
+}
+function changeVel(){vel+=0.2; if(vel>2.0)vel=0.5; document.getElementById('velBtn').innerText='VELOCIDADE '+vel.toFixed(1)+'x';}
+function toggleTela(){let tg=document.getElementById('telaGrande'); tg.style.display=tg.style.display=='block'?'none':'block'; if(tg.style.display=='block')renderCifra();}
+function toggleScroll(){
+ scrolling=!scrolling;
+ if(scrolling){scrollInt=setInterval(()=>{window.scrollBy(0, vel); progress+=0.1; document.getElementById('bar').style.width=progress+'%';}, 50);} else {clearInterval(scrollInt);}
+}
+document.getElementById('vsFader').addEventListener('input',e=>{document.getElementById('vsVal').innerText=e.target.value+'%'});
+renderCifra();
+function setTheme(bg,c){document.body.style.background=bg; document.body.style.color=c;}
+</script>
+</body>
+</html>
