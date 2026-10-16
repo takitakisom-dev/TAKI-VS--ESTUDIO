@@ -1,0 +1,16 @@
+{
+  "name": "TAKI VS ESTÚDIO",
+  "short_name": "TAKI VS",
+  "description": "App diplomata de cifra - Taki vs Estúdio com tela grande e cifra simplificada",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#d4af37",
+  "orientation": "portrait",
+  "icons": [{
+    "src": "icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "any maskable"
+  }]
+}
