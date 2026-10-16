@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS ESTUDIO v10.1",
+  "name": "TAKI VS ESTUDIO v10.2",
   "short_name": "TAKI VS",
-  "description": "Cifras com VS de bateria - Scroll profissional + 7 temas + instalar direto",
+  "description": "Fix claridade - 7 temas visiveis",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
