@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS ESTUDIO v10.3",
+  "name": "TAKI VS ESTUDIO v10.4",
   "short_name": "TAKI VS",
-  "description": "Transpose botoes -7 a +7 + simplificar",
+  "description": "v10.4 - Nova Cifra + Fix Vermelho Letra Branca + Transpose Botoes",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
