@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS ESTÚDIO",
-  "short_name": "TAKI VS",
-  "description": "Cifra Club diplomata - BPM, Pitch, Gravacao, VS bateria e playback",
+  "name": "TAKI VS ESTÚDIO v6",
+  "short_name": "TAKI VS v6",
+  "description": "Repertorio vinculado - Cifra + VS + BPM + Gravacao",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",
