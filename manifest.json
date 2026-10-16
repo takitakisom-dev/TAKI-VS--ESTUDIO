@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS v10.6",
+  "name": "TAKI VS v10.7 REPERTORIOS POR CASA",
   "short_name": "TAKI VS",
-  "description": "v10.6 Menu fix + vermelho clarinho",
+  "description": "v10.7 Repertorios por casa com BPM Transpose VS salvos",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
