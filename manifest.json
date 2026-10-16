@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS ESTUDIO v10",
-  "short_name": "TAKI VS v10",
-  "description": "v10 - Scroll só da letra/cifra + 7 temas + BKP + bateria real",
+  "name": "TAKI VS ESTUDIO v10.1",
+  "short_name": "TAKI VS",
+  "description": "Cifras com VS de bateria - Scroll profissional + 7 temas + instalar direto",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
@@ -9,6 +9,6 @@
   "scope": "./",
   "icons": [
     {"src": "icon-512.png","sizes": "512x512","type": "image/png","purpose": "any maskable"},
-    {"src": "icon-512.png","sizes": "192x192","type": "image/png","purpose": "any"}
+    {"src": "icon-192.png","sizes": "192x192","type": "image/png","purpose": "any maskable"}
   ]
 }
