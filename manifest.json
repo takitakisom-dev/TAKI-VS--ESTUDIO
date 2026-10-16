@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS v10.5",
+  "name": "TAKI VS v10.6",
   "short_name": "TAKI VS",
-  "description": "v10.5 Vermelho clarinho transparente",
+  "description": "v10.6 Menu fix + vermelho clarinho",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
