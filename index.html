@@ -15,27 +15,27 @@ body{background:var(--bg);color:var(--text);padding-bottom:90px;transition:0.3s}
 .header{background:var(--header-bg);border-bottom:1px solid var(--line2);padding:16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50}
 .header h1{color:var(--gold);font-size:15px;font-weight:900;width:100%;text-align:center;letter-spacing:2.5px}
 .hamburger{width:44px;height:44px;border:1px solid var(--line2);background:var(--card2);color:var(--gold);border-radius:8px;font-size:20px;cursor:pointer;position:absolute;left:12px}
-.btn{border:1px solid var(--line);background:var(--card2);color:var(--gold);padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer;font-size:11px;letter-spacing:0.3px}
+.btn{border:1px solid var(--line);background:var(--card2);color:var(--gold);padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer;font-size:11px}
 .btn.gold{border:1px solid var(--gold);background:rgba(201,168,106,0.08)}
-.btn.big{width:100%;padding:15px;font-size:12px;font-weight:800;border-radius:10px;margin:6px 0;letter-spacing:0.5px}
+.btn.big{width:100%;padding:15px;font-size:12px;font-weight:800;border-radius:10px;margin:6px 0}
 .main{padding:12px;max-width:720px;margin:0 auto}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0}
-.card.t1{border:1px solid var(--line2);border-left:3px solid var(--gold);background:var(--card)}
+.card.t1{border:1px solid var(--line2);border-left:3px solid var(--gold)}
 .card-header{color:var(--gold);font-weight:800;font-size:11px;margin-bottom:14px;letter-spacing:1.2px;text-transform:uppercase;opacity:0.9}
-.file-label{border:1px dashed var(--line2);padding:18px;border-radius:10px;display:block;text-align:center;background:var(--card2);color:var(--muted);font-weight:700;font-size:12px;cursor:pointer;margin:8px 0;letter-spacing:0.5px;transition:0.2s}
-.file-label:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,106,0.06)}
+.file-label{border:1px dashed var(--line2);padding:18px;border-radius:10px;display:block;text-align:center;background:var(--card2);color:var(--muted);font-weight:700;font-size:12px;cursor:pointer;margin:8px 0}
+.file-label:hover{border-color:var(--gold);color:var(--gold)}
 input[type=text],textarea{width:100%;background:var(--card2);color:var(--text);border:1px solid var(--line);padding:12px;border-radius:8px;font-size:14px;outline:none}
-input[type=text]:focus,textarea:focus{border-color:var(--gold)}
 textarea{min-height:180px;font-family:monospace;font-size:14px;line-height:24px}
-.preview-wrapper{border:1px solid var(--line2);border-radius:12px;overflow:hidden;height:65vh;display:flex;flex-direction:column;margin-top:12px}
+.preview-wrapper{border:1px solid var(--line2);border-radius:12px;overflow:hidden;height:70vh;display:flex;flex-direction:column;margin-top:12px}
 .preview-top{background:var(--card);border-bottom:1px solid var(--line2);padding:10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.preview-content{flex:1;overflow-y:auto;padding:16px}
+.preview-content{flex:1;overflow-y:auto;padding:16px;scroll-behavior:smooth}
 .cifra-line{color:var(--cifra)!important;font-weight:800;display:block;margin-bottom:6px;font-family:var(--font-cifra)}
 .letra-line{color:var(--letra)!important;font-weight:800;text-transform:uppercase;display:block;font-family:var(--font-main);line-height:1.35}
-.section-label{color:var(--gold);font-weight:700;font-size:10px;border:1px solid var(--line2);padding:5px 12px;border-radius:20px;display:inline-block;margin:16px 0 8px 0;background:rgba(201,168,106,0.08);letter-spacing:0.5px}
-.small{border:1px solid var(--line);background:var(--card2);color:var(--muted);padding:8px 14px;border-radius:20px;font-weight:700;cursor:pointer;font-size:11px;letter-spacing:0.3px}
+.section-label{color:var(--gold);font-weight:700;font-size:10px;border:1px solid var(--line2);padding:5px 12px;border-radius:20px;display:inline-block;margin:16px 0 8px 0;background:rgba(201,168,106,0.08)}
+.small{border:1px solid var(--line);background:var(--card2);color:var(--muted);padding:8px 14px;border-radius:20px;font-weight:700;cursor:pointer;font-size:11px}
 .small.gold{border:1px solid var(--gold);color:var(--gold);background:rgba(201,168,106,0.08)}
-.bpm-display{font-size:36px;font-weight:900;color:var(--gold);text-align:center;letter-spacing:1px}
+.small.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.bpm-display{font-size:36px;font-weight:900;color:var(--gold);text-align:center}
 #menuOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:999}
 #menuPanel{background:var(--bg);border-right:1px solid var(--line2);width:88%;max-width:380px;height:100%;padding:16px;overflow-y:auto}
 .menu-title{color:var(--gold);font-weight:800;font-size:10px;margin:22px 0 8px 0;border-bottom:1px solid var(--line);padding-bottom:6px;letter-spacing:1.2px;opacity:0.8}
@@ -44,14 +44,12 @@ textarea{min-height:180px;font-family:monospace;font-size:14px;line-height:24px}
 .view{display:none}.view.active{display:block}
 .theme-btn{padding:12px;border-radius:8px;border:1px solid var(--line);cursor:pointer;font-weight:700;font-size:12px;text-align:left;display:flex;align-items:center;gap:8px;background:var(--card2);color:var(--text);width:100%;margin:4px 0}
 .theme-btn.active{border-color:var(--gold);background:rgba(201,168,106,0.08)}
-.font-btn{padding:13px;border-radius:8px;border:1px solid var(--line);cursor:pointer;font-weight:700;font-size:12px;text-align:left;background:var(--card2);color:var(--text);display:flex;justify-content:space-between;align-items:center;margin:6px 0}
-.font-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,106,0.08)}
 .dot{width:16px;height:16px;border-radius:50%;border:1px solid var(--line2);flex-shrink:0}
 input[type=range]{flex:1;accent-color:var(--gold);height:4px}
 .volume-prof{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px;margin:8px 0}
-.volume-prof:hover{border-color:var(--line2)}
 .volume-label{color:var(--muted);font-weight:700;font-size:10px;letter-spacing:0.8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
 .volume-label b{color:var(--text);font-weight:700;font-size:11px}
+.scroll-prof{background:var(--card2);border:1px solid var(--line2);border-radius:10px;padding:12px;margin:10px 0;border-left:3px solid var(--gold)}
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
 .modal.open{display:flex}
 .modal-content{background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:18px;width:100%;max-width:400px}
@@ -59,13 +57,11 @@ input[type=range]{flex:1;accent-color:var(--gold);height:4px}
 .install-bar button{flex:1;padding:12px;border-radius:8px;font-weight:800}
 #telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:1000;flex-direction:column}
 .tela-header{background:var(--header-bg);border-bottom:1px solid var(--line2);padding:12px;display:flex;justify-content:space-between;align-items:center}
-.tela-content{flex:1;overflow-y:auto;padding:20px 16px 160px 16px}
+.tela-content{flex:1;overflow-y:auto;padding:20px 16px 180px 16px;scroll-behavior:smooth}
 .tela-cifra{color:var(--cifra)!important;font-weight:800;display:block;margin-bottom:8px;font-family:var(--font-cifra)}
 .tela-letra{color:var(--letra)!important;font-weight:800;text-transform:uppercase;display:block;font-family:var(--font-main)}
 body.theme-branco{--bg:#fafafa;--card:#ffffff;--card2:#f5f5f5;--card3:#eeeeee;--text:#2e2e2e;--muted:#777;--line:#e8e8e8;--line2:#e0e0e0;--gold:#8a7a5a;--cifra:#2c5aa0;--letra:#222;--header-bg:#ffffff}
 body.theme-ouro-negro{--bg:#080808;--card:#121212;--card2:#181818;--card3:#1e1e1e;--text:#e8dcc0;--muted:#8a8a8a;--line:#232323;--line2:#2a2a2a;--gold:#c9a86a;--cifra:#FFD700;--letra:#FFF;--header-bg:#0a0a0a}
-body.theme-azul{--bg:#0a101a;--card:#111a28;--card2:#162032;--card3:#1c2840;--text:#d0d8e8;--muted:#6a7a8a;--line:#1e2a3a;--line2:#253545;--gold:#7aa5c0;--cifra:#7aa5c0;--letra:#e0e8f0;--header-bg:#0a101a}
-body.theme-preto{--bg:#000;--card:#0a0a0a;--card2:#151515;--card3:#1a1a1a;--text:#ddd;--muted:#777;--line:#222;--line2:#2a2a2a;--gold:#aaa;--cifra:#ccc;--letra:#fff;--header-bg:#000}
 </style>
 </head>
 <body class="theme-ouro-negro">
@@ -77,25 +73,22 @@ body.theme-preto{--bg:#000;--card:#0a0a0a;--card2:#151515;--card3:#1a1a1a;--text
 
 <div id="menuOverlay" onclick="if(event.target.id==='menuOverlay')this.style.display='none';">
 <div id="menuPanel">
-<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold);font-size:13px;letter-spacing:1px">TAKI VS ESTÚDIO v14</b><button class="btn" onclick="document.getElementById('menuOverlay').style.display='none';">✕</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold);font-size:13px;letter-spacing:1px">TAKI VS ESTÚDIO v15</b><button class="btn" onclick="document.getElementById('menuOverlay').style.display='none';">✕</button></div>
 <div class="menu-title">CONFIGURAÇÕES</div>
-<button class="menu-item gold" onclick="document.getElementById('menuOverlay').style.display='none';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-config').classList.add('active');">⚙️ CONFIGURAÇÕES - PROFISSIONAL</button>
+<button class="menu-item gold" onclick="document.getElementById('menuOverlay').style.display='none';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-config').classList.add('active');">⚙️ CONFIGURAÇÕES</button>
 <div class="menu-title">REPERTÓRIOS</div>
 <button class="menu-item gold" onclick="document.getElementById('menuOverlay').style.display='none';document.getElementById('modalCriar').classList.add('open');">➕ ADD NOVO REPERTÓRIO</button>
 <button class="menu-item gold" onclick="document.getElementById('menuOverlay').style.display='none';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-repertorios').classList.add('active');renderReps();">📋 MEUS REPERTÓRIOS</button>
-<button class="menu-item gold" onclick="document.getElementById('menuOverlay').style.display='none';openModalAdd();">💾 SALVAR NO REPERTÓRIO DA CASA</button>
 <div class="menu-title">BIBLIOTECA</div>
 <button class="menu-item" onclick="document.getElementById('menuOverlay').style.display='none';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-home').classList.add('active');">🏠 INICIO</button>
 <button class="menu-item" onclick="document.getElementById('menuOverlay').style.display='none';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-cifras').classList.add('active');carregar();">📄 MINHAS CIFRAS</button>
-<button class="menu-item" onclick="document.getElementById('menuOverlay').style.display='none';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-vslist').classList.add('active');carregar();">🎵 CIFRAS COM VS</button>
-<button class="menu-item" onclick="document.getElementById('menuOverlay').style.display='none';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-pastas').classList.add('active');carregar();">📁 PASTAS POR ARTISTA</button>
+<button class="menu-item" onclick="document.getElementById('menuOverlay').style.display='none';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-pastas').classList.add('active');carregar();">📁 PASTAS</button>
 <div class="menu-title">APP</div>
-<button class="menu-item" onclick="if(window.deferredPrompt)window.deferredPrompt.prompt();else alert('Chrome: 3 pontinhos > Instalar app');">📲 INSTALAR</button>
+<button class="menu-item" onclick="if(window.deferredPrompt)window.deferredPrompt.prompt();">📲 INSTALAR</button>
 <button class="menu-item gold" onclick="doShare()">📤 COMPARTILHAR</button>
 <button class="menu-item" onclick="exportarBackup()">💾 BACKUP</button>
-<button class="menu-item" onclick="document.getElementById('importFile').click()">📥 RESTAURAR</button>
 <input type="file" id="importFile" accept=".json" style="display:none" onchange="importarBackup(this)">
-<small style="color:var(--muted);display:block;margin-top:20px;font-size:9px">v14 - Profissional + Recebe cifras da internet</small>
+<small style="color:var(--muted);display:block;margin-top:20px;font-size:9px">v15 - Rolagem devagarzinho profissional</small>
 </div>
 </div>
 
@@ -103,47 +96,66 @@ body.theme-preto{--bg:#000;--card:#0a0a0a;--card2:#151515;--card3:#1a1a1a;--text
 <div id="view-home" class="view active">
 
 <div id="sharedBanner" style="display:none;background:rgba(201,168,106,0.12);border:1px solid var(--gold);border-radius:10px;padding:12px;margin:14px 0;text-align:center">
-<b style="color:var(--gold);font-size:12px">📥 CIFRA RECEBIDA DA INTERNET!</b><br><small style="color:var(--muted)">Veio do compartilhamento - já está no editor abaixo</small><br><button class="btn gold" style="margin-top:8px" onclick="document.getElementById('sharedBanner').style.display='none'">✅ OK</button>
+<b style="color:var(--gold);font-size:12px">📥 CIFRA RECEBIDA DA INTERNET!</b><br><button class="btn gold" style="margin-top:8px" onclick="document.getElementById('sharedBanner').style.display='none'">✅ OK</button>
 </div>
 
 <div class="card t1">
 <div class="card-header">VS + Playback - Estúdio Profissional</div>
-
 <div class="volume-prof">
-<div class="volume-label"><b>01 — VS Bateria</b><span id="vsInfo" style="color:var(--muted);font-weight:400">Nenhum arquivo</span></div>
-<div class="file-label" onclick="document.getElementById('fileVS').click()" style="margin:6px 0">CARREGAR VS BATERIA — MP3 / WAV</div>
-<input type="file" id="fileVS" accept="audio/*,.mp3,.wav,.m4a,.ogg" style="display:none" onchange="loadVS(this)">
-<audio id="audioVS" controls style="width:100%;margin-top:8px;height:36px;opacity:0.9"></audio>
+<div class="volume-label"><b>01 — VS Bateria</b><span id="vsInfo">Nenhum arquivo</span></div>
+<div class="file-label" onclick="document.getElementById('fileVS').click()">CARREGAR VS BATERIA</div>
+<input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)">
+<audio id="audioVS" controls style="width:100%;margin-top:8px;height:36px"></audio>
 <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
-<span style="color:var(--muted);font-size:10px;letter-spacing:0.5px;min-width:50px">VOLUME</span>
-<input type="range" id="volVS" min="0" max="100" value="80" oninput="document.getElementById('volVSVal').innerText=this.value;document.getElementById('audioVS').volume=this.value/100;syncVolTela();">
-<span id="volVSVal" style="color:var(--gold);font-weight:700;font-size:11px;min-width:28px;text-align:right">80</span>
+<span style="color:var(--muted);font-size:10px;min-width:50px">VOLUME</span>
+<input type="range" id="volVS" min="0" max="100" value="80" oninput="document.getElementById('volVSVal').innerText=this.value;document.getElementById('audioVS').volume=this.value/100;">
+<span id="volVSVal" style="color:var(--gold);font-weight:700;font-size:11px;min-width:28px">80</span>
 </div>
 </div>
-
 <div class="volume-prof">
-<div class="volume-label"><b>02 — Playback</b><span id="playbackInfo" style="color:var(--muted);font-weight:400">Nenhum arquivo</span></div>
-<div class="file-label" onclick="document.getElementById('filePlayback').click()" style="margin:6px 0">CARREGAR PLAYBACK — MP3 / WAV</div>
-<input type="file" id="filePlayback" accept="audio/*,.mp3,.wav,.m4a,.ogg" style="display:none" onchange="loadPlayback(this)">
-<audio id="audioPlayback" controls style="width:100%;margin-top:8px;height:36px;opacity:0.9"></audio>
+<div class="volume-label"><b>02 — Playback</b><span id="playbackInfo">Nenhum arquivo</span></div>
+<div class="file-label" onclick="document.getElementById('filePlayback').click()">CARREGAR PLAYBACK</div>
+<input type="file" id="filePlayback" accept="audio/*" style="display:none" onchange="loadPlayback(this)">
+<audio id="audioPlayback" controls style="width:100%;margin-top:8px;height:36px"></audio>
 <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
-<span style="color:var(--muted);font-size:10px;letter-spacing:0.5px;min-width:50px">VOLUME</span>
-<input type="range" id="volPlayback" min="0" max="100" value="80" oninput="document.getElementById('volPlaybackVal').innerText=this.value;document.getElementById('audioPlayback').volume=this.value/100;syncVolTela();">
-<span id="volPlaybackVal" style="color:var(--gold);font-weight:700;font-size:11px;min-width:28px;text-align:right">80</span>
+<span style="color:var(--muted);font-size:10px;min-width:50px">VOLUME</span>
+<input type="range" id="volPlayback" min="0" max="100" value="80" oninput="document.getElementById('volPlaybackVal').innerText=this.value;document.getElementById('audioPlayback').volume=this.value/100;">
+<span id="volPlaybackVal" style="color:var(--gold);font-weight:700;font-size:11px;min-width:28px">80</span>
 </div>
 </div>
-
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px">
-<button class="btn gold big" onclick="playBoth()" style="padding:12px">▶ PLAY SYNC</button>
-<button class="btn big" onclick="pauseBoth()" style="padding:12px">⏸ PAUSE SYNC</button>
+<button class="btn gold big" onclick="playBoth()">▶ PLAY SYNC</button>
+<button class="btn big" onclick="pauseBoth()">⏸ PAUSE SYNC</button>
 </div>
+</div>
+
+<!-- NOVO CONTROLE DE ROLAGEM NA TELA NORMAL -->
+<div class="card scroll-prof">
+<div class="card-header" style="margin-bottom:8px">🔄 ROLAGEM AUTOMÁTICA - BEM DEVAGARZINHO</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+<button id="btnScrollPlay" class="btn gold big" onclick="toggleScroll('normal')" style="padding:12px">▶️ INICIAR ROLAGEM</button>
+<button class="btn big" onclick="resetScroll('normal')" style="padding:12px">⏮️ TOPO</button>
+<button class="btn big" onclick="stopScroll()" style="padding:12px">⏸️ PAUSAR</button>
+</div>
+<div style="background:var(--card3);border-radius:8px;padding:10px;margin-top:10px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+<span style="color:var(--muted);font-size:10px;letter-spacing:0.8px">VELOCIDADE - BEM DEVAGAR</span>
+<span id="scrollSpeedVal" style="color:var(--gold);font-weight:800;font-size:11px">2 - DEVAGARZINHO</span>
+</div>
+<input type="range" id="scrollSpeed" min="1" max="10" value="2" style="width:100%" oninput="setScrollSpeed(this.value)">
+<div style="display:flex;justify-content:space-between;margin-top:4px">
+<span style="color:var(--muted);font-size:9px">1 = MUITO DEVAGAR</span>
+<span style="color:var(--muted);font-size:9px">10 = RÁPIDO</span>
+</div>
+</div>
+<small style="color:var(--muted);font-size:9px;display:block;margin-top:8px;text-align:center">Rolagem suave profissional para palco - começa bem devagarzinho</small>
 </div>
 
 <div class="card">
 <div class="card-header">BPM + Pitch</div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div style="background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px"><small style="color:var(--muted);font-size:10px;letter-spacing:0.8px">BPM</small><div class="bpm-display" id="bpmDisplay">100</div><input type="range" id="bpmRange" min="40" max="240" value="100" style="width:100%" oninput="bpm=parseInt(this.value);document.getElementById('bpmDisplay').innerText=bpm;updateRate();"></div>
-<div style="background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px"><small style="color:var(--muted);font-size:10px;letter-spacing:0.8px">PITCH</small><div class="bpm-display" style="font-size:28px" id="pitchDisplay">0</div><input type="range" id="pitchRange" min="-12" max="12" value="0" style="width:100%" oninput="pitch=parseInt(this.value);document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;updateRate();"></div>
+<div style="background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px"><small style="color:var(--muted);font-size:10px">BPM</small><div class="bpm-display" id="bpmDisplay">100</div><input type="range" min="40" max="240" value="100" style="width:100%" oninput="bpm=parseInt(this.value);document.getElementById('bpmDisplay').innerText=bpm;updateRate();"></div>
+<div style="background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px"><small style="color:var(--muted);font-size:10px">PITCH</small><div class="bpm-display" style="font-size:28px" id="pitchDisplay">0</div><input type="range" min="-12" max="12" value="0" style="width:100%" oninput="pitch=parseInt(this.value);document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;updateRate();"></div>
 </div>
 </div>
 
@@ -153,113 +165,158 @@ body.theme-preto{--bg:#000;--card:#0a0a0a;--card2:#151515;--card3:#1a1a1a;--text
 <input type="text" id="artistaMusica" placeholder="Artista">
 <input type="text" id="nomeMusica" placeholder="Música">
 </div>
-<textarea id="inputCifraHome" placeholder="Cole a cifra aqui ou receba da internet via Compartilhar..." oninput="renderCifra()"></textarea>
+<textarea id="inputCifraHome" placeholder="Cole a cifra aqui..." oninput="renderCifra()"></textarea>
 <button class="btn gold big" onclick="salvarMusica()">💾 SALVAR MÚSICA</button>
-<button class="btn big" onclick="novaCifra()">➕ NOVA EM BRANCO</button>
-<button class="btn big" onclick="document.getElementById('telaGrande').style.display='flex';renderTela();showFloat();">⛶ TELA CHEIA</button>
+<button class="btn big" onclick="document.getElementById('telaGrande').style.display='flex';renderTela();showFloat();">⛶ TELA CHEIA COM ROLAGEM</button>
 <div id="saveStatus" style="margin-top:10px;color:var(--gold);font-weight:700;text-align:center;font-size:12px"></div>
 </div>
 
 <div class="card" style="padding:0;overflow:hidden">
 <div class="preview-wrapper">
 <div class="preview-top">
-<b style="color:var(--gold);font-size:10px;letter-spacing:0.8px">TOM:</b>
-<div class="transpose-info" id="transposeInfo" style="background:var(--gold);color:var(--bg);padding:5px 12px;border-radius:20px;font-weight:800;font-size:11px">0 Original</div>
+<b style="color:var(--gold);font-size:10px">TOM:</b>
+<div id="transposeInfo" style="background:var(--gold);color:var(--bg);padding:5px 12px;border-radius:20px;font-weight:800;font-size:11px">0 Original</div>
 <button class="small" onclick="changeTranspose(-1)">-1</button>
 <button class="small gold" onclick="changeTranspose(0,true)">0</button>
 <button class="small" onclick="changeTranspose(1)">+1</button>
+<button class="small gold" id="miniScrollBtn" onclick="toggleScroll('normal')">▶️ ROLAGEM</button>
 </div>
-<div style="display:flex;flex-direction:column;gap:6px;background:var(--card2);padding:10px;border-top:1px solid var(--line)">
-<div style="display:flex;justify-content:space-between;align-items:center">
-<b style="color:var(--muted);font-size:10px;letter-spacing:0.8px">TAMANHO</b>
-<span id="sizeInfo" style="color:var(--gold);font-weight:700;font-size:11px">16px / 12px</span>
-</div>
-<div style="display:flex;gap:5px;flex-wrap:wrap">
-<button class="small gold" onclick="changeBothSize(-3)" style="padding:7px 10px">MICRO</button>
-<button class="small gold" onclick="changeBothSize(-1)" style="padding:7px 12px">MENOR</button>
-<button class="small" onclick="setSize(10,8)">10px</button>
+<div style="display:flex;gap:6px;background:var(--card2);padding:10px;border-top:1px solid var(--line)">
+<div style="display:flex;gap:5px;flex-wrap:wrap;flex:1">
+<button class="small gold" onclick="changeBothSize(-3)">MICRO</button>
+<button class="small gold" onclick="changeBothSize(-1)">MENOR</button>
 <button class="small gold" onclick="setSize(16,12)">16px</button>
 <button class="small gold" onclick="changeBothSize(1)">MAIOR</button>
 </div>
-<input type="range" id="sizeSlider" min="6" max="80" value="16" style="width:100%;margin-top:4px" oninput="let v=parseInt(this.value);letraSize=v;cifraSize=Math.max(6,v-4);renderCifra();updateSize();">
+<span id="sizeInfo" style="color:var(--gold);font-weight:700;font-size:11px">16px</span>
 </div>
+<input type="range" id="sizeSlider" min="6" max="80" value="16" style="margin:6px 10px;width:calc(100% - 20px)" oninput="letraSize=parseInt(this.value);cifraSize=Math.max(6,letraSize-4);renderCifra();updateSize();">
 <div class="preview-content" id="output"></div>
 </div>
 </div>
 
 </div>
 
-<div id="view-config" class="view">
-<div class="card">
-<div class="card-header">Configurações - Profissional</div>
-<div style="background:var(--card2);padding:14px;border-radius:10px;border:1px solid var(--line);display:flex;flex-direction:column;gap:10px">
-<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center">
-<button class="small gold" onclick="changeBothSize(-3)" style="padding:10px 14px">MICRO 6px</button>
-<button class="small gold" onclick="changeBothSize(-1)" style="padding:10px 14px">MENOR</button>
-<div style="text-align:center;min-width:100px"><div id="sizeInfoConfig" style="color:var(--gold);font-weight:700">16px / 12px</div></div>
-<button class="small gold" onclick="changeBothSize(1)" style="padding:10px 14px">MAIOR</button>
-</div>
-<input type="range" id="sizeSliderConfig" min="6" max="80" value="16" style="width:100%" oninput="let v=parseInt(this.value);letraSize=v;cifraSize=Math.max(6,v-4);renderCifra();updateSize();">
-</div>
-<div style="margin-top:16px"><small style="color:var(--muted);font-size:10px;letter-spacing:0.8px">TEMAS PROFISSIONAIS</small>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
-<button class="theme-btn" id="th-branco" onclick="setTheme('branco')"><span class="dot" style="background:#fff"></span>BRANCO</button>
-<button class="theme-btn" id="th-preto" onclick="setTheme('preto')"><span class="dot" style="background:#000;border-color:#fff"></span>PRETO</button>
-<button class="theme-btn" id="th-azul" onclick="setTheme('azul')"><span class="dot" style="background:#2a3a5a"></span>AZUL PROFISSIONAL</button>
-<button class="theme-btn active" id="th-ouro-negro" onclick="setTheme('ouro-negro')"><span class="dot" style="background:#080808;border-color:#c9a86a"></span>OURO NEGRO</button>
-</div>
-</div>
-<button class="btn big" style="margin-top:16px" onclick="document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-home').classList.add('active');">← VOLTAR</button>
-</div>
+<div id="view-config" class="view"><div class="card"><div class="card-header">Configurações</div><div style="background:var(--card2);padding:14px;border-radius:10px;border:1px solid var(--line);display:flex;flex-direction:column;gap:10px"><div style="display:flex;gap:6px;justify-content:center"><button class="small gold" onclick="changeBothSize(-3)" style="padding:10px 14px">MICRO 6px</button><button class="small gold" onclick="changeBothSize(-1)" style="padding:10px 14px">MENOR</button><div id="sizeInfoConfig" style="color:var(--gold);font-weight:700">16px</div><button class="small gold" onclick="changeBothSize(1)" style="padding:10px 14px">MAIOR</button></div><input type="range" id="sizeSliderConfig" min="6" max="80" value="16" style="width:100%" oninput="letraSize=parseInt(this.value);cifraSize=Math.max(6,letraSize-4);renderCifra();updateSize();"></div><button class="btn big" style="margin-top:16px" onclick="document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-home').classList.add('active');">← VOLTAR</button></div></div>
+<div id="view-repertorios" class="view"><div class="card"><b style="color:var(--gold)">MEUS REPERTÓRIOS</b><div id="listaRepertorios" style="margin-top:12px"></div><div id="detalheRepertorio" style="display:none;margin-top:12px"></div></div></div>
+<div id="view-cifras" class="view"><div class="card"><b>MINHAS CIFRAS</b><div id="listaCifras"></div></div></div>
+<div id="view-pastas" class="view"><div class="card"><b>PASTAS</b><div id="listaPastas"></div></div></div>
 </div>
 
-<div id="view-repertorios" class="view"><div class="card"><b style="color:var(--gold);font-size:12px;letter-spacing:1px">MEUS REPERTÓRIOS</b><div id="listaRepertorios" style="margin-top:12px"></div><div id="detalheRepertorio" style="display:none;margin-top:12px"></div></div></div>
-<div id="view-cifras" class="view"><div class="card"><b style="color:var(--gold);font-size:12px">MINHAS CIFRAS</b><div id="listaCifras" style="margin-top:12px"></div></div></div>
-<div id="view-vslist" class="view"><div class="card"><b style="color:var(--gold);font-size:12px">CIFRAS COM VS</b><div id="listaVS" style="margin-top:12px"></div></div></div>
-<div id="view-pastas" class="view"><div class="card"><b style="color:var(--gold);font-size:12px">PASTAS POR ARTISTA</b><div id="listaPastas" style="margin-top:12px"></div></div></div>
-</div>
-
-<div class="modal" id="modalRep"><div class="modal-content"><b style="color:var(--gold);font-size:12px">SALVAR NO REPERTÓRIO</b><div id="modalLista" style="margin-top:12px"></div><button class="btn" style="width:100%;margin-top:12px" onclick="document.getElementById('modalRep').classList.remove('open');">FECHAR</button></div></div>
-<div class="modal" id="modalCriar"><div class="modal-content"><b style="color:var(--gold);font-size:12px">NOVO REPERTÓRIO</b><input type="text" id="modalNome" placeholder="Nome" style="margin-top:12px"><input type="text" id="modalCasa" placeholder="Casa" style="margin-top:8px"><button class="btn gold big" style="margin-top:12px" onclick="criarModal()">CRIAR</button><button class="btn big" onclick="document.getElementById('modalCriar').classList.remove('open');">CANCELAR</button></div></div>
+<div class="modal" id="modalRep"><div class="modal-content"><b style="color:var(--gold)">SALVAR NO REPERTÓRIO</b><div id="modalLista" style="margin-top:12px"></div><button class="btn" style="width:100%;margin-top:12px" onclick="document.getElementById('modalRep').classList.remove('open');">FECHAR</button></div></div>
+<div class="modal" id="modalCriar"><div class="modal-content"><b style="color:var(--gold)">NOVO REPERTÓRIO</b><input type="text" id="modalNome" placeholder="Nome" style="margin-top:12px"><input type="text" id="modalCasa" placeholder="Casa" style="margin-top:8px"><button class="btn gold big" style="margin-top:12px" onclick="criarModal()">CRIAR</button><button class="btn big" onclick="document.getElementById('modalCriar').classList.remove('open');">CANCELAR</button></div></div>
 
 <div id="telaGrande">
-<div class="tela-header"><button class="btn" onclick="document.getElementById('telaGrande').style.display='none';document.getElementById('showControlsBtn').style.display='none';">✕ FECHAR</button><small style="color:var(--gold);font-weight:800;font-size:11px">TAKI VS ESTÚDIO <span id="telaSync">0 | 100 BPM</span></small><button class="btn gold" onclick="document.getElementById('telaContent').scrollBy(0,120)">▼</button></div>
+<div class="tela-header"><button class="btn" onclick="stopScroll();document.getElementById('telaGrande').style.display='none';document.getElementById('showControlsBtn').style.display='none';">✕ FECHAR</button><small style="color:var(--gold);font-weight:800;font-size:11px">TAKI VS ESTÚDIO <span id="telaSync">0 | 100 BPM</span> <span id="scrollStatusTela" style="color:var(--muted)">• PARADO</span></small><button class="btn gold" onclick="document.getElementById('telaContent').scrollBy(0,120)">▼</button></div>
 <div class="tela-content" id="telaContent" onclick="showFloat()"></div>
-<div id="telaFloating" style="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(10,10,10,0.98);border:1px solid var(--line2);border-radius:14px;padding:14px;width:380px;max-width:92%;display:flex;flex-direction:column;gap:10px;z-index:30;transition:0.4s;box-shadow:0 8px 24px rgba(0,0,0,0.6)">
-<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold);font-size:10px;letter-spacing:0.8px">TOM</b><div style="background:var(--gold);color:var(--bg);padding:5px 12px;border-radius:20px;font-weight:800;font-size:11px" id="telaTom">0 Original</div><button class="btn" onclick="hideFloat()" style="padding:5px 10px">✕</button></div>
+
+<div id="telaFloating" style="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(10,10,10,0.98);border:1px solid var(--line2);border-radius:14px;padding:14px;width:390px;max-width:94%;display:flex;flex-direction:column;gap:10px;z-index:30;transition:0.4s;box-shadow:0 8px 24px rgba(0,0,0,0.6)">
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold);font-size:10px">TOM</b><div style="background:var(--gold);color:var(--bg);padding:5px 12px;border-radius:20px;font-weight:800;font-size:11px" id="telaTom">0 Original</div><button class="btn" onclick="hideFloat()" style="padding:5px 10px">✕</button></div>
 <div style="display:flex;gap:8px"><button class="small" onclick="changeTranspose(-1);resetHide()" style="flex:1;padding:10px">-1</button><button class="small gold" onclick="changeTranspose(0,true);resetHide()" style="flex:1;padding:10px">0</button><button class="small" onclick="changeTranspose(1);resetHide()" style="flex:1;padding:10px">+1</button></div>
-<div style="display:flex;flex-direction:column;gap:8px;background:var(--card2);padding:10px;border-radius:10px;border:1px solid var(--line)">
-<div style="display:flex;gap:8px;align-items:center"><span style="color:var(--muted);font-size:9px;min-width:55px">BATERIA VOL</span><input type="range" id="volVS_Tela" min="0" max="100" value="80" style="flex:1" oninput="document.getElementById('audioVS').volume=this.value/100;document.getElementById('volVS').value=this.value;document.getElementById('volVSVal').innerText=this.value;resetHide();"></div>
-<div style="display:flex;gap:8px;align-items:center"><span style="color:var(--muted);font-size:9px;min-width:55px">PLAYBACK VOL</span><input type="range" id="volPlayback_Tela" min="0" max="100" value="80" style="flex:1" oninput="document.getElementById('audioPlayback').volume=this.value/100;document.getElementById('volPlayback').value=this.value;document.getElementById('volPlaybackVal').innerText=this.value;resetHide();"></div>
+
+<!-- ROLAGEM NA TELA GRANDE -->
+<div style="background:var(--card2);border:1px solid var(--line2);border-radius:10px;padding:10px;border-left:3px solid var(--gold)">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b style="color:var(--gold);font-size:10px">🔄 ROLAGEM - DEVAGARZINHO</b><span id="scrollStatus" style="color:var(--muted);font-size:10px">PARADO</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+<button id="btnScrollTela" class="small gold" onclick="toggleScroll('tela');resetHide()" style="padding:10px">▶️ INICIAR</button>
+<button class="small" onclick="resetScroll('tela');resetHide()" style="padding:10px">⏮️ TOPO</button>
+<button class="small" onclick="stopScroll();resetHide()" style="padding:10px">⏸️ PAUSAR</button>
 </div>
-<div style="display:flex;gap:6px"><button class="small gold" onclick="changeBothSize(-3);resetHide()" style="flex:1;padding:8px">MICRO</button><button class="small gold" onclick="changeBothSize(-1);resetHide()" style="flex:1;padding:8px">MENOR</button><button class="small gold" onclick="changeBothSize(1);resetHide()" style="flex:1;padding:8px">MAIOR</button></div>
-<input type="range" id="sizeSliderTela" min="6" max="80" value="16" style="width:100%" oninput="let v=parseInt(this.value);letraSize=v;cifraSize=Math.max(6,v-4);renderCifra();updateSize();resetHide();">
-<div style="display:flex;gap:6px"><button class="small gold" onclick="playBoth();resetHide()" style="flex:1">▶ PLAY 2</button><button class="small" onclick="pauseBoth();resetHide()" style="flex:1">⏸ PAUSE</button><button class="small gold" onclick="doShare();resetHide()" style="flex:1">📤</button></div>
+<div style="margin-top:8px">
+<div style="display:flex;justify-content:space-between"><span style="color:var(--muted);font-size:9px">VELOCIDADE</span><span id="scrollSpeedValTela" style="color:var(--gold);font-size:10px;font-weight:700">2 - DEVAGARZINHO</span></div>
+<input type="range" id="scrollSpeedTela" min="1" max="10" value="2" style="width:100%;margin-top:4px" oninput="setScrollSpeed(this.value);resetHide();">
 </div>
-<button id="showControlsBtn" onclick="showFloat()" style="display:none;position:fixed;bottom:20px;right:20px;background:var(--card2);color:var(--gold);border:1px solid var(--line2);border-radius:20px;padding:10px 18px;font-weight:800;font-size:11px;z-index:40;box-shadow:0 4px 12px rgba(0,0,0,0.5);cursor:pointer;letter-spacing:0.5px">TAMANHO / VOL</button>
 </div>
 
-<div id="telaEditar" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fdf6e3;z-index:9998;flex-direction:column"><div style="padding:12px;background:#0a0a0a;display:flex;justify-content:space-between;align-items:center"><button class="btn" onclick="document.getElementById('telaEditar').style.display='none';">✕ FECHAR</button><b style="color:var(--gold);font-size:11px">EDITAR</b><button class="btn gold" onclick="var f=document.getElementById('inputFull').value;document.getElementById('inputCifraHome').value=f;document.getElementById('inputCifra').value=f;renderCifra();document.getElementById('telaEditar').style.display='none';">RENDERIZAR</button></div><textarea id="inputFull" style="flex:1;padding:20px;font-family:monospace;font-size:18px;line-height:30px;background:transparent;color:#2a2418;border:none;outline:none" placeholder="Cole cifra..."></textarea></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:var(--card2);padding:10px;border-radius:10px;border:1px solid var(--line)">
+<div style="display:flex;gap:8px;align-items:center"><span style="color:var(--muted);font-size:9px;min-width:55px">BATERIA</span><input type="range" id="volVS_Tela" min="0" max="100" value="80" style="flex:1" oninput="document.getElementById('audioVS').volume=this.value/100;document.getElementById('volVS').value=this.value;document.getElementById('volVSVal').innerText=this.value;resetHide();"></div>
+<div style="display:flex;gap:8px;align-items:center"><span style="color:var(--muted);font-size:9px;min-width:55px">PLAYBACK</span><input type="range" id="volPlayback_Tela" min="0" max="100" value="80" style="flex:1" oninput="document.getElementById('audioPlayback').volume=this.value/100;document.getElementById('volPlayback').value=this.value;document.getElementById('volPlaybackVal').innerText=this.value;resetHide();"></div>
+</div>
+<div style="display:flex;gap:6px"><button class="small gold" onclick="changeBothSize(-3);resetHide()" style="flex:1;padding:8px">MICRO</button><button class="small gold" onclick="changeBothSize(-1);resetHide()" style="flex:1;padding:8px">MENOR</button><button class="small gold" onclick="changeBothSize(1);resetHide()" style="flex:1;padding:8px">MAIOR</button></div>
+<input type="range" id="sizeSliderTela" min="6" max="80" value="16" style="width:100%" oninput="letraSize=parseInt(this.value);cifraSize=Math.max(6,letraSize-4);renderCifra();updateSize();resetHide();">
+<div style="display:flex;gap:6px"><button class="small gold" onclick="playBoth();resetHide()" style="flex:1">▶ PLAY 2</button><button class="small" onclick="pauseBoth();resetHide()" style="flex:1">⏸ PAUSE</button></div>
+</div>
+
+<button id="showControlsBtn" onclick="showFloat()" style="display:none;position:fixed;bottom:20px;right:20px;background:var(--card2);color:var(--gold);border:1px solid var(--line2);border-radius:20px;padding:10px 18px;font-weight:800;font-size:11px;z-index:40;box-shadow:0 4px 12px rgba(0,0,0,0.5);cursor:pointer">TAMANHO / ROLAGEM / VOL</button>
+</div>
+
+<div id="telaEditar" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fdf6e3;z-index:9998;flex-direction:column"><div style="padding:12px;background:#0a0a0a;display:flex;justify-content:space-between;align-items:center"><button class="btn" onclick="document.getElementById('telaEditar').style.display='none';">✕</button><b style="color:var(--gold);font-size:11px">EDITAR</b><button class="btn gold" onclick="var f=document.getElementById('inputFull').value;document.getElementById('inputCifraHome').value=f;document.getElementById('inputCifra').value=f;renderCifra();document.getElementById('telaEditar').style.display='none';">RENDERIZAR</button></div><textarea id="inputFull" style="flex:1;padding:20px;font-family:monospace;font-size:18px;line-height:30px;background:transparent;color:#2a2418;border:none;outline:none"></textarea></div>
 
 <textarea id="inputCifra" style="display:none"></textarea>
 <div class="install-bar"><button id="installBtn">📲 INSTALAR TAKI VS ESTÚDIO</button><button onclick="doShare()" style="background:var(--card2);color:var(--gold);border:1px solid var(--line);flex:1;padding:12px;border-radius:8px;font-weight:800">📤 COMPARTILHAR</button></div>
 
 <script>
-var letraSize=16,cifraSize=12,transpose=0,bpm=100,pitch=0,tapTimes=[],currentAudioName='',currentPlaybackName='',currentAudioBlob=null,currentPlaybackBlob=null,hideTimer=null;
+var letraSize=16,cifraSize=12,transpose=0,bpm=100,pitch=0,currentAudioName='',currentPlaybackName='',currentAudioBlob=null,currentPlaybackBlob=null,hideTimer=null;
+var scrollInterval=null,scrollSpeed=2,isScrolling=false,scrollMode='normal';
 const NOTES=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 
 function loadVS(input){var f=input.files[0];if(!f) return;currentAudioBlob=f;currentAudioName=f.name;var url=URL.createObjectURL(f);var audio=document.getElementById('audioVS');audio.src=url;audio.volume=document.getElementById('volVS').value/100;audio.load();audio.play().catch(()=>{});document.getElementById('vsInfo').innerText=f.name.substring(0,20);}
 function loadPlayback(input){var f=input.files[0];if(!f) return;currentPlaybackBlob=f;currentPlaybackName=f.name;var url=URL.createObjectURL(f);var audio=document.getElementById('audioPlayback');audio.src=url;audio.volume=document.getElementById('volPlayback').value/100;audio.load();audio.play().catch(()=>{});document.getElementById('playbackInfo').innerText=f.name.substring(0,20);}
 function playBoth(){var a1=document.getElementById('audioVS');var a2=document.getElementById('audioPlayback');if(a1.src){a1.currentTime=0;a1.play().catch(()=>{});}if(a2.src){a2.currentTime=0;a2.play().catch(()=>{});}}
 function pauseBoth(){document.getElementById('audioVS').pause();document.getElementById('audioPlayback').pause();}
-function syncVolTela(){var v1=document.getElementById('volVS').value;var v2=document.getElementById('volPlayback').value;var t1=document.getElementById('volVS_Tela');var t2=document.getElementById('volPlayback_Tela');if(t1) t1.value=v1;if(t2) t2.value=v2;}
 function getRate(){return (bpm/100)*Math.pow(2,pitch/12);}
 function updateRate(){var a1=document.getElementById('audioVS');var a2=document.getElementById('audioPlayback');var r=getRate();if(a1 && a1.src) a1.playbackRate=Math.max(0.25,Math.min(4,r));if(a2 && a2.src) a2.playbackRate=Math.max(0.25,Math.min(4,r));}
-function doShare(){
-  var url=location.href;var text='TAKI VS ESTUDIO - Meu app de palco! '+url;
-  if(navigator.share){navigator.share({title:'TAKI VS ESTUDIO',text:text,url:url}).catch(()=>{window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');});}
-  else{window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');}
+
+// ROLAGEM - NOVO SISTEMA PROFISSIONAL BEM DEVAGAR
+function setScrollSpeed(v){
+  scrollSpeed=parseInt(v);
+  var labels={1:'1 - MUITO DEVAGAR',2:'2 - DEVAGARZINHO',3:'3 - DEVAGAR',4:'4 - SUAVE',5:'5 - NORMAL LENTO',6:'6 - MÉDIO',7:'7 - MÉDIO+',8:'8 - RÁPIDO',9:'9 - MUITO RÁPIDO',10:'10 - SUPER RÁPIDO'};
+  document.getElementById('scrollSpeedVal').innerText=labels[scrollSpeed]||scrollSpeed;
+  var el2=document.getElementById('scrollSpeedValTela');if(el2) el2.innerText=labels[scrollSpeed]||scrollSpeed;
+  document.getElementById('scrollSpeed').value=scrollSpeed;
+  document.getElementById('scrollSpeedTela').value=scrollSpeed;
+  localStorage.setItem('taki-scrollSpeed',scrollSpeed);
+  if(isScrolling){stopScroll();startScroll();}
 }
+function startScroll(){
+  var container = scrollMode==='tela' ? document.getElementById('telaContent') : document.getElementById('output');
+  if(!container) return;
+  isScrolling=true;
+  var speedMap={1:0.25,2:0.5,3:0.8,4:1.2,5:1.8,6:2.5,7:3.5,8:5,9:7,10:10}; // pixels por frame - BEM DEVAGAR no 1 e 2
+  var pixels=speedMap[scrollSpeed]||0.5;
+  document.getElementById('scrollStatus').innerText='ROLANDO '+scrollSpeed;
+  document.getElementById('scrollStatusTela').innerText='• ROLANDO '+scrollSpeed;
+  document.getElementById('btnScrollPlay').innerText='⏸️ PAUSAR';
+  document.getElementById('btnScrollPlay').classList.add('active');
+  document.getElementById('btnScrollTela').innerText='⏸️ PAUSAR';
+  document.getElementById('btnScrollTela').classList.add('active');
+  document.getElementById('miniScrollBtn').innerText='⏸️ ROLANDO';
+  document.getElementById('miniScrollBtn').classList.add('active');
+  scrollInterval=setInterval(()=>{
+    container.scrollTop+=pixels;
+    if(container.scrollTop+container.clientHeight>=container.scrollHeight-2){
+      stopScroll();
+    }
+  },40); // 40ms = 25fps bem suave
+}
+function stopScroll(){
+  isScrolling=false;
+  clearInterval(scrollInterval);
+  scrollInterval=null;
+  document.getElementById('scrollStatus').innerText='PARADO';
+  document.getElementById('scrollStatusTela').innerText='• PARADO';
+  document.getElementById('btnScrollPlay').innerText='▶️ INICIAR ROLAGEM';
+  document.getElementById('btnScrollPlay').classList.remove('active');
+  document.getElementById('btnScrollTela').innerText='▶️ INICIAR';
+  document.getElementById('btnScrollTela').classList.remove('active');
+  document.getElementById('miniScrollBtn').innerText='▶️ ROLAGEM';
+  document.getElementById('miniScrollBtn').classList.remove('active');
+}
+function toggleScroll(mode){
+  if(mode) scrollMode=mode;
+  if(isScrolling && scrollMode===mode){stopScroll();}else{
+    if(isScrolling) stopScroll();
+    scrollMode=mode;
+    startScroll();
+  }
+}
+function resetScroll(mode){
+  var container = mode==='tela' ? document.getElementById('telaContent') : document.getElementById('output');
+  if(container) container.scrollTop=0;
+  stopScroll();
+}
+
+function doShare(){var url=location.href;var text='TAKI VS ESTUDIO - Meu app de palco! '+url;if(navigator.share){navigator.share({title:'TAKI VS ESTUDIO',text:text,url:url}).catch(()=>{window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');});}else{window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');}}
 function isChordLine(line){var t=line.trim();if(!t) return false;if(t.length>55) return false;if(/^[A-G][#b]?[mM0-9\/\s\(\)\-]*$/.test(t.replace(/\s+/g,' ').trim()) && /[A-G]/.test(t)) return true;if(/^[A-G][#b]?(\s+[A-G][#b]?[mM0-9\/\(\)\-]*)+$/.test(t.trim())) return true;return false;}
 function isSection(line){var u=line.trim().toUpperCase();if(u.length>30) return false;return ['REFRÃO','REFRAO','PONTE','INTRO','VERSO','CHORUS','REFR','SOLO'].some(k=>u.includes(k));}
 function transposeNote(n,s){var idx=NOTES.indexOf(n);if(idx==-1) return n;var ni=(idx+s)%12;if(ni<0) ni+=12;return NOTES[ni];}
@@ -270,23 +327,21 @@ function renderCifra(){var blocks=parseBlocks();var out=document.getElementById(
 function renderTela(){var blocks=parseBlocks();var tg=document.getElementById('telaContent');var h='';blocks.forEach(b=>{if(b.type==='space'){h+='<div style="height:8px"></div>';}else if(b.type==='section'){h+='<div style="margin:12px 0"><div class="section-label">'+b.text.toUpperCase()+'</div></div>';}else if(b.type==='pair'){var cifra=b.cifra;if(transpose!=0) cifra=transposeLine(cifra,transpose);h+='<div style="margin:16px 0"><div class="tela-cifra" style="font-size:'+(cifraSize+4)+'px">'+cifra+'</div><div class="tela-letra" style="font-size:'+(letraSize+2)+'px">'+b.letra.toUpperCase()+'</div></div>';}else if(b.type==='cifra'){var txt=b.text;if(transpose!=0) txt=transposeLine(txt,transpose);h+='<div style="margin:16px 0"><div class="tela-cifra" style="font-size:'+(cifraSize+4)+'px">'+txt+'</div></div>';}else{h+='<div style="margin:16px 0"><div class="tela-letra" style="font-size:'+(letraSize+2)+'px">'+b.text.toUpperCase()+'</div></div>';}});tg.innerHTML=h;document.getElementById('telaSync').innerText=transpose+' | '+bpm+' BPM';}
 function showFloat(){var f=document.getElementById('telaFloating');var btn=document.getElementById('showControlsBtn');if(f){f.style.display='flex';f.style.opacity='1';f.style.transform='translateX(-50%) translateY(0)';}if(btn) btn.style.display='none';resetHide();}
 function hideFloat(){var f=document.getElementById('telaFloating');var btn=document.getElementById('showControlsBtn');if(f){f.style.opacity='0';f.style.transform='translateX(-50%) translateY(20px)';setTimeout(()=>{if(f.style.opacity=='0') f.style.display='none';},400);}if(btn) btn.style.display='block';clearTimeout(hideTimer);}
-function resetHide(){clearTimeout(hideTimer);hideTimer=setTimeout(()=>{hideFloat();},5000);}
+function resetHide(){clearTimeout(hideTimer);hideTimer=setTimeout(()=>{hideFloat();},6000);}
 function changeTranspose(d,isReset){if(isReset) transpose=0; else transpose=Math.max(-7,Math.min(7,transpose+d));updateUI();renderCifra();}
 function updateUI(){var name=transpose==0?'Original':'Tom '+NOTES[(transpose%12+12)%12]+' ('+(transpose>0?'+':'')+transpose+')';var el=document.getElementById('transposeInfo');if(el) el.innerText=(transpose>0?'+':'')+transpose+' '+name;var el2=document.getElementById('telaTom');if(el2) el2.innerText=(transpose>0?'+':'')+transpose+' '+name;}
 function changeBothSize(d){letraSize=Math.max(6,Math.min(80,letraSize+d));cifraSize=Math.max(6,Math.min(80,cifraSize+d));renderCifra();updateSize();localStorage.setItem('taki-letraSize',letraSize);localStorage.setItem('taki-cifraSize',cifraSize);}
 function setSize(letra,cifra){letraSize=letra;cifraSize=cifra;renderCifra();updateSize();localStorage.setItem('taki-letraSize',letraSize);localStorage.setItem('taki-cifraSize',cifraSize);}
-function updateSize(){var el=document.getElementById('sizeInfo');var el2=document.getElementById('sizeInfoConfig');var s1=document.getElementById('sizeSlider');var s2=document.getElementById('sizeSliderConfig');var s3=document.getElementById('sizeSliderTela');if(el) el.innerText=letraSize+'px / '+cifraSize+'px';if(el2) el2.innerText=letraSize+'px / '+cifraSize+'px';if(s1) s1.value=letraSize;if(s2) s2.value=letraSize;if(s3) s3.value=letraSize;}
+function updateSize(){var el=document.getElementById('sizeInfo');var el2=document.getElementById('sizeInfoConfig');var s1=document.getElementById('sizeSlider');var s2=document.getElementById('sizeSliderConfig');var s3=document.getElementById('sizeSliderTela');if(el) el.innerText=letraSize+'px';if(el2) el2.innerText=letraSize+'px';if(s1) s1.value=letraSize;if(s2) s2.value=letraSize;if(s3) s3.value=letraSize;}
 function novaCifra(){document.getElementById('inputCifra').value='';document.getElementById('inputFull').value='';document.getElementById('inputCifraHome').value='';document.getElementById('nomeMusica').value='';document.getElementById('artistaMusica').value='';transpose=0;updateUI();renderCifra();document.getElementById('telaEditar').style.display='flex';}
 function setTheme(name){document.body.className='theme-'+name;localStorage.setItem('taki-theme',name);document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));var el=document.getElementById('th-'+name);if(el) el.classList.add('active');}
-function setFont(name){var fonts={'montserrat':{main:"'Montserrat',sans-serif",cifra:"'Montserrat',sans-serif"}};var f=fonts[name];if(!f) return;document.documentElement.style.setProperty('--font-main',f.main);document.documentElement.style.setProperty('--font-cifra',f.cifra);localStorage.setItem('taki-font',name);document.querySelectorAll('.font-btn').forEach(b=>b.classList.remove('active'));var el=document.getElementById('font-'+name);if(el) el.classList.add('active');renderCifra();}
-function salvarMusica(){var nome=document.getElementById('nomeMusica').value.trim();var artista=document.getElementById('artistaMusica').value.trim();if(!nome){alert('Digite nome!');return;}var cifra=document.getElementById('inputCifra').value||document.getElementById('inputFull').value||document.getElementById('inputCifraHome').value;if(!cifra.trim()){alert('Cole cifra!');return;}var lista=JSON.parse(localStorage.getItem('taki-v14')||'[]');lista.push({id:Date.now(),nome,artista:artista||'Sem Artista',cifra,bpm,pitch,transpose,audioName:currentAudioName,playbackName:currentPlaybackName,temVS:!!currentAudioBlob,temPlayback:!!currentPlaybackBlob,letraSize:letraSize,cifraSize:cifraSize});localStorage.setItem('taki-v14',JSON.stringify(lista));document.getElementById('saveStatus').innerText='✅ "'+nome+'" salvo!';carregar();}
-function carregar(){var todas=JSON.parse(localStorage.getItem('taki-v14')||'[]').map((m,i)=>({...m,idLocal:i}));var c=document.getElementById('listaCifras');var v=document.getElementById('listaVS');var p=document.getElementById('listaPastas');if(c){c.innerHTML=todas.length==0?'<div style="text-align:center;padding:20px;color:var(--muted)">Nenhuma</div>':todas.map(m=>'<div style="background:var(--card2);border:1px solid var(--line);padding:12px;border-radius:10px;margin:8px 0;display:flex;justify-content:space-between"><div><b>'+m.nome+'</b><br><small>'+m.artista+'</small></div><div><button class="small gold" onclick="tocar('+m.idLocal+')">▶</button></div></div>').join('');}
-if(v){v.innerHTML=todas.length==0?'<div style="text-align:center;padding:20px;color:var(--muted)">Nenhuma</div>':todas.map(m=>'<div style="background:var(--card2);border:1px solid '+(m.temVS||m.temPlayback?'var(--line2)':'var(--line)')+';padding:12px;border-radius:10px;margin:8px 0;display:flex;justify-content:space-between"><div><b>'+m.nome+'</b><br><small>'+m.artista+'</small></div><div><button class="small gold" onclick="tocar('+m.idLocal+')">▶</button></div></div>').join('');}
+function salvarMusica(){var nome=document.getElementById('nomeMusica').value.trim();var artista=document.getElementById('artistaMusica').value.trim();if(!nome){alert('Digite nome!');return;}var cifra=document.getElementById('inputCifra').value||document.getElementById('inputFull').value||document.getElementById('inputCifraHome').value;if(!cifra.trim()){alert('Cole cifra!');return;}var lista=JSON.parse(localStorage.getItem('taki-v15')||'[]');lista.push({id:Date.now(),nome,artista:artista||'Sem Artista',cifra,bpm,pitch,transpose,audioName:currentAudioName,playbackName:currentPlaybackName,temVS:!!currentAudioBlob,temPlayback:!!currentPlaybackBlob,letraSize:letraSize,cifraSize:cifraSize});localStorage.setItem('taki-v15',JSON.stringify(lista));document.getElementById('saveStatus').innerText='✅ "'+nome+'" salvo!';carregar();}
+function carregar(){var todas=JSON.parse(localStorage.getItem('taki-v15')||'[]').map((m,i)=>({...m,idLocal:i}));var c=document.getElementById('listaCifras');var p=document.getElementById('listaPastas');if(c){c.innerHTML=todas.length==0?'<div style="text-align:center;padding:20px;color:var(--muted)">Nenhuma</div>':todas.map(m=>'<div style="background:var(--card2);border:1px solid var(--line);padding:12px;border-radius:10px;margin:8px 0;display:flex;justify-content:space-between"><div><b>'+m.nome+'</b><br><small>'+m.artista+'</small></div><div><button class="small gold" onclick="tocar('+m.idLocal+')">▶</button></div></div>').join('');}
 if(p){var grupos={};todas.forEach(m=>{var art=(m.artista||'Sem Artista').trim();if(!grupos[art]) grupos[art]=[];grupos[art].push(m);});p.innerHTML=Object.keys(grupos).length==0?'<div style="text-align:center;color:var(--muted)">Nenhuma</div>':Object.keys(grupos).sort().map(art=>'<div style="border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden"><div style="padding:14px;background:var(--card2);display:flex;justify-content:space-between;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display===\'block\'?\'none\':\'block\'"><b style="color:var(--gold)">📁 '+art+'</b><small>'+grupos[art].length+' músicas</small></div><div style="display:none;padding:6px">'+grupos[art].map(m=>'<div style="background:var(--card2);border:1px solid var(--line);padding:10px;border-radius:8px;margin:6px 0;display:flex;justify-content:space-between"><div>'+m.nome+'</div><div><button class="small gold" onclick="tocar('+m.idLocal+')">▶</button></div></div>').join('')+'</div></div>').join('');}
 }
-function tocar(id){var lista=JSON.parse(localStorage.getItem('taki-v14')||'[]');var m=lista[id];if(!m) return;document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputFull').value=m.cifra;document.getElementById('inputCifraHome').value=m.cifra;bpm=m.bpm||100;pitch=m.pitch||0;transpose=m.transpose||0;if(m.letraSize){letraSize=m.letraSize;cifraSize=m.cifraSize||Math.max(6,m.letraSize-4);}document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;updateUI();renderCifra();document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-home').classList.add('active');updateSize();}
-function getReps(){return JSON.parse(localStorage.getItem('taki-reps-v14')||'[]');}
-function saveReps(r){localStorage.setItem('taki-reps-v14',JSON.stringify(r));}
+function tocar(id){var lista=JSON.parse(localStorage.getItem('taki-v15')||'[]');var m=lista[id];if(!m) return;document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputFull').value=m.cifra;document.getElementById('inputCifraHome').value=m.cifra;bpm=m.bpm||100;pitch=m.pitch||0;transpose=m.transpose||0;if(m.letraSize){letraSize=m.letraSize;cifraSize=m.cifraSize||Math.max(6,m.letraSize-4);}document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;updateUI();renderCifra();document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-home').classList.add('active');updateSize();}
+function getReps(){return JSON.parse(localStorage.getItem('taki-reps-v15')||'[]');}
+function saveReps(r){localStorage.setItem('taki-reps-v15',JSON.stringify(r));}
 function renderReps(){var reps=getReps();var c=document.getElementById('listaRepertorios');if(!c) return;if(reps.length==0){c.innerHTML='<div style="text-align:center;padding:24px"><b style="color:var(--gold);font-size:12px">Nenhum repertório</b></div>';return;}c.innerHTML=reps.map(r=>'<div style="background:var(--card);border:1px solid var(--line2);padding:12px;border-radius:10px;margin:10px 0"><div style="display:flex;justify-content:space-between"><div><b style="color:var(--gold);font-size:12px">📋 '+r.nome+'</b><br><small>📍 '+r.casa+' • '+r.musicas.length+' músicas</small></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="abrirRep('+r.id+')">ABRIR</button><button class="small" onclick="excluirRep('+r.id+')">🗑️</button></div></div></div>').join('');}
 function excluirRep(id){if(!confirm('Excluir?')) return;var reps=getReps().filter(r=>r.id!=id);saveReps(reps);renderReps();}
 function abrirRep(id){var rep=getReps().find(r=>r.id==id);if(!rep) return;var det=document.getElementById('detalheRepertorio');det.style.display='block';det.innerHTML='<div style="background:var(--card);border:1px solid var(--line2);border-radius:10px;padding:12px"><div style="display:flex;justify-content:space-between"><div><b style="color:var(--gold)">📂 '+rep.nome+'</b><br><small>📍 '+rep.casa+' • '+rep.musicas.length+' músicas</small></div><button class="btn" onclick="document.getElementById(\'detalheRepertorio\').style.display=\'none\'">✕</button></div><div style="margin-top:12px">'+(rep.musicas.length==0?'<div style="text-align:center;color:var(--muted);padding:20px">Vazio</div>':rep.musicas.map((m,i)=>'<div style="background:var(--card2);border:1px solid var(--line);padding:10px;border-radius:8px;margin:8px 0;display:flex;justify-content:space-between"><div><b>'+(i+1)+'. '+m.nome+'</b><br><small>'+m.artista+'</small></div><div><button class="small gold" onclick="tocarDoRep('+id+','+i+')">▶</button><button class="small" onclick="removerDoRep('+id+','+i+')">🗑️</button></div></div>').join(''))+'</div></div>';}
@@ -295,31 +350,12 @@ function addAtual(repId){var nome=document.getElementById('nomeMusica').value.tr
 function tocarDoRep(repId,idx){var rep=getReps().find(r=>r.id==repId);var m=rep.musicas[idx];document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputFull').value=m.cifra;document.getElementById('inputCifraHome').value=m.cifra;bpm=m.bpm;pitch=m.pitch;transpose=m.transpose;if(m.letraSize){letraSize=m.letraSize;cifraSize=m.cifraSize;}document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;updateUI();renderCifra();document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-home').classList.add('active');updateSize();}
 function removerDoRep(repId,idx){if(!confirm('Remover?')) return;var reps=getReps();var rep=reps.find(r=>r.id==repId);rep.musicas.splice(idx,1);saveReps(reps);abrirRep(repId);renderReps();}
 function criarModal(){var nome=document.getElementById('modalNome').value.trim();var casa=document.getElementById('modalCasa').value.trim();if(!nome){alert('Nome!');return;}var reps=getReps();reps.push({id:Date.now(),nome,casa:casa||'Casa',musicas:[]});saveReps(reps);document.getElementById('modalCriar').classList.remove('open');document.getElementById('modalNome').value='';document.getElementById('modalCasa').value='';renderReps();alert('✅ '+nome+' criado!');}
-function exportarBackup(){var musicas=JSON.parse(localStorage.getItem('taki-v14')||'[]');var reps=JSON.parse(localStorage.getItem('taki-reps-v14')||'[]');var all={musicas,repertorios:reps,nome:'BACKUP v14',data:new Date().toISOString()};if(musicas.length==0&&reps.length==0){alert('Nada pra backup');return;}var blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='taki-backup-v14-'+new Date().toISOString().slice(0,10)+'.json';a.click();alert('Backup v14 exportado!');}
-function importarBackup(input){var file=input.files[0];if(!file) return;var r=new FileReader();r.onload=e=>{try{var data=JSON.parse(e.target.result);if(data.musicas){if(confirm('Importar '+data.musicas.length+' músicas?')){localStorage.setItem('taki-v14',JSON.stringify(data.musicas));if(data.repertorios) localStorage.setItem('taki-reps-v14',JSON.stringify(data.repertorios));carregar();renderReps();alert('Restaurado!');}}else if(Array.isArray(data)){localStorage.setItem('taki-v14',JSON.stringify(data));carregar();}}catch(err){alert('Erro: '+err.message);}};r.readAsText(file);input.value='';}
-
-function handleSharedData(){
-  var params=new URLSearchParams(window.location.search);
-  var title=params.get('title')||'';
-  var text=params.get('text')||'';
-  var url=params.get('url')||'';
-  var shared=text||title||url;
-  if(shared && shared.length>3){
-    document.getElementById('inputCifraHome').value=shared;
-    document.getElementById('inputCifra').value=shared;
-    document.getElementById('inputFull').value=shared;
-    var possibleTitle=title||'Cifra da Internet';
-    if(possibleTitle) document.getElementById('nomeMusica').value=possibleTitle.substring(0,40);
-    document.getElementById('sharedBanner').style.display='block';
-    renderCifra();
-    window.history.replaceState({}, document.title, './index.html');
-  }
-}
-
+function exportarBackup(){var musicas=JSON.parse(localStorage.getItem('taki-v15')||'[]');var reps=JSON.parse(localStorage.getItem('taki-reps-v15')||'[]');var all={musicas,repertorios:reps,nome:'BACKUP v15',data:new Date().toISOString()};if(musicas.length==0&&reps.length==0){alert('Nada pra backup');return;}var blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='taki-backup-v15-'+new Date().toISOString().slice(0,10)+'.json';a.click();}
+function importarBackup(input){var file=input.files[0];if(!file) return;var r=new FileReader();r.onload=e=>{try{var data=JSON.parse(e.target.result);if(data.musicas){if(confirm('Importar '+data.musicas.length+' músicas?')){localStorage.setItem('taki-v15',JSON.stringify(data.musicas));if(data.repertorios) localStorage.setItem('taki-reps-v15',JSON.stringify(data.repertorios));carregar();renderReps();alert('Restaurado!');}}else if(Array.isArray(data)){localStorage.setItem('taki-v15',JSON.stringify(data));carregar();}}catch(err){alert('Erro: '+err.message);}};r.readAsText(file);input.value='';}
+function handleSharedData(){var params=new URLSearchParams(window.location.search);var title=params.get('title')||'';var text=params.get('text')||'';var url=params.get('url')||'';var shared=text||title||url;if(shared && shared.length>3){document.getElementById('inputCifraHome').value=shared;document.getElementById('inputCifra').value=shared;document.getElementById('inputFull').value=shared;if(title) document.getElementById('nomeMusica').value=title.substring(0,40);document.getElementById('sharedBanner').style.display='block';renderCifra();window.history.replaceState({}, document.title, './index.html');}}
 document.addEventListener('DOMContentLoaded',function(){
-  var savedSizeL=parseInt(localStorage.getItem('taki-letraSize')||'16');
-  var savedSizeC=parseInt(localStorage.getItem('taki-cifraSize')||'12');
-  letraSize=savedSizeL;cifraSize=savedSizeC;
+  var savedSizeL=parseInt(localStorage.getItem('taki-letraSize')||'16');var savedSizeC=parseInt(localStorage.getItem('taki-cifraSize')||'12');letraSize=savedSizeL;cifraSize=savedSizeC;
+  var savedSpeed=parseInt(localStorage.getItem('taki-scrollSpeed')||'2');setScrollSpeed(savedSpeed);
   var savedTheme=localStorage.getItem('taki-theme')||'ouro-negro';setTheme(savedTheme);
   renderCifra();carregar();renderReps();updateUI();updateSize();
   document.getElementById('audioVS').volume=0.8;document.getElementById('audioPlayback').volume=0.8;
