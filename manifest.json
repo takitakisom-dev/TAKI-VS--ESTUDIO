@@ -1,7 +1,7 @@
 {
   "name": "TAKI VS ESTÚDIO",
   "short_name": "TAKI ESTÚDIO",
-  "description": "TAKI VS ESTÚDIO v12.4 FIX TOTAL - Menu e VS",
+  "description": "TAKI VS ESTÚDIO v12.5 - VS + BPM + Cifra",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
