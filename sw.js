@@ -1,4 +1,4 @@
-const CACHE='taki-v15-rolagem-devagar';
+const CACHE='taki-v15-1-config-completo';
 self.addEventListener('install',e=>{self.skipWaiting();});
 self.addEventListener('activate',e=>{self.clients.claim();});
 self.addEventListener('fetch',e=>{e.respondWith(fetch(e.request).catch(()=>caches.match(e.request)));});
