@@ -1,7 +1,7 @@
 {
   "name": "TAKI VS ESTÚDIO",
   "short_name": "TAKI ESTÚDIO",
-  "description": "TAKI VS ESTÚDIO v12.6 - Menu + VS + BPM + Pitch",
+  "description": "TAKI VS ESTÚDIO v13 - Tamanho 6px ate 80px",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
