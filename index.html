@@ -3,136 +3,370 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAKI VS v11.0 FIX NOVA CIFRA + COR</title>
+<title>TAKI VS ESTÚDIO</title>
 <link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-512.png">
 <meta name="theme-color" content="#0a0a0a">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Oswald:wght@700&family=Bebas+Neue&family=Inter:wght@800&family=Poppins:wght@800&family=Courier+Prime:wght@700&family=Roboto+Mono:wght@700&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#c9a86a;--bg:#080808;--card:#121212;--card2:#1a1a1a;--text:#e8dcc0;--muted:#888;--line:#222;--cifra:#FFD700;--cifra-bg:rgba(255,215,0,0.18);--letra:#FFFFFF;--header-bg:#0a0a0a}
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui}
-body{background:var(--bg);color:var(--text);padding-bottom:90px}
-.header{border-bottom:1px solid var(--line);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;background:var(--header-bg);position:sticky;top:0;z-index:50}
-.hamburger{width:44px;height:44px;border:2px solid var(--gold);background:var(--card2);color:var(--gold);border-radius:10px;font-size:20px;cursor:pointer}
-.btn{border:1px solid var(--line);background:var(--card2);color:var(--gold);padding:10px 14px;border-radius:18px;font-weight:800;cursor:pointer;font-size:11px}
-.btn.gold{background:rgba(201,168,106,0.15);color:var(--gold);border:2px solid var(--gold)}
-.btn.big{padding:16px;font-size:13px;font-weight:900;border-radius:12px;width:100%;margin:8px 0;display:block;text-align:center}
-.main{padding:12px}
-.card{border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0;background:var(--card)}
-.card.new{border:2px dashed var(--gold);background:rgba(201,168,106,0.12);text-align:center}
-.preview-wrapper{border:2px solid var(--gold);border-radius:14px;overflow:hidden;background:var(--bg)}
-.preview-controls{background:var(--card);border-bottom:1px solid var(--line);padding:10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.cifra-transpose-bar{background:var(--card2);border-bottom:2px solid var(--gold);padding:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:5}
+:root{--gold:#c9a86a;--bg:#080808;--card:#121212;--card2:#1a1a1a;--text:#e8dcc0;--muted:#888;--line:#222;--cifra:#FFD700;--letra:#FFFFFF;--header-bg:#0a0a0a;--font-main:'Montserrat',sans-serif;--font-cifra:'Montserrat',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui}
+body{background:var(--bg);color:var(--text);padding-bottom:90px;transition:0.2s}
+.header{background:var(--header-bg);border-bottom:2px solid var(--gold);padding:16px;text-align:center;position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center}
+.header h1{color:var(--gold);font-size:18px;font-weight:900;letter-spacing:3px;width:100%;text-align:center}
+.hamburger{width:46px;height:46px;border:2px solid var(--gold);background:var(--card2);color:var(--gold);border-radius:10px;font-size:22px;cursor:pointer;position:absolute;left:12px}
+.btn{border:1px solid var(--line);background:var(--card2);color:var(--gold);padding:10px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:11px}
+.btn.gold{background:rgba(201,168,106,0.15);border:2px solid var(--gold);color:var(--gold)}
+.btn.big{width:100%;padding:18px;font-size:14px;font-weight:900;border-radius:12px;margin:8px 0}
+.main{padding:12px;max-width:720px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:14px 0}
+.card.t1{border:2px solid var(--gold);border-left:7px solid var(--gold)}
+.card.t2{border:2px solid var(--line);border-left:7px solid var(--gold)}
+.card.t3{border:2px dashed var(--gold);background:linear-gradient(135deg,var(--card),var(--card2))}
+.card-header{color:var(--gold);font-weight:900;font-size:13px;letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.file-label{border:2px dashed var(--gold);padding:22px;border-radius:12px;display:block;text-align:center;cursor:pointer;background:var(--card2);color:var(--gold);font-weight:900;font-size:14px}
+input[type=text],textarea{width:100%;background:var(--card2);color:var(--text);border:1px solid var(--line);padding:13px;border-radius:10px;font-size:15px;outline:none}
+textarea{font-family:'Courier New',monospace;font-size:16px;line-height:28px;min-height:200px;resize:vertical}
+textarea:focus{border-color:var(--gold)}
+.preview-wrapper{background:var(--bg);border:2px solid var(--gold);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;height:70vh;margin-top:12px}
+.preview-top{background:var(--card);border-bottom:2px solid var(--gold);padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex-shrink:0;position:sticky;top:0;z-index:5}
 .transpose-info{background:var(--gold);color:#000;padding:6px 14px;border-radius:20px;font-weight:900;font-size:13px}
-.tamanho-bar{background:#000;border-bottom:1px solid var(--gold);padding:10px;display:flex;justify-content:space-between;align-items:center}
-.preview-content{padding:10px 0 30px 0;max-height:70vh;overflow-y:auto}
-.song-block{margin:26px 12px}
-.cifra-line{color:var(--cifra)!important;background:var(--cifra-bg);border-left:4px solid var(--cifra);padding:8px 12px;border-radius:8px;font-weight:900;font-size:16px;letter-spacing:1px;display:inline-block;min-width:120px;box-shadow:0 2px 8px rgba(255,215,0,0.2)}
-.letra-line{color:var(--letra)!important;font-size:20px;font-weight:800;text-transform:uppercase;line-height:1.4;display:block;margin-top:10px;padding-left:4px}
-.section-label{background:rgba(201,168,106,0.15);color:var(--gold);padding:6px 14px;border-radius:20px;font-weight:800;font-size:11px;display:inline-block;margin:20px 0 10px 0;border:1px solid var(--gold)}
-.small{border:1px solid var(--line);background:var(--card2);color:var(--gold);padding:8px 14px;border-radius:18px;font-size:11px;cursor:pointer;font-weight:800}
-.small.gold{background:rgba(201,168,106,0.15);border:2px solid var(--gold)}
+.tamanho-bar{display:flex;justify-content:space-between;align-items:center;background:#000;border-top:1px solid var(--line);padding:10px 12px;flex-shrink:0}
+.preview-content{flex:1;overflow-y:auto;padding:18px 14px;scroll-behavior:smooth}
+.song-block{margin:26px 0}
+.cifra-line{color:var(--cifra)!important;font-weight:900;font-size:18px;letter-spacing:1px;display:block;margin-bottom:8px;font-family:var(--font-cifra)}
+.letra-line{color:var(--letra)!important;font-weight:900;font-size:24px;text-transform:uppercase;line-height:1.35;display:block;letter-spacing:0.5px;font-family:var(--font-main)}
+.section-label{color:var(--gold);font-weight:900;font-size:12px;border:1px solid var(--gold);padding:6px 14px;border-radius:20px;display:inline-block;margin:20px 0 10px 0;background:rgba(201,168,106,0.12);font-family:var(--font-main)}
+.small{border:1px solid var(--line);background:var(--card2);color:var(--gold);padding:9px 15px;border-radius:20px;font-weight:800;cursor:pointer;font-size:11px}
+.small.gold{border:2px solid var(--gold);background:rgba(201,168,106,0.15)}
 .small.active{background:var(--gold);color:#000}
-#telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:9999;flex-direction:column;overflow:hidden}
-.tela-header{background:var(--header-bg);border-bottom:1px solid var(--line);padding:10px 12px;display:flex;justify-content:space-between;align-items:center}
-.tela-content{flex:1;overflow-y:auto;padding:16px 16px 160px 16px}
-.tela-cifra{color:var(--cifra)!important;background:var(--cifra-bg);border-left:5px solid var(--cifra);padding:10px 16px;border-radius:10px;font-weight:900;font-size:26px;display:inline-block;margin-bottom:14px}
-.tela-letra{color:var(--letra)!important;font-size:34px;font-weight:900;text-transform:uppercase;display:block;margin-top:6px;line-height:1.3}
-#telaFloating{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.95);border:2px solid var(--gold);border-radius:20px;padding:14px 18px;display:flex;flex-direction:column;gap:10px;z-index:30;transition:all 0.4s;width:360px;max-width:92%}
+.bpm-display{font-size:40px;font-weight:900;color:var(--gold);text-align:center}
+.repertorio-item{background:var(--card2);border:1px solid var(--line);padding:12px;border-radius:10px;margin:8px 0;display:flex;justify-content:space-between;align-items:center}
+.folder{border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden;background:var(--card)}
+.folder-header{padding:14px;background:var(--card2);display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-bottom:1px solid var(--line)}
+.folder-body{display:none;padding:6px}.folder-body.open{display:block}
+#telaGrande{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:9999;flex-direction:column}
+.tela-header{background:var(--header-bg);border-bottom:2px solid var(--gold);padding:12px;display:flex;justify-content:space-between;align-items:center}
+.tela-content{flex:1;overflow-y:auto;padding:20px 16px 160px 16px}
+.tela-cifra{color:var(--cifra)!important;font-weight:900;font-size:28px;display:block;margin-bottom:10px;font-family:var(--font-cifra)}
+.tela-letra{color:var(--letra)!important;font-weight:900;font-size:38px;text-transform:uppercase;line-height:1.3;display:block;font-family:var(--font-main)}
+#telaFloating{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.96);border:2px solid var(--gold);border-radius:20px;padding:14px;width:380px;max-width:92%;display:flex;flex-direction:column;gap:10px;z-index:30;transition:0.4s}
 #telaFloating.hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(30px)}
-#menuOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:80}
-#menuPanel{background:var(--bg);border-right:2px solid var(--gold);width:88%;max-width:360px;height:100%;padding:16px;overflow-y:auto}
-.menu-title{color:var(--muted);font-weight:800;font-size:10px;letter-spacing:1.5px;margin:20px 0 8px 0}
-.menu-item{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid var(--line);color:var(--text);padding:14px;border-radius:10px;margin:6px 0;font-weight:700;cursor:pointer}
-.menu-item.gold{background:rgba(201,168,106,0.12);color:var(--gold);border:2px solid var(--gold)}
+#menuOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.65);z-index:80}
+#menuPanel{background:var(--bg);border-right:2px solid var(--gold);width:88%;max-width:380px;height:100%;padding:16px;overflow-y:auto}
+.menu-title{color:var(--gold);font-weight:900;font-size:11px;letter-spacing:1.5px;margin:24px 0 10px 0;border-bottom:1px solid var(--line);padding-bottom:6px}
+.menu-item{width:100%;text-align:left;background:var(--card2);border:1px solid var(--line);color:var(--text);padding:15px;border-radius:10px;margin:6px 0;font-weight:700;cursor:pointer;font-size:13px}
+.menu-item.gold{border:2px solid var(--gold);background:rgba(201,168,106,0.12);color:var(--gold)}
 .view{display:none}.view.active{display:block}
-.bpm-display{font-size:32px;font-weight:900;color:var(--gold);text-align:center}
-.file-label{border:2px dashed var(--gold);padding:18px;border-radius:14px;display:block;text-align:center;cursor:pointer;background:var(--card2);color:var(--gold);font-weight:900;font-size:14px;margin-top:8px}
-input[type=text]{width:100%;background:var(--card2);color:var(--text);border:1px solid var(--line);padding:12px;border-radius:10px;font-size:14px}
+.config-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.theme-btn{padding:14px;border-radius:12px;border:2px solid var(--line);cursor:pointer;font-weight:800;font-size:12px;text-align:left;display:flex;align-items:center;gap:8px;background:var(--card2);color:var(--text)}
+.theme-btn.active{border-color:var(--gold);box-shadow:0 0 12px rgba(201,168,106,0.4)}
+.font-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-top:12px}
+.font-btn{padding:16px;border-radius:12px;border:2px solid var(--line);cursor:pointer;font-weight:800;font-size:13px;text-align:left;background:var(--card2);color:var(--text);display:flex;justify-content:space-between;align-items:center}
+.font-btn.active{border-color:var(--gold);background:rgba(201,168,106,0.15);color:var(--gold)}
+.dot{width:20px;height:20px;border-radius:50%;border:2px solid rgba(0,0,0,0.2);flex-shrink:0}
 input[type=range]{flex:1;accent-color:var(--gold)}
-#telaEditar{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fdf6e3;z-index:9998;flex-direction:column}
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
 .modal.open{display:flex}
-.modal-content{background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:16px;width:100%;max-width:380px}
-.install-bar{position:fixed;bottom:0;left:0;right:0;background:var(--header-bg);border-top:1px solid var(--line);padding:10px 12px;display:flex;gap:8px;z-index:100}
-.install-bar button{flex:1;padding:12px;border-radius:20px;font-weight:900;font-size:11px;cursor:pointer;border:none}
-#installBtn{background:rgba(201,168,106,0.15);color:var(--gold);border:2px solid var(--gold)}
+.modal-content{background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:18px;width:100%;max-width:400px;max-height:85vh;overflow-y:auto}
+.install-bar{position:fixed;bottom:0;left:0;right:0;background:var(--header-bg);border-top:2px solid var(--gold);padding:10px 12px;display:flex;gap:8px;z-index:100}
+.install-bar button{flex:1;padding:12px;border-radius:20px;font-weight:900;cursor:pointer}
+body.theme-branco{--bg:#ffffff;--card:#ffffff;--card2:#f5f5f5;--text:#000;--muted:#666;--line:#ddd;--gold:#000;--cifra:#cc0000;--letra:#000;--header-bg:#fff}
+body.theme-azul{--bg:#0a1628;--card:#0f2340;--card2:#162e52;--text:#e0f0ff;--muted:#8ab4d0;--line:#1e3a5f;--gold:#00e5ff;--cifra:#00e5ff;--letra:#fff;--header-bg:#0a1628}
+body.theme-rosa{--bg:#2a0a1a;--card:#3d0f26;--card2:#4f1432;--text:#ffe0f0;--muted:#d48ab4;--line:#5a1e3a;--gold:#ff69b4;--cifra:#ff69b4;--letra:#fff;--header-bg:#2a0a1a}
+body.theme-roxo{--bg:#1a0a2a;--card:#2a1040;--card2:#3a1a52;--text:#e8d0ff;--muted:#a080c0;--line:#3a2060;--gold:#a020f0;--cifra:#d080ff;--letra:#fff;--header-bg:#1a0a2a}
+body.theme-diplomata{--bg:#0a1a2a;--card:#0f2a42;--card2:#143652;--text:#d0e8ff;--muted:#80a8c0;--line:#1e3a5a;--gold:#4682b4;--cifra:#87ceeb;--letra:#fff;--header-bg:#0a1a2a}
+body.theme-vermelho{--bg:#1a0a0a;--card:#2a1010;--card2:#3a1515;--text:#ffdddd;--muted:#c08080;--line:#4a2020;--gold:#ff0000;--cifra:#ff4444;--letra:#fff;--header-bg:#1a0a0a}
+body.theme-laranja{--bg:#1a1000;--card:#2a1a00;--card2:#3a2200;--text:#ffe8cc;--muted:#c0a080;--line:#4a3010;--gold:#ff8c00;--cifra:#ffaa33;--letra:#fff;--header-bg:#1a1000}
+body.theme-preto{--bg:#000;--card:#0a0a0a;--card2:#1a1a1a;--text:#fff;--muted:#aaa;--line:#333;--gold:#fff;--cifra:#ffff00;--letra:#fff;--header-bg:#000}
+body.theme-lilas{--bg:#1e0a2a;--card:#2e1040;--card2:#3e1a52;--text:#f0d0ff;--muted:#b080c8;--line:#4a206a;--gold:#c8a2c8;--cifra:#dda0dd;--letra:#fff;--header-bg:#1e0a2a}
+body.theme-verde{--bg:#0a1a0a;--card:#0f2a0f;--card2:#143a14;--text:#d0ffd0;--muted:#80c080;--line:#1a4a1a;--gold:#00ff00;--cifra:#55ff55;--letra:#fff;--header-bg:#0a1a0a}
+body.theme-ouro-negro{--bg:#080808;--card:#121212;--card2:#1a1a1a;--text:#e8dcc0;--muted:#888;--line:#222;--gold:#c9a86a;--cifra:#FFD700;--letra:#FFF;--header-bg:#0a0a0a}
 </style>
 </head>
-<body>
-<div class="header"><div style="display:flex;gap:10px;align-items:center"><button class="hamburger" onclick="toggleMenu()">☰</button><h1>TAKI VS v11.0 FIX</h1></div><button class="btn gold" onclick="toggleTela()">⛶ TELA CHEIA</button></div>
-<div id="menuOverlay" onclick="if(event.target.id==='menuOverlay') toggleMenu()"><div id="menuPanel"><div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold)">TAKI VS v11.0 FIX</b><button class="btn" onclick="toggleMenu()">✕</button></div><div class="menu-title">🎨 APARÊNCIA</div><button class="menu-item gold" onclick="setTheme('ouro')">OURO NEGRO - CIFRA AMARELA</button><div class="menu-title">📋 CASAS</div><button class="menu-item gold" onclick="showView('repertorios')">📋 MEUS REPERTÓRIOS (6 CASAS)</button><button class="menu-item gold" onclick="openCriarRepertorio()">➕ CRIAR REPERTÓRIO</button><div class="menu-title">GERAL</div><button class="menu-item" onclick="showView('home')">🏠 INICIO</button><button class="menu-item" onclick="showView('cifras')">📄 MINHAS CIFRAS</button><button class="menu-item gold" onclick="novaCifraFix()">➕ NOVA CIFRA - FIX</button><button class="menu-item gold" onclick="openEditarTelaCheia()">📝 EDITAR TELA CHEIA</button><small style="color:var(--muted);display:block;margin-top:18px;font-size:9px">v11.0 FIX - Botão nova cifra funcionando + cor separada</small></div></div>
+<body class="theme-ouro-negro">
+<div class="header">
+<button class="hamburger" onclick="toggleMenu()">☰</button>
+<h1>TAKI VS ESTÚDIO</h1>
+<div style="width:46px"></div>
+</div>
+
+<div id="menuOverlay" onclick="if(event.target.id==='menuOverlay') toggleMenu()">
+<div id="menuPanel">
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold);font-size:15px">TAKI VS ESTÚDIO</b><button class="btn" onclick="toggleMenu()">✕</button></div>
+
+<div class="menu-title">⚙️ CONFIGURAÇÕES - 10 FORMATOS LETRA</div>
+<button class="menu-item gold" onclick="showView('config')">⚙️ ABRIR CONFIGURAÇÕES - TEMAS + 10 FORMATOS + TAMANHO</button>
+
+<div class="menu-title">📋 REPERTÓRIOS POR CASA</div>
+<button class="menu-item gold" onclick="showView('repertorios')">📋 MEUS REPERTÓRIOS (6 CASAS)</button>
+<button class="menu-item gold" onclick="openCriarRepertorio()">➕ CRIAR NOVO REPERTÓRIO</button>
+
+<div class="menu-title">📁 BIBLIOTECA</div>
+<button class="menu-item" onclick="showView('home')">🏠 INICIO TAKI VS ESTÚDIO</button>
+<button class="menu-item" onclick="showView('cifras')">📄 MINHAS CIFRAS</button>
+<button class="menu-item" onclick="showView('vslist')">🎵 CIFRAS + VS</button>
+<button class="menu-item" onclick="showView('pastas')">📁 PASTAS POR ARTISTA</button>
+
+<div class="menu-title">APP - BACKUP</div>
+<button class="menu-item" onclick="doInstall()">📲 INSTALAR TAKI VS ESTÚDIO</button>
+<button class="menu-item" onclick="doShare()">📤 COMPARTILHAR</button>
+<button class="menu-item" onclick="exportarBackup()">💾 BACKUP</button>
+<button class="menu-item" onclick="document.getElementById('importFile').click()">📥 RESTAURAR BACKUP</button>
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="importarBackup(this)">
+
+<small style="color:var(--muted);display:block;margin-top:20px;font-size:9px">TAKI VS ESTÚDIO v12.2 - 10 formatos letras + tamanho A- A+ juntos</small>
+</div>
+</div>
+
 <div class="main">
 <div id="view-home" class="view active">
-<div class="card new"><b style="color:var(--gold);font-size:13px">➕ ADICIONAR NOVA CIFRA - AGORA FUNCIONA!</b><p style="color:var(--muted);font-size:10px;margin:6px 0">Limpa tudo e abre edição</p><button class="btn big gold" onclick="novaCifraFix()">➕ NOVA CIFRA EM BRANCO - FIX</button><button class="btn big" onclick="openEditarTelaCheia()">📝 EDITAR ATUAL - TELA CHEIA</button></div>
-<div class="card" style="padding:0;overflow:hidden"><div class="preview-wrapper"><div class="preview-controls"><b style="font-size:11px;color:var(--gold)">PREVIEW - CIFRA AMARELA | LETRA BRANCA</b><button class="btn gold" style="margin-left:auto" onclick="toggleTela()">⛶ TELA CHEIA</button></div><div class="cifra-transpose-bar"><b>🎹 TOM:</b><div class="transpose-info" id="transposeInfo">0 Original</div><button class="small" onclick="changeTranspose(-1)">-1</button><button class="small gold" onclick="changeTranspose(0,true)">0 RESET</button><button class="small" onclick="changeTranspose(1)">+1</button><button class="small" onclick="setTranspose(-2)">-2</button><button class="small gold" id="btn0" onclick="setTranspose(0)">0</button><button class="small" onclick="setTranspose(2)">+2</button><button class="small" onclick="setTranspose(7)">+7</button></div><div class="tamanho-bar"><b>🔍 TAMANHO (AUMENTA OS DOIS JUNTOS):</b><div style="display:flex;gap:8px"><button class="small gold" onclick="changeBothSize(-1)" style="padding:12px 18px;font-size:14px">A- MENOR</button><span id="sizeInfo" style="color:var(--gold);font-weight:900">20px / 16px</span><button class="small gold" onclick="changeBothSize(1)" style="padding:12px 18px;font-size:14px">A+ MAIOR</button></div></div><div class="preview-content" id="output"></div></div></div>
-<div class="card"><b style="color:var(--gold)">📁 VS / PLAYBACK</b><label class="file-label" for="fileVS">CLIQUE AQUI PARA PUXAR VS MP3</label><input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)"><div id="vsInfo" style="margin-top:8px;font-size:11px;color:var(--muted)">Nenhum arquivo</div><audio id="audioVS" controls style="width:100%;margin-top:8px"></audio></div>
-<div class="card"><b style="color:var(--gold)">🎛️ BPM</b><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="bpm-display" id="bpmDisplay">100</div><input type="range" id="bpmRange" min="40" max="240" value="100" style="flex:1"><button class="small gold" onclick="tapBPM()">TAP</button></div></div>
-<div class="card"><b>💾 SALVAR + REPERTÓRIO CASA</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><input type="text" id="nomeMusica" placeholder="Nome música"><input type="text" id="artistaMusica" placeholder="Artista"></div><button class="small gold" style="width:100%;padding:12px;margin-top:8px;font-weight:900" onclick="salvarMusica()">💾 SALVAR (TOM+BPM)</button><button class="btn big gold" style="margin-top:8px" onclick="openModalAdd()">➕ ADD AO REPERTÓRIO DA CASA (SALVA BPM+TOM+VS)</button><div id="saveStatus" style="margin-top:6px;font-size:11px;color:var(--gold)"></div></div>
-</div>
-<div id="view-repertorios" class="view"><div class="card"><b style="color:var(--gold)">📋 REPERTÓRIOS POR CASA</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><input type="text" id="nomeNovoRepertorio" placeholder="Nome ex: Sexta Bar"><input type="text" id="casaNovoRepertorio" placeholder="Casa ex: Bar do João"></div><button class="small gold" style="width:100%;padding:12px;margin-top:8px;font-weight:900" onclick="criarRepertorio()">✅ CRIAR REPERTÓRIO</button></div><div id="listaRepertorios" style="margin-top:12px"></div><div id="detalheRepertorio" style="display:none;margin-top:12px"></div></div>
-<div id="view-cifras" class="view"><div class="card"><b>📄 MINHAS CIFRAS</b><div id="listaCifras" style="margin-top:10px"></div></div></div>
-</div>
-<div class="modal" id="modalRep"><div class="modal-content"><b style="color:var(--gold)">➕ ADD AO REPERTÓRIO</b><div id="modalLista" style="margin-top:10px"></div><button class="btn" style="width:100%;margin-top:10px" onclick="closeModalAdd()">✕ FECHAR</button></div></div>
-<div class="modal" id="modalCriar"><div class="modal-content"><b style="color:var(--gold)">➕ CRIAR REPERTÓRIO</b><input type="text" id="modalNome" placeholder="Nome" style="margin-top:10px"><input type="text" id="modalCasa" placeholder="Casa" style="margin-top:8px"><button class="btn big gold" style="margin-top:10px" onclick="criarModal()">✅ CRIAR</button><button class="btn big" style="margin-top:6px" onclick="closeCriar()">✕</button></div></div>
-<div id="telaGrande"><div class="tela-header"><button class="btn" onclick="toggleTela()">✕ FECHAR</button><small style="color:var(--gold);font-weight:800">TOQUE NA CIFRA PRA MUDAR TOM</small><small id="telaSync" style="color:var(--muted)"></small><button class="btn gold" onclick="toggleScroll()">▶ SCROLL</button></div><div class="tela-content" id="telaContent" onclick="showFloat()"></div><div id="telaFloating"><div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold)">🎹 TOM:</b><div style="background:var(--gold);color:#000;padding:6px 14px;border-radius:20px;font-weight:900" id="telaTom">0</div><button class="btn" onclick="hideFloat()">✕</button></div><div style="display:flex;gap:8px"><button class="small" onclick="changeTranspose(-1)" style="flex:1;padding:14px">-1</button><button class="small gold" onclick="changeTranspose(0,true)" style="flex:1;padding:14px">0</button><button class="small" onclick="changeTranspose(1)" style="flex:1;padding:14px">+1</button></div><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px"><button class="small" onclick="setTranspose(-3)">-3</button><button class="small" onclick="setTranspose(-2)">-2</button><button class="small" onclick="setTranspose(-1)">-1</button><button class="small gold" id="float0" onclick="setTranspose(0)">0</button><button class="small" onclick="setTranspose(1)">+1</button><button class="small" onclick="setTranspose(2)">+2</button><button class="small" onclick="setTranspose(3)">+3</button><button class="small" onclick="changeBothSize(-1)">A-</button><button class="small" onclick="changeBothSize(1)">A+</button><button class="small" onclick="setTranspose(7)">+7</button></div><small style="color:var(--muted);font-size:9px;text-align:center">Some sozinho em 4s • Toque na cifra pra voltar</small></div></div>
-<div id="telaEditar"><div style="padding:12px;background:#0a0a0a;display:flex;justify-content:space-between;align-items:center"><button class="btn" onclick="closeEditar()">✕ FECHAR</button><b style="color:var(--gold)">EDITAR CIFRA</b><button class="btn gold" onclick="closeEditar()">✨ RENDERIZAR</button></div><textarea id="inputFull" style="flex:1;padding:20px;font-family:monospace;font-size:18px;line-height:30px;background:#fdf6e3;color:#2a2418;border:none;outline:none" placeholder="Cole aqui... Exemplo:
 
+<div class="card t1">
+<div class="card-header">1️⃣ 📁 VS + PLAYBACK</div>
+<label class="file-label" for="fileVS">CLIQUE AQUI PARA PUXAR VS DE BATERIA / PLAYBACK MP3</label>
+<input type="file" id="fileVS" accept="audio/*" style="display:none" onchange="loadVS(this)">
+<div id="vsInfo" style="margin-top:10px;font-size:12px;color:var(--muted)">Nenhum arquivo - Salva automático com cifra!</div>
+<audio id="audioVS" controls style="width:100%;margin-top:10px"></audio>
+<div style="display:flex;gap:8px;align-items:center;margin-top:10px"><small>VOL VS</small><input type="range" id="volVS" min="0" max="100" value="80"><span id="volVSVal">80%</span></div>
+<div id="rateInfo" style="font-size:10px;color:var(--muted);margin-top:6px">Rate 1.00x</div>
+</div>
+
+<div class="card t2">
+<div class="card-header">2️⃣ 🎛️ CONTROLE DE BPM</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px"><small style="color:var(--muted)">BPM</small><div class="bpm-display" id="bpmDisplay">100</div><input type="range" id="bpmRange" min="40" max="240" value="100" style="width:100%"><div style="display:flex;gap:6px;margin-top:8px"><button class="small" onclick="changeBPM(-5)">-5</button><button class="small gold" onclick="tapBPM()">TAP</button><button class="small" onclick="changeBPM(5)">+5</button></div></div>
+<div style="background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px"><small style="color:var(--muted)">PITCH VS</small><div class="bpm-display" style="font-size:28px" id="pitchDisplay">0</div><input type="range" id="pitchRange" min="-12" max="12" value="0" style="width:100%"><div style="display:flex;gap:6px;margin-top:8px"><button class="small" onclick="changePitch(-1)">-1</button><button class="small gold" onclick="changePitch(0,true)">0</button><button class="small" onclick="changePitch(1)">+1</button></div></div>
+</div>
+</div>
+
+<div class="card t3">
+<div class="card-header">3️⃣ ➕ ADD NOVA CIFRA</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<input type="text" id="artistaMusica" placeholder="Nome do Artista: Ex: Caetano">
+<input type="text" id="nomeMusica" placeholder="Nome da Música: Ex: Sozinho">
+</div>
+<textarea id="inputCifraHome" placeholder="Cole a cifra aqui... Exemplo:
 C G Am F
-ESSA É MINHA LETRA
+LETRA DA MÚSICA BEM GROSSA E NÍTIDA
 C G
-OUTRA LINHA DE LETRA
-Am F
-REFRÃO AQUI"></textarea></div>
+OUTRA LINHA"></textarea>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+<button class="btn gold big" onclick="salvarMusica()">💾 SALVAR MÚSICA (BPM + VS + TOM)</button>
+<button class="btn big" onclick="novaCifra()">➕ NOVA EM BRANCO</button>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+<button class="btn gold big" onclick="openEditarTelaCheia()">📝 EDITAR CIFRA TELA CHEIA</button>
+<button class="btn big" onclick="toggleTela()">⛶ TELA CHEIA - 10 FORMATOS</button>
+</div>
+<div id="saveStatus" style="margin-top:10px;font-size:12px;color:var(--gold);font-weight:800;text-align:center"></div>
+</div>
+
+<div class="card" style="padding:0;overflow:hidden">
+<div class="preview-wrapper">
+<div class="preview-top">
+<b style="color:var(--gold);font-size:11px">🎹 TOM:</b>
+<div class="transpose-info" id="transposeInfo">0 Original</div>
+<div style="display:flex;gap:5px">
+<button class="small" onclick="changeTranspose(-1)">-1</button>
+<button class="small gold" onclick="changeTranspose(0,true)">0 RESET</button>
+<button class="small" onclick="changeTranspose(1)">+1</button>
+</div>
+<div style="display:flex;gap:4px;margin-left:4px">
+<button class="small" onclick="setTranspose(-2)">-2</button>
+<button class="small gold" id="btn0" onclick="setTranspose(0)">0</button>
+<button class="small" onclick="setTranspose(2)">+2</button>
+</div>
+<button class="small gold" onclick="openModalAdd()" style="margin-left:auto">➕ ADD REPERTÓRIO</button>
+</div>
+<div class="tamanho-bar">
+<b style="color:var(--gold);font-size:11px">🔍 TAMANHO - AUMENTA JUNTOS:</b>
+<div style="display:flex;gap:8px;align-items:center">
+<button class="small gold" onclick="changeBothSize(-1)" style="padding:10px 18px">A- MENOR</button>
+<span id="sizeInfo" style="color:var(--gold);font-weight:900">24px / 18px</span>
+<button class="small gold" onclick="changeBothSize(1)" style="padding:10px 18px">A+ MAIOR</button>
+</div>
+</div>
+<div class="preview-content" id="output"></div>
+</div>
+</div>
+
+</div>
+
+<div id="view-config" class="view">
+<div class="card">
+<div class="card-header">⚙️ CONFIGURAÇÕES TAKI VS ESTÚDIO</div>
+
+<div class="menu-title">🔍 TAMANHO DA LETRA + CIFRA (AUMENTA JUNTOS) - NOVO!</div>
+<div style="display:flex;gap:12px;align-items:center;background:var(--card2);padding:14px;border-radius:12px;border:1px solid var(--line)">
+<button class="small gold" onclick="changeBothSize(-1)" style="padding:16px 22px;font-size:16px">A- MENOR</button>
+<div style="flex:1;text-align:center"><div id="sizeInfoConfig" style="color:var(--gold);font-weight:900;font-size:20px">24px / 18px</div><small style="color:var(--muted)">CIFRA + LETRA JUNTAS - SALVA AUTOMÁTICO</small></div>
+<button class="small gold" onclick="changeBothSize(1)" style="padding:16px 22px;font-size:16px">A+ MAIOR</button>
+</div>
+
+<div class="menu-title">🔤 10 FORMATOS DE LETRAS JUNTO COM CIFRAS - NOVO!</div>
+<p style="color:var(--muted);font-size:10px;margin-bottom:10px">Escolha como a letra e cifra aparecem no preview e tela cheia! Salva automático!</p>
+<div class="font-grid">
+<button class="font-btn active" id="font-montserrat" onclick="setFont('montserrat')"><span><b>1. MONTSERRAT GROSSA</b><br><small style="color:var(--muted)">Bem grossa pra vista ruim - PALCO</small></span><span style="font-family:'Montserrat';font-weight:900">Aa</span></button>
+<button class="font-btn" id="font-oswald" onclick="setFont('oswald')"><span><b>2. OSWALD CONDENSADA</b><br><small style="color:var(--muted)">Letra esticada - ESTÚDIO</small></span><span style="font-family:'Oswald';font-weight:700">Aa</span></button>
+<button class="font-btn" id="font-bebas" onclick="setFont('bebas')"><span><b>3. BEBAS GIGANTE</b><br><small style="color:var(--muted)">Bem grande, palco - SHOW</small></span><span style="font-family:'Bebas Neue'">Aa</span></button>
+<button class="font-btn" id="font-inter" onclick="setFont('inter')"><span><b>4. INTER LIMPA</b><br><small style="color:var(--muted)">Limpinha, fácil ler - LIMPA</small></span><span style="font-family:'Inter'">Aa</span></button>
+<button class="font-btn" id="font-poppins" onclick="setFont('poppins')"><span><b>5. POPPINS REDONDA</b><br><small style="color:var(--muted)">Redondinha, moderna - MODERNA</small></span><span style="font-family:'Poppins'">Aa</span></button>
+<button class="font-btn" id="font-courier" onclick="setFont('courier')"><span><b>6. COURIER MÁQUINA</b><br><small style="color:var(--muted)">Tipo máquina escrever - CADERNO</small></span><span style="font-family:'Courier Prime'">Aa</span></button>
+<button class="font-btn" id="font-times" onclick="setFont('times')"><span><b>7. TIMES CLÁSSICA</b><br><small style="color:var(--muted)">Clássica, caderno - CLÁSSICA</small></span><span style="font-family:'Times New Roman'">Aa</span></button>
+<button class="font-btn" id="font-arialblack" onclick="setFont('arialblack')"><span><b>8. ARIAL BLACK PESADA</b><br><small style="color:var(--muted)">A mais pesada, preta - PESADA</small></span><span style="font-family:'Arial Black'">Aa</span></button>
+<button class="font-btn" id="font-roboto" onclick="setFont('roboto')"><span><b>9. ROBOTO MONO TÉCNICA</b><br><small style="color:var(--muted)">Técnica, alinhada - TÉCNICA</small></span><span style="font-family:'Roboto Mono'">Aa</span></button>
+<button class="font-btn" id="font-comic" onclick="setFont('comic')"><span><b>10. COMIC DESCONTRAÍDA</b><br><small style="color:var(--muted)">Descontraída - LEVE</small></span><span style="font-family:'Comic Neue'">Aa</span></button>
+</div>
+
+<div class="menu-title">🎨 10 TEMAS - CORES</div>
+<div class="config-grid">
+<button class="theme-btn" id="th-branco" onclick="setTheme('branco')"><span class="dot" style="background:#fff;border-color:#000"></span>1. BRANCA</button>
+<button class="theme-btn" id="th-azul" onclick="setTheme('azul')"><span class="dot" style="background:#00e5ff"></span>2. AZUL</button>
+<button class="theme-btn" id="th-rosa" onclick="setTheme('rosa')"><span class="dot" style="background:#ff69b4"></span>3. ROSA</button>
+<button class="theme-btn" id="th-roxo" onclick="setTheme('roxo')"><span class="dot" style="background:#a020f0"></span>4. ROXO</button>
+<button class="theme-btn" id="th-diplomata" onclick="setTheme('diplomata')"><span class="dot" style="background:#4682b4"></span>5. DIPLOMATA</button>
+<button class="theme-btn" id="th-vermelho" onclick="setTheme('vermelho')"><span class="dot" style="background:#ff0000"></span>6. VERMELHO</button>
+<button class="theme-btn" id="th-laranja" onclick="setTheme('laranja')"><span class="dot" style="background:#ff8c00"></span>7. LARANJA</button>
+<button class="theme-btn" id="th-preto" onclick="setTheme('preto')"><span class="dot" style="background:#000;border-color:#fff"></span>8. PRETO</button>
+<button class="theme-btn" id="th-lilas" onclick="setTheme('lilas')"><span class="dot" style="background:#c8a2c8"></span>9. LILÁS</button>
+<button class="theme-btn" id="th-verde" onclick="setTheme('verde')"><span class="dot" style="background:#00ff00"></span>10. VERDE</button>
+</div>
+<button class="theme-btn active" id="th-ouro-negro" onclick="setTheme('ouro-negro')" style="margin-top:10px;width:100%"><span class="dot" style="background:#080808;border-color:#c9a86a"></span>OURO NEGRO - PADRÃO TAKI VS ESTÚDIO</button>
+
+<button class="btn big" style="margin-top:20px" onclick="showView('home')">← VOLTAR AO INICIO TAKI VS ESTÚDIO</button>
+</div>
+</div>
+
+<div id="view-repertorios" class="view">
+<div class="card t1">
+<b style="color:var(--gold);font-size:14px">📋 MEUS REPERTÓRIOS - TAKI VS ESTÚDIO (6 CASAS)</b>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+<input type="text" id="nomeNovoRepertorio" placeholder="Nome: Ex: Sexta no Bar">
+<input type="text" id="casaNovoRepertorio" placeholder="Casa: Ex: Bar do João">
+</div>
+<button class="btn gold big" style="margin-top:10px" onclick="criarRepertorio()">✅ CRIAR REPERTÓRIO PARA CASA</button>
+</div>
+<div id="listaRepertorios" style="margin-top:12px"></div>
+<div id="detalheRepertorio" style="display:none;margin-top:12px"></div>
+</div>
+
+<div id="view-cifras" class="view"><div class="card"><b>📄 MINHAS CIFRAS (SALVA VS AUTOMÁTICO)</b><div id="listaCifras" style="margin-top:12px"></div></div></div>
+<div id="view-vslist" class="view"><div class="card"><b>🎵 CIFRAS + VS</b><div id="listaVS" style="margin-top:12px"></div></div></div>
+<div id="view-pastas" class="view"><div class="card"><b>📁 PASTAS POR ARTISTA - Caetano, Legião, etc</b><div id="listaPastas" style="margin-top:12px"></div></div></div>
+</div>
+
+<div class="modal" id="modalRep"><div class="modal-content"><b style="color:var(--gold)">➕ ADD AO REPERTÓRIO DA CASA - TAKI VS ESTÚDIO</b><div id="modalLista" style="margin-top:12px"></div><button class="btn" style="width:100%;margin-top:12px" onclick="closeModalAdd()">✕ FECHAR</button></div></div>
+<div class="modal" id="modalCriar"><div class="modal-content"><b style="color:var(--gold)">➕ CRIAR REPERTÓRIO - TAKI VS ESTÚDIO</b><input type="text" id="modalNome" placeholder="Nome: Ex: Sexta Bar" style="margin-top:12px"><input type="text" id="modalCasa" placeholder="Casa/Local: Ex: Bar do João" style="margin-top:8px"><button class="btn gold big" style="margin-top:12px" onclick="criarModal()">✅ CRIAR REPERTÓRIO</button><button class="btn big" style="margin-top:8px" onclick="closeCriar()">✕ CANCELAR</button></div></div>
+
+<div id="telaGrande">
+<div class="tela-header"><button class="btn" onclick="toggleTela()">✕ FECHAR</button><small style="color:var(--gold);font-weight:900">TAKI VS ESTÚDIO - 10 FORMATOS</small><small id="telaSync" style="color:var(--muted)"></small><button class="btn gold" onclick="toggleScroll()">▶ AUTO SCROLL</button></div>
+<div class="tela-content" id="telaContent" onclick="showFloat()"></div>
+<div id="telaFloating">
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold)">🎹 TOM:</b><div style="background:var(--gold);color:#000;padding:6px 14px;border-radius:20px;font-weight:900" id="telaTom">0 Original</div><button class="btn" onclick="hideFloat()" style="padding:6px 12px">✕ ESCONDER</button></div>
+<div style="display:flex;gap:8px"><button class="small" onclick="changeTranspose(-1);resetHide()" style="flex:1;padding:14px">-1 TOM</button><button class="small gold" onclick="changeTranspose(0,true);resetHide()" style="flex:1;padding:14px">0 RESET</button><button class="small" onclick="changeTranspose(1);resetHide()" style="flex:1;padding:14px">+1 TOM</button></div>
+<div style="display:flex;gap:8px"><button class="small gold" onclick="changeBothSize(-1);resetHide()" style="flex:1;padding:12px">A- MENOR</button><button class="small gold" onclick="changeBothSize(1);resetHide()" style="flex:1;padding:12px">A+ MAIOR</button><button class="small" onclick="setTranspose(2);resetHide()" style="flex:1;padding:12px">+2</button></div>
+<small style="color:var(--muted);font-size:9px;text-align:center;display:block">Some sozinho em 4s • Toque na cifra pra voltar • Rolagem só cifra/letra - TAMANHO AUMENTA JUNTOS</small>
+</div>
+<div id="telaHint" style="position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;padding:10px 18px;border-radius:20px;font-size:11px;font-weight:900;z-index:25;transition:0.4s">👆 TOQUE NA CIFRA PARA MUDAR TOM • A- A+ AUMENTA OS DOIS JUNTOS • TAKI VS ESTÚDIO</div>
+</div>
+
+<div id="telaEditar" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fdf6e3;z-index:9998;flex-direction:column"><div style="padding:12px;background:#0a0a0a;display:flex;justify-content:space-between;align-items:center"><button class="btn" onclick="closeEditar()">✕ FECHAR</button><b style="color:var(--gold)">EDITAR CIFRA - TAKI VS ESTÚDIO - 10 FORMATOS</b><button class="btn gold" onclick="closeEditar()">✨ RENDERIZAR</button></div><textarea id="inputFull" style="flex:1;padding:20px;font-family:var(--font-main);font-size:18px;line-height:30px;background:transparent;color:#2a2418;border:none;outline:none" placeholder="Cole cifra aqui..."></textarea></div>
+
 <textarea id="inputCifra" style="display:none"></textarea>
-<div class="install-bar"><button id="installBtn" onclick="alert('Instalar: 3 pontinhos > Instalar app')">📲 INSTALAR</button><button onclick="navigator.clipboard.writeText(location.href).then(()=>alert('Link copiado!'))" style="background:var(--card2);color:var(--gold);border:1px solid var(--line);flex:1;padding:12px;border-radius:20px;font-weight:900">📤 COMPARTILHAR</button></div>
+<div class="install-bar"><button id="installBtn">📲 INSTALAR TAKI VS ESTÚDIO</button><button onclick="navigator.clipboard.writeText(location.href).then(()=>alert('Link copiado! TAKI VS ESTÚDIO'))" style="background:var(--card2);color:var(--gold);border:1px solid var(--line);flex:1;padding:12px;border-radius:20px;font-weight:900">📤 COMPARTILHAR</button></div>
+
 <script>
-let letraSize=20,cifraSize=16,bpm=100,transpose=0,currentAudioName='',hideTimer=null,scrolling=false,scrollInt=null,tapTimes=[];
+let letraSize=24,cifraSize=18,transpose=0,bpm=100,pitch=0,tapTimes=[],currentAudioBlob=null,currentAudioName='',hideTimer=null,scrolling=false,scrollInt=null,deferredPrompt=null;
 const NOTES=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 function transposeNote(n,s){let idx=NOTES.indexOf(n);if(idx==-1) return n;let ni=(idx+s)%12;if(ni<0) ni+=12;return NOTES[ni];}
-function transposeChord(ch,s){if(s==0) return ch;let m=ch.match(/^([A-G][#b]?)(.*)$/);if(!m) return ch;let root=m[1].replace('b','#');if(root.length==2 && root[1]=='b'){let map={'Db':'C#','Eb':'D#','Gb':'F#','Ab':'G#','Bb':'A#'};root=map[root]||root;}return transposeNote(root,s)+m[2];}
+function transposeChord(ch,s){if(s==0) return ch;let m=ch.match(/^([A-G][#b]?)(.*)$/);if(!m) return ch;return transposeNote(m[1].replace('b','#'),s)+m[2];}
 function transposeLine(line,s){if(s==0) return line;return line.split(/(\s+)/).map(tok=>{if(/^\s+$/.test(tok)) return tok;if(/^[A-G][#b]?/.test(tok)){return transposeChord(tok,s);}return tok;}).join('');}
 function toggleMenu(){let m=document.getElementById('menuOverlay');m.style.display=m.style.display==='block'?'none':'block';}
-function showView(v){document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));document.getElementById('view-'+v).classList.add('active');toggleMenu();window.scrollTo({top:0,behavior:'smooth'});if(v==='repertorios') renderRepertorios();}
-function novaCifraFix(){console.log('NOVA CIFRA FIX CLICOU!');document.getElementById('inputCifra').value='';document.getElementById('inputFull').value='';document.getElementById('nomeMusica').value='';document.getElementById('artistaMusica').value='';transpose=0;bpm=100;updateUI();renderCifra();document.getElementById('menuOverlay').style.display='none';document.getElementById('view-home').classList.add('active');document.querySelectorAll('.view').forEach(el=>{if(el.id!=='view-home') el.classList.remove('active');});openEditarTelaCheia();document.getElementById('saveStatus').innerText='✅ Nova cifra em branco! Cole agora!';setTimeout(()=>{document.getElementById('saveStatus').innerText='';},3000);}
-function isChordLine(line){let t=line.trim();if(!t) return false;if(t.length>60) return false;if(/[a-záéíóúàãõâê]{4,}/.test(t) &&!/^[A-G]/.test(t)) return false;let upper=t.toUpperCase();if(['REFRÃO','REFRAO','VERSO','PONTE','INTRO','REFR','CHORUS'].some(k=>upper.includes(k) && upper.length<30)) return false;if(/^[A-G][#b]?[mM0-9\/\s\(\)\-]*$/.test(t.replace(/\s+/g,' ').trim()) && /[A-G]/.test(t)) return true;if(/^[A-G][#b]?(\s+[A-G][#b]?[mM0-9\/\(\)\-]*)+$/.test(t.trim())) return true;return false;}
+function showView(v){document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));let t=document.getElementById('view-'+v);if(t) t.classList.add('active');toggleMenu();window.scrollTo({top:0,behavior:'smooth'});if(v==='home') renderCifra();if(v==='repertorios') renderRepertorios();if(v==='cifras'||v==='vslist'||v==='pastas') carregarLocal();}
+function novaCifra(){document.getElementById('inputCifra').value='';document.getElementById('inputFull').value='';document.getElementById('inputCifraHome').value='';document.getElementById('nomeMusica').value='';document.getElementById('artistaMusica').value='';transpose=0;updateUI();renderCifra();openEditarTelaCheia();document.getElementById('saveStatus').innerText='✅ Nova em branco! Cole agora!';}
+function isChordLine(line){let t=line.trim();if(!t) return false;if(t.length>55) return false;if(/[a-záéíóúàãõâê]{4,}/.test(t) &&!/^[A-G]/.test(t)) return false;if(/^[A-G][#b]?[mM0-9\/\s\(\)\-]*$/.test(t.replace(/\s+/g,' ').trim()) && /[A-G]/.test(t)) return true;if(/^[A-G][#b]?(\s+[A-G][#b]?[mM0-9\/\(\)\-]*)+$/.test(t.trim())) return true;return false;}
 function isSection(line){let u=line.trim().toUpperCase();if(u.length>30) return false;return ['REFRÃO','REFRAO','PONTE','INTRO','VERSO','CHORUS','REFR','SOLO'].some(k=>u.includes(k));}
-function parseBlocks(){let a=document.getElementById('inputCifra').value;let b=document.getElementById('inputFull').value;let raw=b.length>a.length?b:a;document.getElementById('inputCifra').value=raw;document.getElementById('inputFull').value=raw;let lines=raw.split('\n');let blocks=[];for(let i=0;i<lines.length;i++){let l=lines[i];if(!l.trim()){blocks.push({type:'space'});continue;}if(isSection(l)){blocks.push({type:'section',text:l.trim()});continue;}if(isChordLine(l)){let next=lines[i+1]||'';if(next.trim() &&!isChordLine(next) &&!isSection(next)){blocks.push({type:'pair',cifra:l.trim(),letra:next.trim()});i++;continue;}else{blocks.push({type:'cifra',text:l.trim()});continue;}}blocks.push({type:'letra',text:l.trim()});}return blocks;}
+function parseBlocks(){let a=document.getElementById('inputCifra').value;let b=document.getElementById('inputFull').value;let c=document.getElementById('inputCifraHome').value;let raw=[a,b,c].sort((x,y)=>y.length-x.length)[0]||'';document.getElementById('inputCifra').value=raw;document.getElementById('inputFull').value=raw;document.getElementById('inputCifraHome').value=raw;let lines=raw.split('\n');let blocks=[];for(let i=0;i<lines.length;i++){let l=lines[i];if(!l.trim()){blocks.push({type:'space'});continue;}if(isSection(l)){blocks.push({type:'section',text:l.trim()});continue;}if(isChordLine(l)){let next=lines[i+1]||'';if(next.trim() &&!isChordLine(next) &&!isSection(next)){blocks.push({type:'pair',cifra:l.trim(),letra:next.trim()});i++;continue;}else{blocks.push({type:'cifra',text:l.trim()});continue;}}blocks.push({type:'letra',text:l.trim()});}return blocks;}
 function renderCifra(){let blocks=parseBlocks();let out=document.getElementById('output');out.innerHTML='';blocks.forEach(b=>{if(b.type==='space'){out.innerHTML+='<div style="height:12px"></div>';}else if(b.type==='section'){out.innerHTML+=`<div class="song-block"><div class="section-label">${b.text.toUpperCase()}</div></div>`;}else if(b.type==='pair'){let cifra=b.cifra;if(transpose!=0) cifra=transposeLine(cifra,transpose);out.innerHTML+=`<div class="song-block"><div class="cifra-line" style="font-size:${cifraSize}px">${cifra}</div><div class="letra-line" style="font-size:${letraSize}px">${b.letra.toUpperCase()}</div></div>`;}else if(b.type==='cifra'){let txt=b.text;if(transpose!=0) txt=transposeLine(txt,transpose);out.innerHTML+=`<div class="song-block"><div class="cifra-line" style="font-size:${cifraSize}px">${txt}</div></div>`;}else{out.innerHTML+=`<div class="song-block"><div class="letra-line" style="font-size:${letraSize}px">${b.text.toUpperCase()}</div></div>`;}});renderTela();updateSize();}
-function renderTela(){let blocks=parseBlocks();let tg=document.getElementById('telaContent');let h='';blocks.forEach(b=>{if(b.type==='space'){h+='<div style="height:18px"></div>';}else if(b.type==='section'){h+=`<div style="margin:24px 0"><div class="section-label">${b.text.toUpperCase()}</div></div>`;}else if(b.type==='pair'){let cifra=b.cifra;if(transpose!=0) cifra=transposeLine(cifra,transpose);h+=`<div style="margin:28px 0"><div class="tela-cifra" style="font-size:${cifraSize+10}px">${cifra}</div><div class="tela-letra" style="font-size:${letraSize+14}px">${b.letra.toUpperCase()}</div></div>`;}else if(b.type==='cifra'){let txt=b.text;if(transpose!=0) txt=transposeLine(txt,transpose);h+=`<div style="margin:28px 0"><div class="tela-cifra" style="font-size:${cifraSize+10}px">${txt}</div></div>`;}else{h+=`<div style="margin:28px 0"><div class="tela-letra" style="font-size:${letraSize+14}px">${b.text.toUpperCase()}</div></div>`;}});tg.innerHTML=h;document.getElementById('telaSync').innerText=`Tom ${transpose} | ${letraSize+14}/${cifraSize+10}px`;}
+function renderTela(){let blocks=parseBlocks();let tg=document.getElementById('telaContent');let h='';blocks.forEach(b=>{if(b.type==='space'){h+='<div style="height:18px"></div>';}else if(b.type==='section'){h+=`<div style="margin:24px 0"><div class="section-label">${b.text.toUpperCase()}</div></div>`;}else if(b.type==='pair'){let cifra=b.cifra;if(transpose!=0) cifra=transposeLine(cifra,transpose);h+=`<div style="margin:30px 0"><div class="tela-cifra" style="font-size:${cifraSize+10}px">${cifra}</div><div class="tela-letra" style="font-size:${letraSize+14}px">${b.letra.toUpperCase()}</div></div>`;}else if(b.type==='cifra'){let txt=b.text;if(transpose!=0) txt=transposeLine(txt,transpose);h+=`<div style="margin:30px 0"><div class="tela-cifra" style="font-size:${cifraSize+10}px">${txt}</div></div>`;}else{h+=`<div style="margin:30px 0"><div class="tela-letra" style="font-size:${letraSize+14}px">${b.text.toUpperCase()}</div></div>`;}});tg.innerHTML=h;document.getElementById('telaSync').innerText=`Tom ${transpose>0?'+':''}${transpose} | ${letraSize+14}/${cifraSize+10}px | ${document.documentElement.style.getPropertyValue('--font-main')||'Montserrat'}`;}
 function setTranspose(v){transpose=v;updateUI();renderCifra();resetHide();}
 function changeTranspose(d,isReset){if(isReset) transpose=0; else transpose=Math.max(-7,Math.min(7,transpose+d));updateUI();renderCifra();resetHide();}
-function updateUI(){let name=transpose==0?'Original':`Tom ${NOTES[(transpose%12+12)%12]} (${transpose>0?'+':''}${transpose})`;document.getElementById('transposeInfo').innerText=`${transpose>0?'+':''}${transpose} ${name}`;document.getElementById('telaTom').innerText=`${transpose>0?'+':''}${transpose}`;let b0=document.getElementById('btn0');if(b0){if(transpose==0) b0.classList.add('active','gold'); else b0.classList.remove('active','gold');}let f0=document.getElementById('float0');if(f0){if(transpose==0) f0.classList.add('active','gold'); else f0.classList.remove('active','gold');}}
-function changeBothSize(d){letraSize=Math.max(12,Math.min(70,letraSize+d*2));cifraSize=Math.max(10,Math.min(60,cifraSize+d*2));renderCifra();}
-function updateSize(){let el=document.getElementById('sizeInfo');if(el) el.innerText=`${letraSize}px / ${cifraSize}px`;}
+function updateUI(){let name=transpose==0?'Original':`Tom ${NOTES[(transpose%12+12)%12]} (${transpose>0?'+':''}${transpose})`;document.getElementById('transposeInfo').innerText=`${transpose>0?'+':''}${transpose} ${name}`;document.getElementById('telaTom').innerText=`${transpose>0?'+':''}${transpose} ${name}`;document.querySelectorAll('#btn0,#float0').forEach(btn=>{if(transpose==0) btn.classList.add('active','gold'); else btn.classList.remove('active','gold');});}
+function changeBothSize(d){letraSize=Math.max(14,Math.min(80,letraSize+d*2));cifraSize=Math.max(12,Math.min(60,cifraSize+d*2));renderCifra();updateSize();localStorage.setItem('taki-letraSize',letraSize);localStorage.setItem('taki-cifraSize',cifraSize);}
+function updateSize(){let el=document.getElementById('sizeInfo');let el2=document.getElementById('sizeInfoConfig');if(el) el.innerText=`${letraSize}px / ${cifraSize}px`;if(el2) el2.innerText=`${letraSize}px / ${cifraSize}px`;}
 function toggleTela(){let tg=document.getElementById('telaGrande');let open=tg.style.display==='flex';tg.style.display=open?'none':'flex';if(!open){renderTela();showFloat();}else{hideFloat();}}
-function showFloat(){document.getElementById('telaFloating').classList.remove('hidden');resetHide();}
-function hideFloat(){document.getElementById('telaFloating').classList.add('hidden');}
+function showFloat(){document.getElementById('telaFloating').classList.remove('hidden');document.getElementById('telaHint').style.opacity='1';resetHide();}
+function hideFloat(){document.getElementById('telaFloating').classList.add('hidden');document.getElementById('telaHint').style.opacity='0';}
 function resetHide(){clearTimeout(hideTimer);hideTimer=setTimeout(()=>hideFloat(),4000);}
-function toggleScroll(){scrolling=!scrolling;if(scrolling){scrollInt=setInterval(()=>{document.getElementById('telaContent').scrollBy(0,1.5);},30);}else{clearInterval(scrollInt);}}
-function changeBPM(d){bpm=Math.max(40,Math.min(240,bpm+d));document.getElementById('bpmDisplay').innerText=bpm;document.getElementById('bpmRange').value=bpm;}
-function tapBPM(){let now=Date.now();tapTimes.push(now);if(tapTimes.length>4) tapTimes.shift();if(tapTimes.length>=2){let diffs=[];for(let i=1;i<tapTimes.length;i++) diffs.push(tapTimes[i]-tapTimes[i-1]);let avg=diffs.reduce((a,b)=>a+b,0)/diffs.length;bpm=Math.max(40,Math.min(240,Math.round(60000/avg)));document.getElementById('bpmDisplay').innerText=bpm;document.getElementById('bpmRange').value=bpm;}}
-document.getElementById('bpmRange').addEventListener('input',e=>{bpm=parseInt(e.target.value);document.getElementById('bpmDisplay').innerText=bpm;});
-function loadVS(input){let f=input.files[0];if(!f) return;currentAudioName=f.name;let url=URL.createObjectURL(f);document.getElementById('audioVS').src=url;document.getElementById('vsInfo').innerText=`✅ ${f.name}`;}
-function salvarMusica(){let nome=document.getElementById('nomeMusica').value.trim();if(!nome){alert('Digite nome!');return;}let cifra=document.getElementById('inputCifra').value;if(!cifra.trim()){alert('Cole cifra!');return;}let lista=JSON.parse(localStorage.getItem('taki-v11')||'[]');lista.push({nome,artista:document.getElementById('artistaMusica').value,cifra,bpm,transpose,data:new Date().toISOString()});localStorage.setItem('taki-v11',JSON.stringify(lista));document.getElementById('saveStatus').innerText=`✅ ${nome} salvo Tom ${transpose} BPM ${bpm}!`;carregarLocal();setTimeout(()=>{document.getElementById('saveStatus').innerText='';},3000);}
-function carregarLocal(){let todas=JSON.parse(localStorage.getItem('taki-v11')||'[]').map((m,i)=>({...m,idLocal:i}));let c=document.getElementById('listaCifras');if(!c) return;c.innerHTML=todas.length==0?'<div style="text-align:center;color:var(--muted)">Nenhuma</div>':todas.map(m=>`<div style="background:var(--card2);border:1px solid var(--line);padding:10px;border-radius:10px;margin:6px 0;display:flex;justify-content:space-between"><div><b>${m.nome}</b> (Tom ${m.transpose})<br><small>${m.artista} BPM ${m.bpm}</small></div><button class="small gold" onclick="tocar(${m.idLocal})">▶</button></div>`).join('');}
-function tocar(id){let lista=JSON.parse(localStorage.getItem('taki-v11')||'[]');let m=lista[id];document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputFull').value=m.cifra;bpm=m.bpm;transpose=m.transpose;document.getElementById('bpmDisplay').innerText=bpm;updateUI();renderCifra();showView('home');}
-function openEditarTelaCheia(){document.getElementById('telaEditar').style.display='flex';document.getElementById('inputFull').focus();}
-function closeEditar(){document.getElementById('inputCifra').value=document.getElementById('inputFull').value;renderCifra();document.getElementById('telaEditar').style.display='none';}
-function setTheme(n){document.body.className='theme-'+n;}
-function getReps(){return JSON.parse(localStorage.getItem('taki-reps-v11')||'[]');}
-function saveReps(r){localStorage.setItem('taki-reps-v11',JSON.stringify(r));}
+function toggleScroll(){scrolling=!scrolling;if(scrolling){scrollInt=setInterval(()=>{document.getElementById('telaContent').scrollBy(0,1.6);document.getElementById('output').scrollBy(0,1.6);},32);}else{clearInterval(scrollInt);}}
+function getRate(){return (bpm/100)*Math.pow(2,pitch/12);}
+function updateRate(){let a=document.getElementById('audioVS');if(!a) return;let r=getRate();if(a.src) a.playbackRate=Math.max(0.25,Math.min(4,r));document.getElementById('rateInfo').innerText=`Rate ${r.toFixed(2)}x (BPM ${bpm} Pitch ${pitch})`;}
+function changeBPM(d){bpm=Math.max(40,Math.min(240,bpm+d));document.getElementById('bpmDisplay').innerText=bpm;document.getElementById('bpmRange').value=bpm;updateRate();}
+function tapBPM(){let now=Date.now();tapTimes.push(now);if(tapTimes.length>4) tapTimes.shift();if(tapTimes.length>=2){let diffs=[];for(let i=1;i<tapTimes.length;i++) diffs.push(tapTimes[i]-tapTimes[i-1]);let avg=diffs.reduce((a,b)=>a+b,0)/diffs.length;bpm=Math.max(40,Math.min(240,Math.round(60000/avg)));document.getElementById('bpmDisplay').innerText=bpm;document.getElementById('bpmRange').value=bpm;updateRate();}}
+document.getElementById('bpmRange').addEventListener('input',e=>{bpm=parseInt(e.target.value);document.getElementById('bpmDisplay').innerText=bpm;updateRate();});
+document.getElementById('pitchRange').addEventListener('input',e=>{pitch=parseInt(e.target.value);document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;updateRate();});
+function changePitch(d,isReset){if(isReset) pitch=0; else pitch=Math.max(-12,Math.min(12,pitch+d));document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;document.getElementById('pitchRange').value=pitch;updateRate();}
+document.getElementById('volVS').addEventListener('input',e=>{document.getElementById('volVSVal').innerText=e.target.value+'%';document.getElementById('audioVS').volume=e.target.value/100;});
+function loadVS(input){let f=input.files[0];if(!f) return;currentAudioBlob=f;currentAudioName=f.name;let url=URL.createObjectURL(f);document.getElementById('audioVS').src=url;document.getElementById('audioVS').play();document.getElementById('vsInfo').innerHTML=`✅ VS: <b>${f.name}</b> - Salva automático com cifra!`;updateRate();}
+function salvarMusica(){let nome=document.getElementById('nomeMusica').value.trim();let artista=document.getElementById('artistaMusica').value.trim();if(!nome){alert('Digite nome da música!');return;}let cifra=document.getElementById('inputCifra').value||document.getElementById('inputFull').value||document.getElementById('inputCifraHome').value;if(!cifra.trim()){alert('Cole a cifra!');return;}let lista=JSON.parse(localStorage.getItem('taki-estudio-v12-2')||'[]');lista.push({id:Date.now(),nome,artista:artista||'Sem Artista',cifra,bpm,pitch,transpose,audioName:currentAudioName,temVS:!!currentAudioBlob,data:new Date().toISOString()});localStorage.setItem('taki-estudio-v12-2',JSON.stringify(lista));document.getElementById('saveStatus').innerText=`✅ "${nome}" salvo! Tom ${transpose} BPM ${bpm} - Salva em Cifras e Cifras+VS!`;carregarLocal();setTimeout(()=>document.getElementById('saveStatus').innerText='',5000);}
+function carregarLocal(){let todas=JSON.parse(localStorage.getItem('taki-estudio-v12-2')||'[]').map((m,i)=>({...m,idLocal:i}));let c=document.getElementById('listaCifras');let v=document.getElementById('listaVS');let p=document.getElementById('listaPastas');if(c){c.innerHTML=todas.length==0?'<div style="text-align:center;padding:20px;color:var(--muted)">Nenhuma cifra - VS salva aqui também!</div>':todas.map(m=>`<div class="repertorio-item"><div><b>${m.nome}</b> ${m.transpose?`(Tom ${m.transpose})`:''}<br><small>${m.artista} • BPM ${m.bpm} ${m.temVS?'🎵 '+m.audioName:''}</small></div><div style="display:flex;gap:4px"><button class="small gold" onclick="tocar(${m.idLocal})">▶</button><button class="small gold" onclick="addSalva(${m.idLocal})">➕ REP</button></div></div>`).join('');}
+if(v){v.innerHTML=todas.length==0?'<div style="text-align:center;padding:20px;color:var(--muted)">Nenhuma</div>':todas.map(m=>`<div class="repertorio-item" style="${m.temVS?'border-color:var(--gold)':''}"><div><b>${m.nome}</b> ${m.temVS?'🎵':''}<br><small>${m.artista} • BPM ${m.bpm} ${m.audioName||''}</small></div><div><button class="small gold" onclick="tocar(${m.idLocal})">▶ ${m.temVS?'VS':''}</button></div></div>`).join('');}
+if(p){let grupos={};todas.forEach(m=>{let art=(m.artista||'Sem Artista').trim();if(!grupos[art]) grupos[art]=[];grupos[art].push(m);});p.innerHTML=Object.keys(grupos).length==0?'<div style="text-align:center;color:var(--muted)">Nenhuma pasta</div>':Object.keys(grupos).sort().map(art=>`<div class="folder"><div class="folder-header" onclick="this.nextElementSibling.classList.toggle('open')"><b style="color:var(--gold)">📁 ${art}</b><small>${grupos[art].length} músicas</small></div><div class="folder-body">${grupos[art].map(m=>`<div class="repertorio-item"><div>${m.temVS?'🎵':'📄'} ${m.nome} (Tom ${m.transpose}) BPM ${m.bpm}</div><div style="display:flex;gap:4px"><button class="small gold" onclick="tocar(${m.idLocal})">▶</button><button class="small gold" onclick="addSalva(${m.idLocal})">➕ REP</button></div></div>`).join('')}</div></div>`).join('');}
+}
+function tocar(id){let lista=JSON.parse(localStorage.getItem('taki-estudio-v12-2')||'[]');let m=lista[id];if(!m) return;document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputFull').value=m.cifra;document.getElementById('inputCifraHome').value=m.cifra;bpm=m.bpm||100;pitch=m.pitch||0;transpose=m.transpose||0;document.getElementById('bpmDisplay').innerText=bpm;document.getElementById('bpmRange').value=bpm;document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;document.getElementById('pitchRange').value=pitch;document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;updateUI();renderCifra();showView('home');}
+function addSalva(id){let reps=getReps();if(reps.length==0){if(confirm('Nenhum repertório. Criar?')) openCriarRepertorio(); return;}let div=document.getElementById('modalLista');div.innerHTML=reps.map(r=>`<button class="menu-item gold" style="margin:6px 0" onclick="addSalvaEscolhido(${id},${r.id})">📋 ${r.nome} - ${r.casa}</button>`).join('');document.getElementById('modalRep').classList.add('open');}
+function addSalvaEscolhido(mid,rid){let lista=JSON.parse(localStorage.getItem('taki-estudio-v12-2')||'[]');let m=lista[mid];let reps=getReps();let rep=reps.find(r=>r.id==rid);rep.musicas.push({id:Date.now(),nome:m.nome,artista:m.artista,cifra:m.cifra,bpm:m.bpm,pitch:m.pitch,transpose:m.transpose,audioName:m.audioName,temVS:m.temVS});saveReps(reps);closeModalAdd();renderRepertorios();alert(`✅ ${m.nome} no ${rep.nome}!`);}
+function openEditarTelaCheia(){let h=document.getElementById('inputCifraHome').value;let f=document.getElementById('inputFull');if(h && !f.value) f.value=h;document.getElementById('telaEditar').style.display='flex';f.focus();}
+function closeEditar(){let f=document.getElementById('inputFull').value;document.getElementById('inputCifra').value=f;document.getElementById('inputCifraHome').value=f;renderCifra();document.getElementById('telaEditar').style.display='none';}
+function setTheme(name){document.body.className='theme-'+name;localStorage.setItem('taki-estudio-theme',name);document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));let el=document.getElementById('th-'+name);if(el) el.classList.add('active');}
+function setFont(name){
+let fonts={
+'montserrat': {main:"'Montserrat',sans-serif", cifra:"'Montserrat',sans-serif"},
+'oswald': {main:"'Oswald',sans-serif", cifra:"'Oswald',sans-serif"},
+'bebas': {main:"'Bebas Neue',sans-serif", cifra:"'Bebas Neue',sans-serif"},
+'inter': {main:"'Inter',sans-serif", cifra:"'Inter',sans-serif"},
+'poppins': {main:"'Poppins',sans-serif", cifra:"'Poppins',sans-serif"},
+'courier': {main:"'Courier Prime',monospace", cifra:"'Courier Prime',monospace"},
+'times': {main:"'Times New Roman',serif", cifra:"'Times New Roman',serif"},
+'arialblack': {main:"'Arial Black',sans-serif", cifra:"'Arial Black',sans-serif"},
+'roboto': {main:"'Roboto Mono',monospace", cifra:"'Roboto Mono',monospace"},
+'comic': {main:"'Comic Neue',cursive", cifra:"'Comic Neue',cursive"}
+};
+let f=fonts[name];
+document.documentElement.style.setProperty('--font-main',f.main);
+document.documentElement.style.setProperty('--font-cifra',f.cifra);
+localStorage.setItem('taki-font',name);
+document.querySelectorAll('.font-btn').forEach(b=>b.classList.remove('active'));
+let el=document.getElementById('font-'+name);
+if(el) el.classList.add('active');
+renderCifra();
+}
+function doInstall(){if(window.deferredPrompt){window.deferredPrompt.prompt();}else{alert('Chrome: 3 pontinhos > Instalar app\nTAKI VS ESTÚDIO');}}
+function doShare(){let u=location.href;if(navigator.share){navigator.share({title:'TAKI VS ESTÚDIO',url:u});}else{navigator.clipboard.writeText(u).then(()=>alert('Link copiado! TAKI VS ESTÚDIO'));}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();window.deferredPrompt=e;document.getElementById('installBtn').innerText='📲 INSTALAR TAKI VS ESTÚDIO AGORA!';});
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+let savedTheme=localStorage.getItem('taki-estudio-theme')||'ouro-negro';setTheme(savedTheme);
+let savedFont=localStorage.getItem('taki-font')||'montserrat';setFont(savedFont);
+let savedSizeL=parseInt(localStorage.getItem('taki-letraSize')||'24');let savedSizeC=parseInt(localStorage.getItem('taki-cifraSize')||'18');if(savedSizeL){letraSize=savedSizeL;cifraSize=savedSizeC;}
+renderCifra();carregarLocal();updateUI();updateSize();
+function updateSize(){let el=document.getElementById('sizeInfo');let el2=document.getElementById('sizeInfoConfig');if(el) el.innerText=`${letraSize}px / ${cifraSize}px`;if(el2) el2.innerText=`${letraSize}px / ${cifraSize}px`;}
+function getReps(){return JSON.parse(localStorage.getItem('taki-reps-estudio-v12-2')||'[]');}
+function saveReps(r){localStorage.setItem('taki-reps-estudio-v12-2',JSON.stringify(r));}
 function openCriarRepertorio(){document.getElementById('modalCriar').classList.add('open');}
-function closeCriar(){document.getElementById('modalCriar').classList.remove('open');}
-function criarRepertorio(){let nome=document.getElementById('nomeNovoRepertorio').value.trim();let casa=document.getElementById('casaNovoRepertorio').value.trim();if(!nome){alert('Nome!');return;}let reps=getReps();reps.push({id:Date.now(),nome,casa:casa||'Casa',musicas:[]});saveReps(reps);renderRepertorios();alert('Criado!');}
-function criarModal(){let nome=document.getElementById('modalNome').value.trim();let casa=document.getElementById('modalCasa').value.trim();if(!nome){alert('Nome!');return;}let reps=getReps();reps.push({id:Date.now(),nome,casa:casa||'Casa',musicas:[]});saveReps(reps);closeCriar();renderRepertorios();}
-function renderRepertorios(){let reps=getReps();let c=document.getElementById('listaRepertorios');if(reps.length==0){c.innerHTML='<div style="text-align:center;padding:20px;color:var(--muted)">Nenhum repertório - crie 1 pra cada casa!</div>';return;}c.innerHTML=reps.map(r=>`<div style="border:2px solid var(--gold);background:var(--card);border-radius:12px;padding:12px;margin:8px 0;display:flex;justify-content:space-between"><div><b style="color:var(--gold)">📋 ${r.nome}</b><br><small>📍 ${r.casa} • ${r.musicas.length} músicas</small></div><div style="display:flex;gap:4px"><button class="small gold" onclick="abrirRep(${r.id})">ABRIR</button><button class="small" onclick="excluirRep(${r.id})">🗑️</button></div></div>`).join('');}
-function excluirRep(id){if(!confirm('Excluir?'))return;let reps=getReps().filter(r=>r.id!=id);saveReps(reps);renderRepertorios();}
-function abrirRep(id){let reps=getReps();let rep=reps.find(r=>r.id==id);let det=document.getElementById('detalheRepertorio');det.style.display='block';det.innerHTML=`<div style="border:2px solid var(--gold);border-radius:12px;padding:12px;background:var(--card)"><b>📂 ${rep.nome} - ${rep.casa}</b><br><small>${rep.musicas.length} músicas</small><div style="margin-top:10px">${rep.musicas.length==0?'<div style="text-align:center;color:var(--muted)">Vazio - adicione músicas!</div>':rep.musicas.map((m,i)=>`<div style="background:var(--card2);border:1px solid var(--line);padding:10px;border-radius:10px;margin:6px 0;display:flex;justify-content:space-between"><div>${i+1}. ${m.nome} (Tom ${m.transpose}) BPM ${m.bpm}</div><div style="display:flex;gap:4px"><button class="small gold" onclick="tocarDoRep(${id},${i})">▶</button><button class="small" onclick="removerDoRep(${id},${i})">🗑️</button></div></div>`).join('')}</div><button class="btn" style="width:100%;margin-top:10px" onclick="document.getElementById('detalheRepertorio').style.display='none'">FECHAR</button></div>`;det.scrollIntoView({behavior:'smooth'});}
-function openModalAdd(){let cifra=document.getElementById('inputCifra').value.trim()||document.getElementById('inputFull').value.trim();if(!cifra){alert('Cole cifra primeiro!');return;}let reps=getReps();let div=document.getElementById('modalLista');if(reps.length==0){div.innerHTML='Nenhum repertório. Crie um!';}else{div.innerHTML=reps.map(r=>`<button class="menu-item gold" style="margin:6px 0" onclick="addAtual(${r.id})">📋 ${r.nome} - ${r.casa} (${r.musicas.length}) - ADD BPM ${bpm} Tom ${transpose}</button>`).join('');}document.getElementById('modalRep').classList.add('open');}
+function closeCriar(){document.getElementById('modalCriar').classList.remove('open');document.getElementById('modalNome').value='';document.getElementById('modalCasa').value='';}
+function criarRepertorio(){let nome=document.getElementById('nomeNovoRepertorio').value.trim();let casa=document.getElementById('casaNovoRepertorio').value.trim();if(!nome){alert('Digite nome!');return;}let reps=getReps();reps.push({id:Date.now(),nome,casa:casa||'Casa',musicas:[]});saveReps(reps);document.getElementById('nomeNovoRepertorio').value='';document.getElementById('casaNovoRepertorio').value='';renderRepertorios();alert(`✅ Repertório ${nome} para ${casa} criado!`);}
+function criarModal(){let nome=document.getElementById('modalNome').value.trim();let casa=document.getElementById('modalCasa').value.trim();if(!nome){alert('Nome!');return;}let reps=getReps();reps.push({id:Date.now(),nome,casa:casa||'Casa',musicas:[]});saveReps(reps);closeCriar();renderRepertorios();alert(`✅ ${nome} criado!`);}
+function renderRepertorios(){let reps=getReps();let c=document.getElementById('listaRepertorios');if(!c) return;if(reps.length==0){c.innerHTML='<div class="card" style="text-align:center;padding:24px"><div style="font-size:40px">📋</div><b style="color:var(--gold)">Nenhum repertório ainda</b><p style="color:var(--muted);font-size:11px;margin-top:8px">Você toca em 6 casas?<br>Crie 1 repertório pra cada!<br>Bar do João - Sexta, Igreja Domingo, etc</p><button class="btn gold big" style="margin-top:12px" onclick="openCriarRepertorio()">➕ CRIAR PRIMEIRO REPERTÓRIO</button></div>';return;}c.innerHTML=reps.map(r=>`<div class="card" style="border:2px solid var(--gold)"><div style="display:flex;justify-content:space-between;align-items:start"><div><b style="color:var(--gold);font-size:14px">📋 ${r.nome}</b><br><small>📍 ${r.casa} • ${r.musicas.length} músicas</small></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="abrirRep(${r.id})">📂 ABRIR</button><button class="small" onclick="excluirRep(${r.id})">🗑️</button></div></div></div>`).join('');}
+function excluirRep(id){if(!confirm('Excluir repertório?')) return;let reps=getReps().filter(r=>r.id!=id);saveReps(reps);renderRepertorios();document.getElementById('detalheRepertorio').style.display='none';}
+function abrirRep(id){let rep=getReps().find(r=>r.id==id);if(!rep) return;let det=document.getElementById('detalheRepertorio');det.style.display='block';det.innerHTML=`<div class="card" style="border:2px solid var(--gold)"><div style="display:flex;justify-content:space-between;align-items:center"><div><b style="color:var(--gold);font-size:15px">📂 ${rep.nome}</b><br><small>📍 ${rep.casa} • ${rep.musicas.length} músicas - TAKI VS ESTÚDIO</small></div><button class="btn" onclick="document.getElementById('detalheRepertorio').style.display='none'">✕</button></div><div style="margin-top:14px">${rep.musicas.length==0?'<div style="text-align:center;padding:20px;color:var(--muted)">Vazio - adicione no INICIO em ➕ ADD AO REPERTÓRIO DA CASA</div>':rep.musicas.map((m,i)=>`<div class="repertorio-item" style="border-left:4px solid var(--gold)"><div><b>${i+1}. ${m.nome}</b> ${m.transpose?`(Tom ${m.transpose>0?'+':''}${m.transpose})`:''}<br><small>${m.artista} • BPM ${m.bpm} • ${m.temVS?'🎵 '+m.audioName:'Sem VS'}</small></div><div style="display:flex;flex-direction:column;gap:4px"><button class="small gold" onclick="tocarDoRep(${id},${i})">▶ COM BPM</button><button class="small" onclick="removerDoRep(${id},${i})">🗑️</button></div></div>`).join('')}</div></div>`;det.scrollIntoView({behavior:'smooth'});}
+function openModalAdd(){let cifra=document.getElementById('inputCifra').value||document.getElementById('inputFull').value||document.getElementById('inputCifraHome').value;if(!cifra.trim()){alert('Cole cifra primeiro em ADD NOVA CIFRA!');return;}let reps=getReps();let div=document.getElementById('modalLista');if(reps.length==0){div.innerHTML='<div style="text-align:center;color:var(--muted)">Nenhum repertório. Crie um para suas 6 casas!</div><button class="btn gold big" style="margin-top:10px" onclick="openCriarRepertorio();closeModalAdd()">➕ CRIAR REPERTÓRIO</button>';}else{div.innerHTML=reps.map(r=>`<button class="menu-item gold" style="margin:6px 0;text-align:left" onclick="addAtual(${r.id})">📋 ${r.nome}<br><small>📍 ${r.casa} • ${r.musicas.length} músicas - ADD com BPM ${bpm} Tom ${transpose>0?'+':''}${transpose} ${currentAudioName?'🎵':''}</small></button>`).join('');}document.getElementById('modalRep').classList.add('open');}
 function closeModalAdd(){document.getElementById('modalRep').classList.remove('open');}
-function addAtual(repId){let nome=document.getElementById('nomeMusica').value.trim()||prompt('Nome da música:');if(!nome) return;let cifra=document.getElementById('inputCifra').value;let reps=getReps();let rep=reps.find(r=>r.id==repId);rep.musicas.push({nome,cifra,bpm,transpose,artista:document.getElementById('artistaMusica').value||'Sem artista'});saveReps(reps);closeModalAdd();renderRepertorios();alert(`✅ ${nome} adicionada ao ${rep.nome}! BPM ${bpm} Tom ${transpose}`);}
-function tocarDoRep(repId,idx){let rep=getReps().find(r=>r.id==repId);let m=rep.musicas[idx];document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputFull').value=m.cifra;bpm=m.bpm;transpose=m.transpose;document.getElementById('bpmDisplay').innerText=bpm;updateUI();renderCifra();showView('home');}
-function removerDoRep(repId,idx){let reps=getReps();let rep=reps.find(r=>r.id==repId);rep.musicas.splice(idx,1);saveReps(reps);abrirRep(repId);renderRepertorios();}
-renderCifra();carregarLocal();renderRepertorios();updateUI();updateSize();
+function addAtual(repId){let nome=document.getElementById('nomeMusica').value.trim();let artista=document.getElementById('artistaMusica').value.trim();let cifra=document.getElementById('inputCifra').value||document.getElementById('inputFull').value||document.getElementById('inputCifraHome').value;if(!nome){nome=prompt('Nome da música:');if(!nome) return;}let reps=getReps();let rep=reps.find(r=>r.id==repId);rep.musicas.push({id:Date.now(),nome,artista:artista||'Sem Artista',cifra,bpm,pitch,transpose,audioName:currentAudioName,temVS:!!currentAudioBlob});saveReps(reps);closeModalAdd();renderRepertorios();alert(`✅ "${nome}" no "${rep.nome}"! BPM ${bpm} Tom ${transpose} VS ${currentAudioName||'sem VS'}!`);}
+function tocarDoRep(repId,idx){let rep=getReps().find(r=>r.id==repId);let m=rep.musicas[idx];document.getElementById('inputCifra').value=m.cifra;document.getElementById('inputFull').value=m.cifra;document.getElementById('inputCifraHome').value=m.cifra;bpm=m.bpm;pitch=m.pitch;transpose=m.transpose;document.getElementById('bpmDisplay').innerText=bpm;document.getElementById('bpmRange').value=bpm;document.getElementById('pitchDisplay').innerText=(pitch>0?'+':'')+pitch;document.getElementById('nomeMusica').value=m.nome;document.getElementById('artistaMusica').value=m.artista;updateUI();renderCifra();showView('home');}
+function removerDoRep(repId,idx){if(!confirm('Remover?')) return;let reps=getReps();let rep=reps.find(r=>r.id==repId);rep.musicas.splice(idx,1);saveReps(reps);abrirRep(repId);renderRepertorios();}
+function exportarBackup(){let musicas=JSON.parse(localStorage.getItem('taki-estudio-v12-2')||'[]');let reps=JSON.parse(localStorage.getItem('taki-reps-estudio-v12-2')||'[]');let all={musicas,repertorios:reps,nome:'TAKI VS ESTÚDIO BACKUP v12.2',data:new Date().toISOString()};if(musicas.length==0&&reps.length==0){alert('Nada pra backup');return;}let blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download=`taki-vs-estudio-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();alert('Backup TAKI VS ESTÚDIO v12.2 exportado!');}
+function importarBackup(input){let file=input.files[0];if(!file) return;let r=new FileReader();r.onload=e=>{try{let data=JSON.parse(e.target.result);if(data.musicas){if(confirm(`Importar ${data.musicas.length} músicas e ${data.repertorios?data.repertorios.length:0} repertórios?`)){localStorage.setItem('taki-estudio-v12-2',JSON.stringify(data.musicas));if(data.repertorios) localStorage.setItem('taki-reps-estudio-v12-2',JSON.stringify(data.repertorios));carregarLocal();renderRepertorios();alert('TAKI VS ESTÚDIO restaurado!');}}else if(Array.isArray(data)){localStorage.setItem('taki-estudio-v12-2',JSON.stringify(data));carregarLocal();}}catch(err){alert('Erro: '+err.message);}};r.readAsText(file);input.value='';}
 </script>
 </body>
 </html>
