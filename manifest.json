@@ -1,7 +1,7 @@
 {
-  "name": "TAKI VS v10.7 REPERTORIOS POR CASA",
-  "short_name": "TAKI VS",
-  "description": "v10.7 Repertorios por casa com BPM Transpose VS salvos",
+  "name": "TAKI VS ESTÚDIO",
+  "short_name": "TAKI ESTÚDIO",
+  "description": "TAKI VS ESTÚDIO v12.2 - VS + BPM + 10 Formatos de Letras + Tamanho",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
