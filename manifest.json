@@ -1,7 +1,7 @@
 {
   "name": "TAKI VS ESTÚDIO",
   "short_name": "TAKI ESTÚDIO",
-  "description": "TAKI VS ESTÚDIO v12.2 - VS + BPM + 10 Formatos de Letras + Tamanho",
+  "description": "TAKI VS ESTÚDIO v12.3 FIX - Menu + VS funcionando",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
